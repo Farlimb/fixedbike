@@ -1,0 +1,2284 @@
+desc: (none)
+cmd: ./bike-demo-test
+time_unit: i
+#-----------
+snapshot=0
+#-----------
+time=0
+mem_heap_B=0
+mem_heap_extra_B=0
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=1
+#-----------
+time=1528196884
+mem_heap_B=721085
+mem_heap_extra_B=62179
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=2
+#-----------
+time=3725724538
+mem_heap_B=698213
+mem_heap_extra_B=62083
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=3
+#-----------
+time=5245246984
+mem_heap_B=724605
+mem_heap_extra_B=62179
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=4
+#-----------
+time=6484267927
+mem_heap_B=727741
+mem_heap_extra_B=62195
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=5
+#-----------
+time=7724047089
+mem_heap_B=726877
+mem_heap_extra_B=62227
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=6
+#-----------
+time=8962951903
+mem_heap_B=731293
+mem_heap_extra_B=62195
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=7
+#-----------
+time=11430077554
+mem_heap_B=694205
+mem_heap_extra_B=62139
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=8
+#-----------
+time=12681156978
+mem_heap_B=729693
+mem_heap_extra_B=62211
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=9
+#-----------
+time=15149727243
+mem_heap_B=731421
+mem_heap_extra_B=62227
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=10
+#-----------
+time=17357216385
+mem_heap_B=703653
+mem_heap_extra_B=62147
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=11
+#-----------
+time=18598003658
+mem_heap_B=706373
+mem_heap_extra_B=62147
+mem_stacks_B=0
+heap_tree=detailed
+n7: 706373 (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+ n7: 506856 0x4A0D6DD: CRYPTO_zalloc (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+  n1: 327680 0x4A189B4: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+   n1: 327680 0x4A3EE75: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+    n1: 327680 0x49E29A9: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+     n1: 327680 0x4A0279B: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+      n1: 327680 0x4A0265B: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+       n1: 327680 0x4A21CAA: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+        n1: 327680 0x4AEB427: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+         n2: 327680 0x4AEBA7D: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+          n1: 294912 0x49E3242: EVP_CIPHER_fetch (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+           n1: 294912 0x49EB74F: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+            n1: 294912 0x49EBBBE: EVP_CipherInit_ex (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+             n1: 294912 0x10FE69: randombytes(unsigned char*, unsigned long long) (in /home/lorth/fixedbike/bike-demo-test)
+              n1: 294912 0x10C2E3: crypto_kem_keypair(unsigned char*, unsigned char*) (in /home/lorth/fixedbike/bike-demo-test)
+               n0: 294912 0x10A7B2: main (in /home/lorth/fixedbike/bike-demo-test)
+          n1: 32768 0x49D6652: EVP_MD_fetch (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+           n1: 32768 0x49D4540: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+            n1: 32768 0x10C206: sha3_384(unsigned char*, unsigned char const*, unsigned long) (in /home/lorth/fixedbike/bike-demo-test)
+             n1: 32768 0x10C5B3: crypto_kem_enc(unsigned char*, unsigned char*, unsigned char const*) (in /home/lorth/fixedbike/bike-demo-test)
+              n0: 32768 0x10A945: main (in /home/lorth/fixedbike/bike-demo-test)
+  n1: 65536 0x4A18942: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+   n1: 65536 0x4A3EE75: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+    n1: 65536 0x49E29A9: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+     n1: 65536 0x4A0279B: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+      n1: 65536 0x4A0265B: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+       n1: 65536 0x4A21CAA: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+        n1: 65536 0x4AEB427: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+         n1: 65536 0x4AEBA7D: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+          n1: 65536 0x49E3242: EVP_CIPHER_fetch (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+           n1: 65536 0x49EB74F: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+            n1: 65536 0x49EBBBE: EVP_CipherInit_ex (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+             n1: 65536 0x10FE69: randombytes(unsigned char*, unsigned long long) (in /home/lorth/fixedbike/bike-demo-test)
+              n1: 65536 0x10C2E3: crypto_kem_keypair(unsigned char*, unsigned char*) (in /home/lorth/fixedbike/bike-demo-test)
+               n0: 65536 0x10A7B2: main (in /home/lorth/fixedbike/bike-demo-test)
+  n1: 31744 0x49EAA63: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+   n1: 31744 0x49EBD8D: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+    n1: 31744 0x49E2A49: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+     n1: 31744 0x4A02738: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+      n1: 31744 0x4A0265B: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+       n1: 31744 0x4A21CAA: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+        n1: 31744 0x4AEB427: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+         n1: 31744 0x4AEBA7D: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+          n1: 31744 0x49E3242: EVP_CIPHER_fetch (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+           n1: 31744 0x49EB74F: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+            n1: 31744 0x49EBBBE: EVP_CipherInit_ex (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+             n1: 31744 0x10FE69: randombytes(unsigned char*, unsigned long long) (in /home/lorth/fixedbike/bike-demo-test)
+              n1: 31744 0x10C2E3: crypto_kem_keypair(unsigned char*, unsigned char*) (in /home/lorth/fixedbike/bike-demo-test)
+               n0: 31744 0x10A7B2: main (in /home/lorth/fixedbike/bike-demo-test)
+  n2: 26576 0x4A02D7C: OPENSSL_LH_new (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+   n1: 25520 0x4A3EE4F: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+    n1: 25520 0x49E29A9: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+     n1: 25520 0x4A0279B: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+      n1: 25520 0x4A0265B: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+       n1: 25520 0x4A21CAA: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+        n1: 25520 0x4AEB427: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+         n2: 25520 0x4AEBA7D: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+          n1: 21824 0x49E3242: EVP_CIPHER_fetch (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+           n1: 21824 0x49EB74F: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+            n1: 21824 0x49EBBBE: EVP_CipherInit_ex (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+             n1: 21824 0x10FE69: randombytes(unsigned char*, unsigned long long) (in /home/lorth/fixedbike/bike-demo-test)
+              n1: 21824 0x10C2E3: crypto_kem_keypair(unsigned char*, unsigned char*) (in /home/lorth/fixedbike/bike-demo-test)
+               n0: 21824 0x10A7B2: main (in /home/lorth/fixedbike/bike-demo-test)
+          n0: 3696 in 1 place, below massif's threshold (1.00%)
+   n0: 1056 in 7 places, all below massif's threshold (1.00%)
+  n0: 26352 in 28 places, all below massif's threshold (1.00%)
+  n2: 18944 0x4A02D96: OPENSSL_LH_new (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+   n1: 18560 0x4A3EE4F: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+    n1: 18560 0x49E29A9: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+     n1: 18560 0x4A0279B: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+      n1: 18560 0x4A0265B: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+       n1: 18560 0x4A21CAA: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+        n1: 18560 0x4AEB427: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+         n2: 18560 0x4AEBA7D: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+          n1: 15872 0x49E3242: EVP_CIPHER_fetch (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+           n1: 15872 0x49EB74F: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+            n1: 15872 0x49EBBBE: EVP_CipherInit_ex (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+             n1: 15872 0x10FE69: randombytes(unsigned char*, unsigned long long) (in /home/lorth/fixedbike/bike-demo-test)
+              n1: 15872 0x10C2E3: crypto_kem_keypair(unsigned char*, unsigned char*) (in /home/lorth/fixedbike/bike-demo-test)
+               n0: 15872 0x10A7B2: main (in /home/lorth/fixedbike/bike-demo-test)
+          n0: 2688 in 1 place, below massif's threshold (1.00%)
+   n0: 384 in 7 places, all below massif's threshold (1.00%)
+  n1: 10024 0x4A18A63: CRYPTO_THREAD_lock_new (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+   n0: 10024 in 19 places, all below massif's threshold (1.00%)
+ n1: 72704 0x4FB1939: ??? (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.30)
+  n1: 72704 0x400647D: call_init.part.0 (dl-init.c:70)
+   n1: 72704 0x4006567: call_init (dl-init.c:33)
+    n1: 72704 0x4006567: _dl_init (dl-init.c:117)
+     n0: 72704 0x40202C9: ??? (in /usr/lib/x86_64-linux-gnu/ld-linux-x86-64.so.2)
+ n3: 48336 0x4A030C5: OPENSSL_LH_insert (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+  n2: 33864 0x4AF45B2: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+   n1: 31896 0x49C17DF: ERR_load_strings_const (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+    n0: 31896 in 33 places, all below massif's threshold (1.00%)
+   n0: 1968 in 2 places, all below massif's threshold (1.00%)
+  n1: 8760 0x4A10482: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+   n0: 8760 in 3 places, all below massif's threshold (1.00%)
+  n0: 5712 in 6 places, all below massif's threshold (1.00%)
+ n0: 28701 in 50 places, all below massif's threshold (1.00%)
+ n2: 27376 0x4D4BDC6: NTL::WordVector::DoSetLength(long) (in /usr/lib/x86_64-linux-gnu/libntl.so.44.0.1)
+  n1: 19920 0x4D0F419: NTL::MulByX(NTL::GF2X&, NTL::GF2X const&) (in /usr/lib/x86_64-linux-gnu/libntl.so.44.0.1)
+   n2: 19920 0x4D11F10: NTL::PlainDivRem(NTL::GF2X&, NTL::GF2X&, NTL::GF2X const&, NTL::GF2X const&) (in /usr/lib/x86_64-linux-gnu/libntl.so.44.0.1)
+    n2: 19920 0x4D20BF7: ??? (in /usr/lib/x86_64-linux-gnu/libntl.so.44.0.1)
+     n0: 10096 in 2 places, all below massif's threshold (1.00%)
+     n2: 9824 0x4D22E10: ??? (in /usr/lib/x86_64-linux-gnu/libntl.so.44.0.1)
+      n2: 9824 0x4D22EB0: ??? (in /usr/lib/x86_64-linux-gnu/libntl.so.44.0.1)
+       n2: 9824 0x4D22EB0: ??? (in /usr/lib/x86_64-linux-gnu/libntl.so.44.0.1)
+        n1: 9824 0x4D23209: NTL::XGCD(NTL::GF2X&, NTL::GF2X&, NTL::GF2X&, NTL::GF2X const&, NTL::GF2X const&) (in /usr/lib/x86_64-linux-gnu/libntl.so.44.0.1)
+         n1: 9824 0x4D234B7: ??? (in /usr/lib/x86_64-linux-gnu/libntl.so.44.0.1)
+          n1: 9824 0x4D2361D: NTL::InvMod(NTL::GF2X&, NTL::GF2X const&, NTL::GF2X const&) (in /usr/lib/x86_64-linux-gnu/libntl.so.44.0.1)
+           n1: 9824 0x10F10D: ntl_mod_inv(unsigned char*, unsigned char const*) (in /home/lorth/fixedbike/bike-demo-test)
+            n1: 9824 0x10C3B0: crypto_kem_keypair(unsigned char*, unsigned char*) (in /home/lorth/fixedbike/bike-demo-test)
+             n0: 9824 0x10A7B2: main (in /home/lorth/fixedbike/bike-demo-test)
+        n0: 0 in 1 place, below massif's threshold (1.00%)
+       n0: 0 in 1 place, below massif's threshold (1.00%)
+      n0: 0 in 1 place, below massif's threshold (1.00%)
+    n0: 0 in 2 places, all below massif's threshold (1.00%)
+  n0: 7456 in 9 places, all below massif's threshold (1.00%)
+ n2: 11264 0x4A03073: OPENSSL_LH_insert (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+  n2: 8192 0x4AF45B2: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+   n2: 8192 0x49C17DF: ERR_load_strings_const (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+    n1: 8192 0x4A142CE: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+     n1: 8192 0x52D5EE7: __pthread_once_slow (pthread_once.c:116)
+      n1: 8192 0x4A18BDC: CRYPTO_THREAD_run_once (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+       n1: 8192 0x4A158D2: OPENSSL_init_crypto (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+        n1: 8192 0x49C3276: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+         n1: 8192 0x49C3C3C: ERR_set_mark (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+          n1: 8192 0x4970021: CONF_modules_load_file_ex (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+           n1: 8192 0x4A150DF: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+            n1: 8192 0x52D5EE7: __pthread_once_slow (pthread_once.c:116)
+             n1: 8192 0x4A18BDC: CRYPTO_THREAD_run_once (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+              n1: 8192 0x4A15B45: OPENSSL_init_crypto (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+               n1: 8192 0x4AEB1EC: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+                n1: 8192 0x49EB2E7: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+                 n1: 8192 0x49EBBBE: EVP_CipherInit_ex (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+                  n1: 8192 0x10FE69: randombytes(unsigned char*, unsigned long long) (in /home/lorth/fixedbike/bike-demo-test)
+                   n1: 8192 0x10C2E3: crypto_kem_keypair(unsigned char*, unsigned char*) (in /home/lorth/fixedbike/bike-demo-test)
+                    n0: 8192 0x10A7B2: main (in /home/lorth/fixedbike/bike-demo-test)
+    n0: 0 in 3 places, all below massif's threshold (1.00%)
+   n0: 0 in 2 places, all below massif's threshold (1.00%)
+  n0: 3072 in 3 places, all below massif's threshold (1.00%)
+ n2: 11136 0x4D4BE37: NTL::WordVector::DoSetLength(long) (in /usr/lib/x86_64-linux-gnu/libntl.so.44.0.1)
+  n2: 10288 0x4D17DF4: NTL::GF2XFromBytes(NTL::GF2X&, unsigned char const*, long) (in /usr/lib/x86_64-linux-gnu/libntl.so.44.0.1)
+   n2: 10288 0x10F4FD: ntl_split_polynomial(unsigned char*, unsigned char*, unsigned char const*) (in /home/lorth/fixedbike/bike-demo-test)
+    n1: 10288 0x10C92D: crypto_kem_dec(unsigned char*, unsigned char const*, unsigned char const*) (in /home/lorth/fixedbike/bike-demo-test)
+     n0: 10288 0x10AB9D: main (in /home/lorth/fixedbike/bike-demo-test)
+    n0: 0 in 2 places, all below massif's threshold (1.00%)
+   n0: 0 in 3 places, all below massif's threshold (1.00%)
+  n0: 848 in 15 places, all below massif's threshold (1.00%)
+#-----------
+snapshot=12
+#-----------
+time=19836016490
+mem_heap_B=706341
+mem_heap_extra_B=62163
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=13
+#-----------
+time=21344677790
+mem_heap_B=731581
+mem_heap_extra_B=62243
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=14
+#-----------
+time=23789516788
+mem_heap_B=795509
+mem_heap_extra_B=62379
+mem_stacks_B=0
+heap_tree=peak
+n8: 795509 (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+ n7: 506856 0x4A0D6DD: CRYPTO_zalloc (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+  n1: 327680 0x4A189B4: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+   n1: 327680 0x4A3EE75: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+    n1: 327680 0x49E29A9: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+     n1: 327680 0x4A0279B: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+      n1: 327680 0x4A0265B: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+       n1: 327680 0x4A21CAA: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+        n1: 327680 0x4AEB427: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+         n2: 327680 0x4AEBA7D: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+          n1: 294912 0x49E3242: EVP_CIPHER_fetch (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+           n1: 294912 0x49EB74F: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+            n1: 294912 0x49EBBBE: EVP_CipherInit_ex (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+             n1: 294912 0x10FE69: randombytes(unsigned char*, unsigned long long) (in /home/lorth/fixedbike/bike-demo-test)
+              n1: 294912 0x10C2E3: crypto_kem_keypair(unsigned char*, unsigned char*) (in /home/lorth/fixedbike/bike-demo-test)
+               n0: 294912 0x10A7B2: main (in /home/lorth/fixedbike/bike-demo-test)
+          n1: 32768 0x49D6652: EVP_MD_fetch (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+           n1: 32768 0x49D4540: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+            n1: 32768 0x10C206: sha3_384(unsigned char*, unsigned char const*, unsigned long) (in /home/lorth/fixedbike/bike-demo-test)
+             n1: 32768 0x10C5B3: crypto_kem_enc(unsigned char*, unsigned char*, unsigned char const*) (in /home/lorth/fixedbike/bike-demo-test)
+              n0: 32768 0x10A945: main (in /home/lorth/fixedbike/bike-demo-test)
+  n1: 65536 0x4A18942: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+   n1: 65536 0x4A3EE75: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+    n1: 65536 0x49E29A9: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+     n1: 65536 0x4A0279B: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+      n1: 65536 0x4A0265B: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+       n1: 65536 0x4A21CAA: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+        n1: 65536 0x4AEB427: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+         n1: 65536 0x4AEBA7D: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+          n1: 65536 0x49E3242: EVP_CIPHER_fetch (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+           n1: 65536 0x49EB74F: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+            n1: 65536 0x49EBBBE: EVP_CipherInit_ex (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+             n1: 65536 0x10FE69: randombytes(unsigned char*, unsigned long long) (in /home/lorth/fixedbike/bike-demo-test)
+              n1: 65536 0x10C2E3: crypto_kem_keypair(unsigned char*, unsigned char*) (in /home/lorth/fixedbike/bike-demo-test)
+               n0: 65536 0x10A7B2: main (in /home/lorth/fixedbike/bike-demo-test)
+  n1: 31744 0x49EAA63: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+   n1: 31744 0x49EBD8D: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+    n1: 31744 0x49E2A49: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+     n1: 31744 0x4A02738: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+      n1: 31744 0x4A0265B: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+       n1: 31744 0x4A21CAA: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+        n1: 31744 0x4AEB427: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+         n1: 31744 0x4AEBA7D: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+          n1: 31744 0x49E3242: EVP_CIPHER_fetch (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+           n1: 31744 0x49EB74F: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+            n1: 31744 0x49EBBBE: EVP_CipherInit_ex (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+             n1: 31744 0x10FE69: randombytes(unsigned char*, unsigned long long) (in /home/lorth/fixedbike/bike-demo-test)
+              n1: 31744 0x10C2E3: crypto_kem_keypair(unsigned char*, unsigned char*) (in /home/lorth/fixedbike/bike-demo-test)
+               n0: 31744 0x10A7B2: main (in /home/lorth/fixedbike/bike-demo-test)
+  n2: 26576 0x4A02D7C: OPENSSL_LH_new (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+   n1: 25520 0x4A3EE4F: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+    n1: 25520 0x49E29A9: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+     n1: 25520 0x4A0279B: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+      n1: 25520 0x4A0265B: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+       n1: 25520 0x4A21CAA: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+        n1: 25520 0x4AEB427: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+         n2: 25520 0x4AEBA7D: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+          n1: 21824 0x49E3242: EVP_CIPHER_fetch (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+           n1: 21824 0x49EB74F: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+            n1: 21824 0x49EBBBE: EVP_CipherInit_ex (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+             n1: 21824 0x10FE69: randombytes(unsigned char*, unsigned long long) (in /home/lorth/fixedbike/bike-demo-test)
+              n1: 21824 0x10C2E3: crypto_kem_keypair(unsigned char*, unsigned char*) (in /home/lorth/fixedbike/bike-demo-test)
+               n0: 21824 0x10A7B2: main (in /home/lorth/fixedbike/bike-demo-test)
+          n0: 3696 in 1 place, below massif's threshold (1.00%)
+   n0: 1056 in 7 places, all below massif's threshold (1.00%)
+  n0: 26352 in 28 places, all below massif's threshold (1.00%)
+  n2: 18944 0x4A02D96: OPENSSL_LH_new (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+   n1: 18560 0x4A3EE4F: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+    n1: 18560 0x49E29A9: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+     n1: 18560 0x4A0279B: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+      n1: 18560 0x4A0265B: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+       n1: 18560 0x4A21CAA: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+        n1: 18560 0x4AEB427: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+         n2: 18560 0x4AEBA7D: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+          n1: 15872 0x49E3242: EVP_CIPHER_fetch (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+           n1: 15872 0x49EB74F: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+            n1: 15872 0x49EBBBE: EVP_CipherInit_ex (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+             n1: 15872 0x10FE69: randombytes(unsigned char*, unsigned long long) (in /home/lorth/fixedbike/bike-demo-test)
+              n1: 15872 0x10C2E3: crypto_kem_keypair(unsigned char*, unsigned char*) (in /home/lorth/fixedbike/bike-demo-test)
+               n0: 15872 0x10A7B2: main (in /home/lorth/fixedbike/bike-demo-test)
+          n0: 2688 in 1 place, below massif's threshold (1.00%)
+   n0: 384 in 7 places, all below massif's threshold (1.00%)
+  n1: 10024 0x4A18A63: CRYPTO_THREAD_lock_new (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+   n0: 10024 in 19 places, all below massif's threshold (1.00%)
+ n1: 72704 0x4FB1939: ??? (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.30)
+  n1: 72704 0x400647D: call_init.part.0 (dl-init.c:70)
+   n1: 72704 0x4006567: call_init (dl-init.c:33)
+    n1: 72704 0x4006567: _dl_init (dl-init.c:117)
+     n0: 72704 0x40202C9: ??? (in /usr/lib/x86_64-linux-gnu/ld-linux-x86-64.so.2)
+ n3: 57392 0x4D4BE37: NTL::WordVector::DoSetLength(long) (in /usr/lib/x86_64-linux-gnu/libntl.so.44.0.1)
+  n2: 25824 0x4D0F2D7: NTL::add(NTL::GF2X&, NTL::GF2X const&, NTL::GF2X const&) (in /usr/lib/x86_64-linux-gnu/libntl.so.44.0.1)
+   n0: 15536 in 4 places, all below massif's threshold (1.00%)
+   n1: 10288 0x4D1E135: ??? (in /usr/lib/x86_64-linux-gnu/libntl.so.44.0.1)
+    n0: 10288 in 2 places, all below massif's threshold (1.00%)
+  n0: 20976 in 14 places, all below massif's threshold (1.00%)
+  n1: 10592 0x4D4BF7F: NTL::WordVector::operator=(NTL::WordVector const&) (in /usr/lib/x86_64-linux-gnu/libntl.so.44.0.1)
+   n0: 10592 in 27 places, all below massif's threshold (1.00%)
+ n2: 52048 0x4D4BDC6: NTL::WordVector::DoSetLength(long) (in /usr/lib/x86_64-linux-gnu/libntl.so.44.0.1)
+  n0: 30240 in 9 places, all below massif's threshold (1.00%)
+  n1: 21808 0x4D0F419: NTL::MulByX(NTL::GF2X&, NTL::GF2X const&) (in /usr/lib/x86_64-linux-gnu/libntl.so.44.0.1)
+   n2: 21808 0x4D11F10: NTL::PlainDivRem(NTL::GF2X&, NTL::GF2X&, NTL::GF2X const&, NTL::GF2X const&) (in /usr/lib/x86_64-linux-gnu/libntl.so.44.0.1)
+    n2: 21808 0x4D20BF7: ??? (in /usr/lib/x86_64-linux-gnu/libntl.so.44.0.1)
+     n0: 12544 in 2 places, all below massif's threshold (1.00%)
+     n1: 9264 0x4D20C1D: ??? (in /usr/lib/x86_64-linux-gnu/libntl.so.44.0.1)
+      n0: 9264 in 3 places, all below massif's threshold (1.00%)
+    n0: 0 in 2 places, all below massif's threshold (1.00%)
+ n3: 48336 0x4A030C5: OPENSSL_LH_insert (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+  n2: 33864 0x4AF45B2: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+   n1: 31896 0x49C17DF: ERR_load_strings_const (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+    n0: 31896 in 33 places, all below massif's threshold (1.00%)
+   n0: 1968 in 2 places, all below massif's threshold (1.00%)
+  n1: 8760 0x4A10482: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+   n0: 8760 in 3 places, all below massif's threshold (1.00%)
+  n0: 5712 in 6 places, all below massif's threshold (1.00%)
+ n0: 28757 in 49 places, all below massif's threshold (1.00%)
+ n2: 18152 0x54EFAE2: gf2x_mul_r (in /usr/lib/x86_64-linux-gnu/libgf2x.so.3.0.0)
+  n2: 18152 0x4D0FE42: NTL::mul(NTL::GF2X&, NTL::GF2X const&, NTL::GF2X const&) (in /usr/lib/x86_64-linux-gnu/libntl.so.44.0.1)
+   n2: 18152 0x4D1E147: ??? (in /usr/lib/x86_64-linux-gnu/libntl.so.44.0.1)
+    n2: 18152 0x4D22F8F: ??? (in /usr/lib/x86_64-linux-gnu/libntl.so.44.0.1)
+     n1: 18152 0x4D23209: NTL::XGCD(NTL::GF2X&, NTL::GF2X&, NTL::GF2X&, NTL::GF2X const&, NTL::GF2X const&) (in /usr/lib/x86_64-linux-gnu/libntl.so.44.0.1)
+      n1: 18152 0x4D234B7: ??? (in /usr/lib/x86_64-linux-gnu/libntl.so.44.0.1)
+       n1: 18152 0x4D2361D: NTL::InvMod(NTL::GF2X&, NTL::GF2X const&, NTL::GF2X const&) (in /usr/lib/x86_64-linux-gnu/libntl.so.44.0.1)
+        n1: 18152 0x10F10D: ntl_mod_inv(unsigned char*, unsigned char const*) (in /home/lorth/fixedbike/bike-demo-test)
+         n1: 18152 0x10C3B0: crypto_kem_keypair(unsigned char*, unsigned char*) (in /home/lorth/fixedbike/bike-demo-test)
+          n0: 18152 0x10A7B2: main (in /home/lorth/fixedbike/bike-demo-test)
+     n0: 0 in 1 place, below massif's threshold (1.00%)
+    n0: 0 in 1 place, below massif's threshold (1.00%)
+   n0: 0 in 13 places, all below massif's threshold (1.00%)
+  n0: 0 in 1 place, below massif's threshold (1.00%)
+ n1: 11264 0x4A03073: OPENSSL_LH_insert (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+  n0: 11264 in 4 places, all below massif's threshold (1.00%)
+#-----------
+snapshot=15
+#-----------
+time=26029424425
+mem_heap_B=708709
+mem_heap_extra_B=62147
+mem_stacks_B=0
+heap_tree=detailed
+n7: 708709 (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+ n7: 506856 0x4A0D6DD: CRYPTO_zalloc (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+  n1: 327680 0x4A189B4: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+   n1: 327680 0x4A3EE75: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+    n1: 327680 0x49E29A9: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+     n1: 327680 0x4A0279B: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+      n1: 327680 0x4A0265B: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+       n1: 327680 0x4A21CAA: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+        n1: 327680 0x4AEB427: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+         n2: 327680 0x4AEBA7D: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+          n1: 294912 0x49E3242: EVP_CIPHER_fetch (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+           n1: 294912 0x49EB74F: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+            n1: 294912 0x49EBBBE: EVP_CipherInit_ex (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+             n1: 294912 0x10FE69: randombytes(unsigned char*, unsigned long long) (in /home/lorth/fixedbike/bike-demo-test)
+              n1: 294912 0x10C2E3: crypto_kem_keypair(unsigned char*, unsigned char*) (in /home/lorth/fixedbike/bike-demo-test)
+               n0: 294912 0x10A7B2: main (in /home/lorth/fixedbike/bike-demo-test)
+          n1: 32768 0x49D6652: EVP_MD_fetch (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+           n1: 32768 0x49D4540: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+            n1: 32768 0x10C206: sha3_384(unsigned char*, unsigned char const*, unsigned long) (in /home/lorth/fixedbike/bike-demo-test)
+             n1: 32768 0x10C5B3: crypto_kem_enc(unsigned char*, unsigned char*, unsigned char const*) (in /home/lorth/fixedbike/bike-demo-test)
+              n0: 32768 0x10A945: main (in /home/lorth/fixedbike/bike-demo-test)
+  n1: 65536 0x4A18942: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+   n1: 65536 0x4A3EE75: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+    n1: 65536 0x49E29A9: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+     n1: 65536 0x4A0279B: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+      n1: 65536 0x4A0265B: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+       n1: 65536 0x4A21CAA: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+        n1: 65536 0x4AEB427: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+         n1: 65536 0x4AEBA7D: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+          n1: 65536 0x49E3242: EVP_CIPHER_fetch (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+           n1: 65536 0x49EB74F: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+            n1: 65536 0x49EBBBE: EVP_CipherInit_ex (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+             n1: 65536 0x10FE69: randombytes(unsigned char*, unsigned long long) (in /home/lorth/fixedbike/bike-demo-test)
+              n1: 65536 0x10C2E3: crypto_kem_keypair(unsigned char*, unsigned char*) (in /home/lorth/fixedbike/bike-demo-test)
+               n0: 65536 0x10A7B2: main (in /home/lorth/fixedbike/bike-demo-test)
+  n1: 31744 0x49EAA63: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+   n1: 31744 0x49EBD8D: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+    n1: 31744 0x49E2A49: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+     n1: 31744 0x4A02738: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+      n1: 31744 0x4A0265B: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+       n1: 31744 0x4A21CAA: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+        n1: 31744 0x4AEB427: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+         n1: 31744 0x4AEBA7D: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+          n1: 31744 0x49E3242: EVP_CIPHER_fetch (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+           n1: 31744 0x49EB74F: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+            n1: 31744 0x49EBBBE: EVP_CipherInit_ex (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+             n1: 31744 0x10FE69: randombytes(unsigned char*, unsigned long long) (in /home/lorth/fixedbike/bike-demo-test)
+              n1: 31744 0x10C2E3: crypto_kem_keypair(unsigned char*, unsigned char*) (in /home/lorth/fixedbike/bike-demo-test)
+               n0: 31744 0x10A7B2: main (in /home/lorth/fixedbike/bike-demo-test)
+  n2: 26576 0x4A02D7C: OPENSSL_LH_new (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+   n1: 25520 0x4A3EE4F: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+    n1: 25520 0x49E29A9: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+     n1: 25520 0x4A0279B: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+      n1: 25520 0x4A0265B: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+       n1: 25520 0x4A21CAA: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+        n1: 25520 0x4AEB427: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+         n2: 25520 0x4AEBA7D: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+          n1: 21824 0x49E3242: EVP_CIPHER_fetch (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+           n1: 21824 0x49EB74F: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+            n1: 21824 0x49EBBBE: EVP_CipherInit_ex (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+             n1: 21824 0x10FE69: randombytes(unsigned char*, unsigned long long) (in /home/lorth/fixedbike/bike-demo-test)
+              n1: 21824 0x10C2E3: crypto_kem_keypair(unsigned char*, unsigned char*) (in /home/lorth/fixedbike/bike-demo-test)
+               n0: 21824 0x10A7B2: main (in /home/lorth/fixedbike/bike-demo-test)
+          n0: 3696 in 1 place, below massif's threshold (1.00%)
+   n0: 1056 in 7 places, all below massif's threshold (1.00%)
+  n0: 26352 in 28 places, all below massif's threshold (1.00%)
+  n2: 18944 0x4A02D96: OPENSSL_LH_new (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+   n1: 18560 0x4A3EE4F: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+    n1: 18560 0x49E29A9: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+     n1: 18560 0x4A0279B: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+      n1: 18560 0x4A0265B: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+       n1: 18560 0x4A21CAA: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+        n1: 18560 0x4AEB427: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+         n2: 18560 0x4AEBA7D: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+          n1: 15872 0x49E3242: EVP_CIPHER_fetch (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+           n1: 15872 0x49EB74F: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+            n1: 15872 0x49EBBBE: EVP_CipherInit_ex (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+             n1: 15872 0x10FE69: randombytes(unsigned char*, unsigned long long) (in /home/lorth/fixedbike/bike-demo-test)
+              n1: 15872 0x10C2E3: crypto_kem_keypair(unsigned char*, unsigned char*) (in /home/lorth/fixedbike/bike-demo-test)
+               n0: 15872 0x10A7B2: main (in /home/lorth/fixedbike/bike-demo-test)
+          n0: 2688 in 1 place, below massif's threshold (1.00%)
+   n0: 384 in 7 places, all below massif's threshold (1.00%)
+  n1: 10024 0x4A18A63: CRYPTO_THREAD_lock_new (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+   n0: 10024 in 19 places, all below massif's threshold (1.00%)
+ n1: 72704 0x4FB1939: ??? (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.30)
+  n1: 72704 0x400647D: call_init.part.0 (dl-init.c:70)
+   n1: 72704 0x4006567: call_init (dl-init.c:33)
+    n1: 72704 0x4006567: _dl_init (dl-init.c:117)
+     n0: 72704 0x40202C9: ??? (in /usr/lib/x86_64-linux-gnu/ld-linux-x86-64.so.2)
+ n3: 48336 0x4A030C5: OPENSSL_LH_insert (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+  n2: 33864 0x4AF45B2: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+   n1: 31896 0x49C17DF: ERR_load_strings_const (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+    n0: 31896 in 33 places, all below massif's threshold (1.00%)
+   n0: 1968 in 2 places, all below massif's threshold (1.00%)
+  n1: 8760 0x4A10482: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+   n0: 8760 in 3 places, all below massif's threshold (1.00%)
+  n0: 5712 in 6 places, all below massif's threshold (1.00%)
+ n2: 29952 0x4D4BDC6: NTL::WordVector::DoSetLength(long) (in /usr/lib/x86_64-linux-gnu/libntl.so.44.0.1)
+  n1: 22256 0x4D0F419: NTL::MulByX(NTL::GF2X&, NTL::GF2X const&) (in /usr/lib/x86_64-linux-gnu/libntl.so.44.0.1)
+   n2: 22256 0x4D11F10: NTL::PlainDivRem(NTL::GF2X&, NTL::GF2X&, NTL::GF2X const&, NTL::GF2X const&) (in /usr/lib/x86_64-linux-gnu/libntl.so.44.0.1)
+    n3: 22256 0x4D20BF7: ??? (in /usr/lib/x86_64-linux-gnu/libntl.so.44.0.1)
+     n1: 9712 0x4D20C1D: ??? (in /usr/lib/x86_64-linux-gnu/libntl.so.44.0.1)
+      n0: 9712 in 3 places, all below massif's threshold (1.00%)
+     n2: 7936 0x4D22E10: ??? (in /usr/lib/x86_64-linux-gnu/libntl.so.44.0.1)
+      n2: 7936 0x4D22EB0: ??? (in /usr/lib/x86_64-linux-gnu/libntl.so.44.0.1)
+       n2: 7936 0x4D22EB0: ??? (in /usr/lib/x86_64-linux-gnu/libntl.so.44.0.1)
+        n1: 7936 0x4D23209: NTL::XGCD(NTL::GF2X&, NTL::GF2X&, NTL::GF2X&, NTL::GF2X const&, NTL::GF2X const&) (in /usr/lib/x86_64-linux-gnu/libntl.so.44.0.1)
+         n1: 7936 0x4D234B7: ??? (in /usr/lib/x86_64-linux-gnu/libntl.so.44.0.1)
+          n1: 7936 0x4D2361D: NTL::InvMod(NTL::GF2X&, NTL::GF2X const&, NTL::GF2X const&) (in /usr/lib/x86_64-linux-gnu/libntl.so.44.0.1)
+           n1: 7936 0x10F10D: ntl_mod_inv(unsigned char*, unsigned char const*) (in /home/lorth/fixedbike/bike-demo-test)
+            n1: 7936 0x10C3B0: crypto_kem_keypair(unsigned char*, unsigned char*) (in /home/lorth/fixedbike/bike-demo-test)
+             n0: 7936 0x10A7B2: main (in /home/lorth/fixedbike/bike-demo-test)
+        n0: 0 in 1 place, below massif's threshold (1.00%)
+       n0: 0 in 1 place, below massif's threshold (1.00%)
+      n0: 0 in 1 place, below massif's threshold (1.00%)
+     n0: 4608 in 1 place, below massif's threshold (1.00%)
+    n0: 0 in 2 places, all below massif's threshold (1.00%)
+  n0: 7696 in 9 places, all below massif's threshold (1.00%)
+ n0: 28701 in 50 places, all below massif's threshold (1.00%)
+ n2: 11264 0x4A03073: OPENSSL_LH_insert (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+  n2: 8192 0x4AF45B2: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+   n2: 8192 0x49C17DF: ERR_load_strings_const (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+    n1: 8192 0x4A142CE: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+     n1: 8192 0x52D5EE7: __pthread_once_slow (pthread_once.c:116)
+      n1: 8192 0x4A18BDC: CRYPTO_THREAD_run_once (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+       n1: 8192 0x4A158D2: OPENSSL_init_crypto (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+        n1: 8192 0x49C3276: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+         n1: 8192 0x49C3C3C: ERR_set_mark (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+          n1: 8192 0x4970021: CONF_modules_load_file_ex (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+           n1: 8192 0x4A150DF: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+            n1: 8192 0x52D5EE7: __pthread_once_slow (pthread_once.c:116)
+             n1: 8192 0x4A18BDC: CRYPTO_THREAD_run_once (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+              n1: 8192 0x4A15B45: OPENSSL_init_crypto (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+               n1: 8192 0x4AEB1EC: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+                n1: 8192 0x49EB2E7: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+                 n1: 8192 0x49EBBBE: EVP_CipherInit_ex (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+                  n1: 8192 0x10FE69: randombytes(unsigned char*, unsigned long long) (in /home/lorth/fixedbike/bike-demo-test)
+                   n1: 8192 0x10C2E3: crypto_kem_keypair(unsigned char*, unsigned char*) (in /home/lorth/fixedbike/bike-demo-test)
+                    n0: 8192 0x10A7B2: main (in /home/lorth/fixedbike/bike-demo-test)
+    n0: 0 in 3 places, all below massif's threshold (1.00%)
+   n0: 0 in 2 places, all below massif's threshold (1.00%)
+  n0: 3072 in 3 places, all below massif's threshold (1.00%)
+ n2: 10896 0x4D4BE37: NTL::WordVector::DoSetLength(long) (in /usr/lib/x86_64-linux-gnu/libntl.so.44.0.1)
+  n2: 10288 0x4D17DF4: NTL::GF2XFromBytes(NTL::GF2X&, unsigned char const*, long) (in /usr/lib/x86_64-linux-gnu/libntl.so.44.0.1)
+   n2: 10288 0x10F4FD: ntl_split_polynomial(unsigned char*, unsigned char*, unsigned char const*) (in /home/lorth/fixedbike/bike-demo-test)
+    n1: 10288 0x10C92D: crypto_kem_dec(unsigned char*, unsigned char const*, unsigned char const*) (in /home/lorth/fixedbike/bike-demo-test)
+     n0: 10288 0x10AB9D: main (in /home/lorth/fixedbike/bike-demo-test)
+    n0: 0 in 2 places, all below massif's threshold (1.00%)
+   n0: 0 in 3 places, all below massif's threshold (1.00%)
+  n0: 608 in 15 places, all below massif's threshold (1.00%)
+#-----------
+snapshot=16
+#-----------
+time=27267760588
+mem_heap_B=706501
+mem_heap_extra_B=62163
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=17
+#-----------
+time=28508831560
+mem_heap_B=706053
+mem_heap_extra_B=62179
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=18
+#-----------
+time=29983850904
+mem_heap_B=773421
+mem_heap_extra_B=62379
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=19
+#-----------
+time=31224188321
+mem_heap_B=773261
+mem_heap_extra_B=62475
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=20
+#-----------
+time=33466076883
+mem_heap_B=704645
+mem_heap_extra_B=62195
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=21
+#-----------
+time=34943733237
+mem_heap_B=776557
+mem_heap_extra_B=62363
+mem_stacks_B=0
+heap_tree=detailed
+n7: 776557 (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+ n7: 506856 0x4A0D6DD: CRYPTO_zalloc (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+  n1: 327680 0x4A189B4: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+   n1: 327680 0x4A3EE75: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+    n1: 327680 0x49E29A9: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+     n1: 327680 0x4A0279B: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+      n1: 327680 0x4A0265B: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+       n1: 327680 0x4A21CAA: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+        n1: 327680 0x4AEB427: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+         n2: 327680 0x4AEBA7D: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+          n1: 294912 0x49E3242: EVP_CIPHER_fetch (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+           n1: 294912 0x49EB74F: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+            n1: 294912 0x49EBBBE: EVP_CipherInit_ex (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+             n1: 294912 0x10FE69: randombytes(unsigned char*, unsigned long long) (in /home/lorth/fixedbike/bike-demo-test)
+              n1: 294912 0x10C2E3: crypto_kem_keypair(unsigned char*, unsigned char*) (in /home/lorth/fixedbike/bike-demo-test)
+               n0: 294912 0x10A7B2: main (in /home/lorth/fixedbike/bike-demo-test)
+          n1: 32768 0x49D6652: EVP_MD_fetch (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+           n1: 32768 0x49D4540: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+            n1: 32768 0x10C206: sha3_384(unsigned char*, unsigned char const*, unsigned long) (in /home/lorth/fixedbike/bike-demo-test)
+             n1: 32768 0x10C5B3: crypto_kem_enc(unsigned char*, unsigned char*, unsigned char const*) (in /home/lorth/fixedbike/bike-demo-test)
+              n0: 32768 0x10A945: main (in /home/lorth/fixedbike/bike-demo-test)
+  n1: 65536 0x4A18942: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+   n1: 65536 0x4A3EE75: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+    n1: 65536 0x49E29A9: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+     n1: 65536 0x4A0279B: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+      n1: 65536 0x4A0265B: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+       n1: 65536 0x4A21CAA: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+        n1: 65536 0x4AEB427: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+         n1: 65536 0x4AEBA7D: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+          n1: 65536 0x49E3242: EVP_CIPHER_fetch (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+           n1: 65536 0x49EB74F: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+            n1: 65536 0x49EBBBE: EVP_CipherInit_ex (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+             n1: 65536 0x10FE69: randombytes(unsigned char*, unsigned long long) (in /home/lorth/fixedbike/bike-demo-test)
+              n1: 65536 0x10C2E3: crypto_kem_keypair(unsigned char*, unsigned char*) (in /home/lorth/fixedbike/bike-demo-test)
+               n0: 65536 0x10A7B2: main (in /home/lorth/fixedbike/bike-demo-test)
+  n1: 31744 0x49EAA63: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+   n1: 31744 0x49EBD8D: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+    n1: 31744 0x49E2A49: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+     n1: 31744 0x4A02738: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+      n1: 31744 0x4A0265B: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+       n1: 31744 0x4A21CAA: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+        n1: 31744 0x4AEB427: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+         n1: 31744 0x4AEBA7D: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+          n1: 31744 0x49E3242: EVP_CIPHER_fetch (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+           n1: 31744 0x49EB74F: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+            n1: 31744 0x49EBBBE: EVP_CipherInit_ex (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+             n1: 31744 0x10FE69: randombytes(unsigned char*, unsigned long long) (in /home/lorth/fixedbike/bike-demo-test)
+              n1: 31744 0x10C2E3: crypto_kem_keypair(unsigned char*, unsigned char*) (in /home/lorth/fixedbike/bike-demo-test)
+               n0: 31744 0x10A7B2: main (in /home/lorth/fixedbike/bike-demo-test)
+  n2: 26576 0x4A02D7C: OPENSSL_LH_new (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+   n1: 25520 0x4A3EE4F: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+    n1: 25520 0x49E29A9: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+     n1: 25520 0x4A0279B: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+      n1: 25520 0x4A0265B: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+       n1: 25520 0x4A21CAA: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+        n1: 25520 0x4AEB427: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+         n2: 25520 0x4AEBA7D: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+          n1: 21824 0x49E3242: EVP_CIPHER_fetch (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+           n1: 21824 0x49EB74F: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+            n1: 21824 0x49EBBBE: EVP_CipherInit_ex (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+             n1: 21824 0x10FE69: randombytes(unsigned char*, unsigned long long) (in /home/lorth/fixedbike/bike-demo-test)
+              n1: 21824 0x10C2E3: crypto_kem_keypair(unsigned char*, unsigned char*) (in /home/lorth/fixedbike/bike-demo-test)
+               n0: 21824 0x10A7B2: main (in /home/lorth/fixedbike/bike-demo-test)
+          n0: 3696 in 1 place, below massif's threshold (1.00%)
+   n0: 1056 in 7 places, all below massif's threshold (1.00%)
+  n0: 26352 in 28 places, all below massif's threshold (1.00%)
+  n2: 18944 0x4A02D96: OPENSSL_LH_new (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+   n1: 18560 0x4A3EE4F: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+    n1: 18560 0x49E29A9: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+     n1: 18560 0x4A0279B: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+      n1: 18560 0x4A0265B: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+       n1: 18560 0x4A21CAA: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+        n1: 18560 0x4AEB427: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+         n2: 18560 0x4AEBA7D: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+          n1: 15872 0x49E3242: EVP_CIPHER_fetch (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+           n1: 15872 0x49EB74F: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+            n1: 15872 0x49EBBBE: EVP_CipherInit_ex (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+             n1: 15872 0x10FE69: randombytes(unsigned char*, unsigned long long) (in /home/lorth/fixedbike/bike-demo-test)
+              n1: 15872 0x10C2E3: crypto_kem_keypair(unsigned char*, unsigned char*) (in /home/lorth/fixedbike/bike-demo-test)
+               n0: 15872 0x10A7B2: main (in /home/lorth/fixedbike/bike-demo-test)
+          n0: 2688 in 1 place, below massif's threshold (1.00%)
+   n0: 384 in 7 places, all below massif's threshold (1.00%)
+  n1: 10024 0x4A18A63: CRYPTO_THREAD_lock_new (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+   n0: 10024 in 19 places, all below massif's threshold (1.00%)
+ n1: 72704 0x4FB1939: ??? (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.30)
+  n1: 72704 0x400647D: call_init.part.0 (dl-init.c:70)
+   n1: 72704 0x4006567: call_init (dl-init.c:33)
+    n1: 72704 0x4006567: _dl_init (dl-init.c:117)
+     n0: 72704 0x40202C9: ??? (in /usr/lib/x86_64-linux-gnu/ld-linux-x86-64.so.2)
+ n4: 58016 0x4D4BE37: NTL::WordVector::DoSetLength(long) (in /usr/lib/x86_64-linux-gnu/libntl.so.44.0.1)
+  n0: 21376 in 13 places, all below massif's threshold (1.00%)
+  n1: 15456 0x4D0F2D7: NTL::add(NTL::GF2X&, NTL::GF2X const&, NTL::GF2X const&) (in /usr/lib/x86_64-linux-gnu/libntl.so.44.0.1)
+   n0: 15456 in 5 places, all below massif's threshold (1.00%)
+  n1: 10752 0x4D4BF7F: NTL::WordVector::operator=(NTL::WordVector const&) (in /usr/lib/x86_64-linux-gnu/libntl.so.44.0.1)
+   n0: 10752 in 27 places, all below massif's threshold (1.00%)
+  n1: 10432 0x4D0F1C0: NTL::add(NTL::GF2X&, NTL::GF2X const&, NTL::GF2X const&) (in /usr/lib/x86_64-linux-gnu/libntl.so.44.0.1)
+   n0: 10432 in 6 places, all below massif's threshold (1.00%)
+ n3: 50624 0x4D4BDC6: NTL::WordVector::DoSetLength(long) (in /usr/lib/x86_64-linux-gnu/libntl.so.44.0.1)
+  n1: 21904 0x4D0F419: NTL::MulByX(NTL::GF2X&, NTL::GF2X const&) (in /usr/lib/x86_64-linux-gnu/libntl.so.44.0.1)
+   n2: 21904 0x4D11F10: NTL::PlainDivRem(NTL::GF2X&, NTL::GF2X&, NTL::GF2X const&, NTL::GF2X const&) (in /usr/lib/x86_64-linux-gnu/libntl.so.44.0.1)
+    n1: 21904 0x4D20BF7: ??? (in /usr/lib/x86_64-linux-gnu/libntl.so.44.0.1)
+     n0: 21904 in 3 places, all below massif's threshold (1.00%)
+    n0: 0 in 2 places, all below massif's threshold (1.00%)
+  n0: 20272 in 8 places, all below massif's threshold (1.00%)
+  n1: 8448 0x4D0FEF7: NTL::mul(NTL::GF2X&, NTL::GF2X const&, NTL::GF2X const&) (in /usr/lib/x86_64-linux-gnu/libntl.so.44.0.1)
+   n0: 8448 in 14 places, all below massif's threshold (1.00%)
+ n3: 48336 0x4A030C5: OPENSSL_LH_insert (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+  n2: 33864 0x4AF45B2: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+   n1: 31896 0x49C17DF: ERR_load_strings_const (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+    n0: 31896 in 33 places, all below massif's threshold (1.00%)
+   n0: 1968 in 2 places, all below massif's threshold (1.00%)
+  n1: 8760 0x4A10482: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+   n0: 8760 in 3 places, all below massif's threshold (1.00%)
+  n0: 5712 in 6 places, all below massif's threshold (1.00%)
+ n0: 28757 in 50 places, all below massif's threshold (1.00%)
+ n1: 11264 0x4A03073: OPENSSL_LH_insert (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+  n0: 11264 in 4 places, all below massif's threshold (1.00%)
+#-----------
+snapshot=22
+#-----------
+time=36183792906
+mem_heap_B=774285
+mem_heap_extra_B=62363
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=23
+#-----------
+time=38425688283
+mem_heap_B=706021
+mem_heap_extra_B=62195
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=24
+#-----------
+time=39664032187
+mem_heap_B=705957
+mem_heap_extra_B=62147
+mem_stacks_B=0
+heap_tree=detailed
+n7: 705957 (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+ n7: 506856 0x4A0D6DD: CRYPTO_zalloc (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+  n1: 327680 0x4A189B4: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+   n1: 327680 0x4A3EE75: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+    n1: 327680 0x49E29A9: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+     n1: 327680 0x4A0279B: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+      n1: 327680 0x4A0265B: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+       n1: 327680 0x4A21CAA: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+        n1: 327680 0x4AEB427: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+         n2: 327680 0x4AEBA7D: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+          n1: 294912 0x49E3242: EVP_CIPHER_fetch (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+           n1: 294912 0x49EB74F: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+            n1: 294912 0x49EBBBE: EVP_CipherInit_ex (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+             n1: 294912 0x10FE69: randombytes(unsigned char*, unsigned long long) (in /home/lorth/fixedbike/bike-demo-test)
+              n1: 294912 0x10C2E3: crypto_kem_keypair(unsigned char*, unsigned char*) (in /home/lorth/fixedbike/bike-demo-test)
+               n0: 294912 0x10A7B2: main (in /home/lorth/fixedbike/bike-demo-test)
+          n1: 32768 0x49D6652: EVP_MD_fetch (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+           n1: 32768 0x49D4540: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+            n1: 32768 0x10C206: sha3_384(unsigned char*, unsigned char const*, unsigned long) (in /home/lorth/fixedbike/bike-demo-test)
+             n1: 32768 0x10C5B3: crypto_kem_enc(unsigned char*, unsigned char*, unsigned char const*) (in /home/lorth/fixedbike/bike-demo-test)
+              n0: 32768 0x10A945: main (in /home/lorth/fixedbike/bike-demo-test)
+  n1: 65536 0x4A18942: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+   n1: 65536 0x4A3EE75: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+    n1: 65536 0x49E29A9: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+     n1: 65536 0x4A0279B: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+      n1: 65536 0x4A0265B: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+       n1: 65536 0x4A21CAA: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+        n1: 65536 0x4AEB427: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+         n1: 65536 0x4AEBA7D: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+          n1: 65536 0x49E3242: EVP_CIPHER_fetch (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+           n1: 65536 0x49EB74F: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+            n1: 65536 0x49EBBBE: EVP_CipherInit_ex (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+             n1: 65536 0x10FE69: randombytes(unsigned char*, unsigned long long) (in /home/lorth/fixedbike/bike-demo-test)
+              n1: 65536 0x10C2E3: crypto_kem_keypair(unsigned char*, unsigned char*) (in /home/lorth/fixedbike/bike-demo-test)
+               n0: 65536 0x10A7B2: main (in /home/lorth/fixedbike/bike-demo-test)
+  n1: 31744 0x49EAA63: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+   n1: 31744 0x49EBD8D: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+    n1: 31744 0x49E2A49: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+     n1: 31744 0x4A02738: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+      n1: 31744 0x4A0265B: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+       n1: 31744 0x4A21CAA: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+        n1: 31744 0x4AEB427: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+         n1: 31744 0x4AEBA7D: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+          n1: 31744 0x49E3242: EVP_CIPHER_fetch (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+           n1: 31744 0x49EB74F: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+            n1: 31744 0x49EBBBE: EVP_CipherInit_ex (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+             n1: 31744 0x10FE69: randombytes(unsigned char*, unsigned long long) (in /home/lorth/fixedbike/bike-demo-test)
+              n1: 31744 0x10C2E3: crypto_kem_keypair(unsigned char*, unsigned char*) (in /home/lorth/fixedbike/bike-demo-test)
+               n0: 31744 0x10A7B2: main (in /home/lorth/fixedbike/bike-demo-test)
+  n2: 26576 0x4A02D7C: OPENSSL_LH_new (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+   n1: 25520 0x4A3EE4F: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+    n1: 25520 0x49E29A9: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+     n1: 25520 0x4A0279B: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+      n1: 25520 0x4A0265B: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+       n1: 25520 0x4A21CAA: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+        n1: 25520 0x4AEB427: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+         n2: 25520 0x4AEBA7D: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+          n1: 21824 0x49E3242: EVP_CIPHER_fetch (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+           n1: 21824 0x49EB74F: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+            n1: 21824 0x49EBBBE: EVP_CipherInit_ex (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+             n1: 21824 0x10FE69: randombytes(unsigned char*, unsigned long long) (in /home/lorth/fixedbike/bike-demo-test)
+              n1: 21824 0x10C2E3: crypto_kem_keypair(unsigned char*, unsigned char*) (in /home/lorth/fixedbike/bike-demo-test)
+               n0: 21824 0x10A7B2: main (in /home/lorth/fixedbike/bike-demo-test)
+          n0: 3696 in 1 place, below massif's threshold (1.00%)
+   n0: 1056 in 7 places, all below massif's threshold (1.00%)
+  n0: 26352 in 28 places, all below massif's threshold (1.00%)
+  n2: 18944 0x4A02D96: OPENSSL_LH_new (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+   n1: 18560 0x4A3EE4F: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+    n1: 18560 0x49E29A9: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+     n1: 18560 0x4A0279B: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+      n1: 18560 0x4A0265B: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+       n1: 18560 0x4A21CAA: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+        n1: 18560 0x4AEB427: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+         n2: 18560 0x4AEBA7D: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+          n1: 15872 0x49E3242: EVP_CIPHER_fetch (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+           n1: 15872 0x49EB74F: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+            n1: 15872 0x49EBBBE: EVP_CipherInit_ex (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+             n1: 15872 0x10FE69: randombytes(unsigned char*, unsigned long long) (in /home/lorth/fixedbike/bike-demo-test)
+              n1: 15872 0x10C2E3: crypto_kem_keypair(unsigned char*, unsigned char*) (in /home/lorth/fixedbike/bike-demo-test)
+               n0: 15872 0x10A7B2: main (in /home/lorth/fixedbike/bike-demo-test)
+          n0: 2688 in 1 place, below massif's threshold (1.00%)
+   n0: 384 in 7 places, all below massif's threshold (1.00%)
+  n1: 10024 0x4A18A63: CRYPTO_THREAD_lock_new (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+   n0: 10024 in 19 places, all below massif's threshold (1.00%)
+ n1: 72704 0x4FB1939: ??? (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.30)
+  n1: 72704 0x400647D: call_init.part.0 (dl-init.c:70)
+   n1: 72704 0x4006567: call_init (dl-init.c:33)
+    n1: 72704 0x4006567: _dl_init (dl-init.c:117)
+     n0: 72704 0x40202C9: ??? (in /usr/lib/x86_64-linux-gnu/ld-linux-x86-64.so.2)
+ n3: 48336 0x4A030C5: OPENSSL_LH_insert (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+  n2: 33864 0x4AF45B2: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+   n1: 31896 0x49C17DF: ERR_load_strings_const (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+    n0: 31896 in 33 places, all below massif's threshold (1.00%)
+   n0: 1968 in 2 places, all below massif's threshold (1.00%)
+  n1: 8760 0x4A10482: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+   n0: 8760 in 3 places, all below massif's threshold (1.00%)
+  n0: 5712 in 6 places, all below massif's threshold (1.00%)
+ n0: 28701 in 50 places, all below massif's threshold (1.00%)
+ n2: 26720 0x4D4BDC6: NTL::WordVector::DoSetLength(long) (in /usr/lib/x86_64-linux-gnu/libntl.so.44.0.1)
+  n1: 17104 0x4D0F419: NTL::MulByX(NTL::GF2X&, NTL::GF2X const&) (in /usr/lib/x86_64-linux-gnu/libntl.so.44.0.1)
+   n2: 17104 0x4D11F10: NTL::PlainDivRem(NTL::GF2X&, NTL::GF2X&, NTL::GF2X const&, NTL::GF2X const&) (in /usr/lib/x86_64-linux-gnu/libntl.so.44.0.1)
+    n2: 16416 0x4D20BF7: ??? (in /usr/lib/x86_64-linux-gnu/libntl.so.44.0.1)
+     n1: 8736 0x4D20C1D: ??? (in /usr/lib/x86_64-linux-gnu/libntl.so.44.0.1)
+      n0: 8736 in 3 places, all below massif's threshold (1.00%)
+     n0: 7680 in 2 places, all below massif's threshold (1.00%)
+    n0: 688 in 2 places, all below massif's threshold (1.00%)
+  n0: 9616 in 9 places, all below massif's threshold (1.00%)
+ n2: 11376 0x4D4BE37: NTL::WordVector::DoSetLength(long) (in /usr/lib/x86_64-linux-gnu/libntl.so.44.0.1)
+  n2: 10288 0x4D17DF4: NTL::GF2XFromBytes(NTL::GF2X&, unsigned char const*, long) (in /usr/lib/x86_64-linux-gnu/libntl.so.44.0.1)
+   n2: 10288 0x10F4FD: ntl_split_polynomial(unsigned char*, unsigned char*, unsigned char const*) (in /home/lorth/fixedbike/bike-demo-test)
+    n1: 10288 0x10C92D: crypto_kem_dec(unsigned char*, unsigned char const*, unsigned char const*) (in /home/lorth/fixedbike/bike-demo-test)
+     n0: 10288 0x10AB9D: main (in /home/lorth/fixedbike/bike-demo-test)
+    n0: 0 in 2 places, all below massif's threshold (1.00%)
+   n0: 0 in 3 places, all below massif's threshold (1.00%)
+  n0: 1088 in 15 places, all below massif's threshold (1.00%)
+ n2: 11264 0x4A03073: OPENSSL_LH_insert (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+  n2: 8192 0x4AF45B2: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+   n2: 8192 0x49C17DF: ERR_load_strings_const (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+    n1: 8192 0x4A142CE: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+     n1: 8192 0x52D5EE7: __pthread_once_slow (pthread_once.c:116)
+      n1: 8192 0x4A18BDC: CRYPTO_THREAD_run_once (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+       n1: 8192 0x4A158D2: OPENSSL_init_crypto (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+        n1: 8192 0x49C3276: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+         n1: 8192 0x49C3C3C: ERR_set_mark (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+          n1: 8192 0x4970021: CONF_modules_load_file_ex (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+           n1: 8192 0x4A150DF: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+            n1: 8192 0x52D5EE7: __pthread_once_slow (pthread_once.c:116)
+             n1: 8192 0x4A18BDC: CRYPTO_THREAD_run_once (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+              n1: 8192 0x4A15B45: OPENSSL_init_crypto (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+               n1: 8192 0x4AEB1EC: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+                n1: 8192 0x49EB2E7: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+                 n1: 8192 0x49EBBBE: EVP_CipherInit_ex (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+                  n1: 8192 0x10FE69: randombytes(unsigned char*, unsigned long long) (in /home/lorth/fixedbike/bike-demo-test)
+                   n1: 8192 0x10C2E3: crypto_kem_keypair(unsigned char*, unsigned char*) (in /home/lorth/fixedbike/bike-demo-test)
+                    n0: 8192 0x10A7B2: main (in /home/lorth/fixedbike/bike-demo-test)
+    n0: 0 in 3 places, all below massif's threshold (1.00%)
+   n0: 0 in 2 places, all below massif's threshold (1.00%)
+  n0: 3072 in 3 places, all below massif's threshold (1.00%)
+#-----------
+snapshot=25
+#-----------
+time=41145998187
+mem_heap_B=786525
+mem_heap_extra_B=62403
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=26
+#-----------
+time=43382582473
+mem_heap_B=711301
+mem_heap_extra_B=62195
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=27
+#-----------
+time=44622370091
+mem_heap_B=708837
+mem_heap_extra_B=62179
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=28
+#-----------
+time=45862550885
+mem_heap_B=709637
+mem_heap_extra_B=62179
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=29
+#-----------
+time=47101861427
+mem_heap_B=712773
+mem_heap_extra_B=62179
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=30
+#-----------
+time=48585326122
+mem_heap_B=779805
+mem_heap_extra_B=62403
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=31
+#-----------
+time=49822592402
+mem_heap_B=779325
+mem_heap_extra_B=62403
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=32
+#-----------
+time=52057323327
+mem_heap_B=708645
+mem_heap_extra_B=62211
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=33
+#-----------
+time=53294670873
+mem_heap_B=708549
+mem_heap_extra_B=62179
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=34
+#-----------
+time=54535623364
+mem_heap_B=707173
+mem_heap_extra_B=62195
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=35
+#-----------
+time=57013877231
+mem_heap_B=708773
+mem_heap_extra_B=62179
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=36
+#-----------
+time=58489482062
+mem_heap_B=775917
+mem_heap_extra_B=62411
+mem_stacks_B=0
+heap_tree=detailed
+n7: 775917 (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+ n7: 506856 0x4A0D6DD: CRYPTO_zalloc (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+  n1: 327680 0x4A189B4: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+   n1: 327680 0x4A3EE75: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+    n1: 327680 0x49E29A9: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+     n1: 327680 0x4A0279B: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+      n1: 327680 0x4A0265B: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+       n1: 327680 0x4A21CAA: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+        n1: 327680 0x4AEB427: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+         n2: 327680 0x4AEBA7D: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+          n1: 294912 0x49E3242: EVP_CIPHER_fetch (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+           n1: 294912 0x49EB74F: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+            n1: 294912 0x49EBBBE: EVP_CipherInit_ex (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+             n1: 294912 0x10FE69: randombytes(unsigned char*, unsigned long long) (in /home/lorth/fixedbike/bike-demo-test)
+              n1: 294912 0x10C2E3: crypto_kem_keypair(unsigned char*, unsigned char*) (in /home/lorth/fixedbike/bike-demo-test)
+               n0: 294912 0x10A7B2: main (in /home/lorth/fixedbike/bike-demo-test)
+          n1: 32768 0x49D6652: EVP_MD_fetch (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+           n1: 32768 0x49D4540: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+            n1: 32768 0x10C206: sha3_384(unsigned char*, unsigned char const*, unsigned long) (in /home/lorth/fixedbike/bike-demo-test)
+             n1: 32768 0x10C5B3: crypto_kem_enc(unsigned char*, unsigned char*, unsigned char const*) (in /home/lorth/fixedbike/bike-demo-test)
+              n0: 32768 0x10A945: main (in /home/lorth/fixedbike/bike-demo-test)
+  n1: 65536 0x4A18942: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+   n1: 65536 0x4A3EE75: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+    n1: 65536 0x49E29A9: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+     n1: 65536 0x4A0279B: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+      n1: 65536 0x4A0265B: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+       n1: 65536 0x4A21CAA: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+        n1: 65536 0x4AEB427: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+         n1: 65536 0x4AEBA7D: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+          n1: 65536 0x49E3242: EVP_CIPHER_fetch (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+           n1: 65536 0x49EB74F: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+            n1: 65536 0x49EBBBE: EVP_CipherInit_ex (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+             n1: 65536 0x10FE69: randombytes(unsigned char*, unsigned long long) (in /home/lorth/fixedbike/bike-demo-test)
+              n1: 65536 0x10C2E3: crypto_kem_keypair(unsigned char*, unsigned char*) (in /home/lorth/fixedbike/bike-demo-test)
+               n0: 65536 0x10A7B2: main (in /home/lorth/fixedbike/bike-demo-test)
+  n1: 31744 0x49EAA63: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+   n1: 31744 0x49EBD8D: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+    n1: 31744 0x49E2A49: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+     n1: 31744 0x4A02738: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+      n1: 31744 0x4A0265B: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+       n1: 31744 0x4A21CAA: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+        n1: 31744 0x4AEB427: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+         n1: 31744 0x4AEBA7D: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+          n1: 31744 0x49E3242: EVP_CIPHER_fetch (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+           n1: 31744 0x49EB74F: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+            n1: 31744 0x49EBBBE: EVP_CipherInit_ex (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+             n1: 31744 0x10FE69: randombytes(unsigned char*, unsigned long long) (in /home/lorth/fixedbike/bike-demo-test)
+              n1: 31744 0x10C2E3: crypto_kem_keypair(unsigned char*, unsigned char*) (in /home/lorth/fixedbike/bike-demo-test)
+               n0: 31744 0x10A7B2: main (in /home/lorth/fixedbike/bike-demo-test)
+  n2: 26576 0x4A02D7C: OPENSSL_LH_new (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+   n1: 25520 0x4A3EE4F: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+    n1: 25520 0x49E29A9: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+     n1: 25520 0x4A0279B: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+      n1: 25520 0x4A0265B: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+       n1: 25520 0x4A21CAA: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+        n1: 25520 0x4AEB427: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+         n2: 25520 0x4AEBA7D: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+          n1: 21824 0x49E3242: EVP_CIPHER_fetch (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+           n1: 21824 0x49EB74F: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+            n1: 21824 0x49EBBBE: EVP_CipherInit_ex (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+             n1: 21824 0x10FE69: randombytes(unsigned char*, unsigned long long) (in /home/lorth/fixedbike/bike-demo-test)
+              n1: 21824 0x10C2E3: crypto_kem_keypair(unsigned char*, unsigned char*) (in /home/lorth/fixedbike/bike-demo-test)
+               n0: 21824 0x10A7B2: main (in /home/lorth/fixedbike/bike-demo-test)
+          n0: 3696 in 1 place, below massif's threshold (1.00%)
+   n0: 1056 in 7 places, all below massif's threshold (1.00%)
+  n0: 26352 in 28 places, all below massif's threshold (1.00%)
+  n2: 18944 0x4A02D96: OPENSSL_LH_new (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+   n1: 18560 0x4A3EE4F: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+    n1: 18560 0x49E29A9: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+     n1: 18560 0x4A0279B: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+      n1: 18560 0x4A0265B: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+       n1: 18560 0x4A21CAA: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+        n1: 18560 0x4AEB427: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+         n2: 18560 0x4AEBA7D: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+          n1: 15872 0x49E3242: EVP_CIPHER_fetch (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+           n1: 15872 0x49EB74F: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+            n1: 15872 0x49EBBBE: EVP_CipherInit_ex (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+             n1: 15872 0x10FE69: randombytes(unsigned char*, unsigned long long) (in /home/lorth/fixedbike/bike-demo-test)
+              n1: 15872 0x10C2E3: crypto_kem_keypair(unsigned char*, unsigned char*) (in /home/lorth/fixedbike/bike-demo-test)
+               n0: 15872 0x10A7B2: main (in /home/lorth/fixedbike/bike-demo-test)
+          n0: 2688 in 1 place, below massif's threshold (1.00%)
+   n0: 384 in 7 places, all below massif's threshold (1.00%)
+  n1: 10024 0x4A18A63: CRYPTO_THREAD_lock_new (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+   n0: 10024 in 19 places, all below massif's threshold (1.00%)
+ n1: 72704 0x4FB1939: ??? (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.30)
+  n1: 72704 0x400647D: call_init.part.0 (dl-init.c:70)
+   n1: 72704 0x4006567: call_init (dl-init.c:33)
+    n1: 72704 0x4006567: _dl_init (dl-init.c:117)
+     n0: 72704 0x40202C9: ??? (in /usr/lib/x86_64-linux-gnu/ld-linux-x86-64.so.2)
+ n3: 58112 0x4D4BE37: NTL::WordVector::DoSetLength(long) (in /usr/lib/x86_64-linux-gnu/libntl.so.44.0.1)
+  n0: 26704 in 14 places, all below massif's threshold (1.00%)
+  n1: 20576 0x4D0F2D7: NTL::add(NTL::GF2X&, NTL::GF2X const&, NTL::GF2X const&) (in /usr/lib/x86_64-linux-gnu/libntl.so.44.0.1)
+   n0: 20576 in 5 places, all below massif's threshold (1.00%)
+  n1: 10832 0x4D4BF7F: NTL::WordVector::operator=(NTL::WordVector const&) (in /usr/lib/x86_64-linux-gnu/libntl.so.44.0.1)
+   n0: 10832 in 27 places, all below massif's threshold (1.00%)
+ n3: 49888 0x4D4BDC6: NTL::WordVector::DoSetLength(long) (in /usr/lib/x86_64-linux-gnu/libntl.so.44.0.1)
+  n1: 21664 0x4D0F419: NTL::MulByX(NTL::GF2X&, NTL::GF2X const&) (in /usr/lib/x86_64-linux-gnu/libntl.so.44.0.1)
+   n2: 21664 0x4D11F10: NTL::PlainDivRem(NTL::GF2X&, NTL::GF2X&, NTL::GF2X const&, NTL::GF2X const&) (in /usr/lib/x86_64-linux-gnu/libntl.so.44.0.1)
+    n2: 21664 0x4D20BF7: ??? (in /usr/lib/x86_64-linux-gnu/libntl.so.44.0.1)
+     n1: 11792 0x4D20C1D: ??? (in /usr/lib/x86_64-linux-gnu/libntl.so.44.0.1)
+      n0: 11792 in 3 places, all below massif's threshold (1.00%)
+     n0: 9872 in 2 places, all below massif's threshold (1.00%)
+    n0: 0 in 2 places, all below massif's threshold (1.00%)
+  n0: 19776 in 8 places, all below massif's threshold (1.00%)
+  n1: 8448 0x4D0FEF7: NTL::mul(NTL::GF2X&, NTL::GF2X const&, NTL::GF2X const&) (in /usr/lib/x86_64-linux-gnu/libntl.so.44.0.1)
+   n0: 8448 in 14 places, all below massif's threshold (1.00%)
+ n3: 48336 0x4A030C5: OPENSSL_LH_insert (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+  n2: 33864 0x4AF45B2: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+   n1: 31896 0x49C17DF: ERR_load_strings_const (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+    n0: 31896 in 33 places, all below massif's threshold (1.00%)
+   n0: 1968 in 2 places, all below massif's threshold (1.00%)
+  n1: 8760 0x4A10482: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+   n0: 8760 in 3 places, all below massif's threshold (1.00%)
+  n0: 5712 in 6 places, all below massif's threshold (1.00%)
+ n0: 28757 in 50 places, all below massif's threshold (1.00%)
+ n1: 11264 0x4A03073: OPENSSL_LH_insert (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+  n0: 11264 in 4 places, all below massif's threshold (1.00%)
+#-----------
+snapshot=37
+#-----------
+time=59731731351
+mem_heap_B=772717
+mem_heap_extra_B=62427
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=38
+#-----------
+time=62207330458
+mem_heap_B=778573
+mem_heap_extra_B=62443
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=39
+#-----------
+time=64684066299
+mem_heap_B=775373
+mem_heap_extra_B=62427
+mem_stacks_B=0
+heap_tree=detailed
+n7: 775373 (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+ n7: 506856 0x4A0D6DD: CRYPTO_zalloc (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+  n1: 327680 0x4A189B4: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+   n1: 327680 0x4A3EE75: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+    n1: 327680 0x49E29A9: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+     n1: 327680 0x4A0279B: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+      n1: 327680 0x4A0265B: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+       n1: 327680 0x4A21CAA: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+        n1: 327680 0x4AEB427: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+         n2: 327680 0x4AEBA7D: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+          n1: 294912 0x49E3242: EVP_CIPHER_fetch (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+           n1: 294912 0x49EB74F: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+            n1: 294912 0x49EBBBE: EVP_CipherInit_ex (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+             n1: 294912 0x10FE69: randombytes(unsigned char*, unsigned long long) (in /home/lorth/fixedbike/bike-demo-test)
+              n1: 294912 0x10C2E3: crypto_kem_keypair(unsigned char*, unsigned char*) (in /home/lorth/fixedbike/bike-demo-test)
+               n0: 294912 0x10A7B2: main (in /home/lorth/fixedbike/bike-demo-test)
+          n1: 32768 0x49D6652: EVP_MD_fetch (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+           n1: 32768 0x49D4540: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+            n1: 32768 0x10C206: sha3_384(unsigned char*, unsigned char const*, unsigned long) (in /home/lorth/fixedbike/bike-demo-test)
+             n1: 32768 0x10C5B3: crypto_kem_enc(unsigned char*, unsigned char*, unsigned char const*) (in /home/lorth/fixedbike/bike-demo-test)
+              n0: 32768 0x10A945: main (in /home/lorth/fixedbike/bike-demo-test)
+  n1: 65536 0x4A18942: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+   n1: 65536 0x4A3EE75: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+    n1: 65536 0x49E29A9: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+     n1: 65536 0x4A0279B: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+      n1: 65536 0x4A0265B: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+       n1: 65536 0x4A21CAA: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+        n1: 65536 0x4AEB427: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+         n1: 65536 0x4AEBA7D: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+          n1: 65536 0x49E3242: EVP_CIPHER_fetch (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+           n1: 65536 0x49EB74F: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+            n1: 65536 0x49EBBBE: EVP_CipherInit_ex (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+             n1: 65536 0x10FE69: randombytes(unsigned char*, unsigned long long) (in /home/lorth/fixedbike/bike-demo-test)
+              n1: 65536 0x10C2E3: crypto_kem_keypair(unsigned char*, unsigned char*) (in /home/lorth/fixedbike/bike-demo-test)
+               n0: 65536 0x10A7B2: main (in /home/lorth/fixedbike/bike-demo-test)
+  n1: 31744 0x49EAA63: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+   n1: 31744 0x49EBD8D: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+    n1: 31744 0x49E2A49: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+     n1: 31744 0x4A02738: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+      n1: 31744 0x4A0265B: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+       n1: 31744 0x4A21CAA: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+        n1: 31744 0x4AEB427: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+         n1: 31744 0x4AEBA7D: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+          n1: 31744 0x49E3242: EVP_CIPHER_fetch (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+           n1: 31744 0x49EB74F: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+            n1: 31744 0x49EBBBE: EVP_CipherInit_ex (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+             n1: 31744 0x10FE69: randombytes(unsigned char*, unsigned long long) (in /home/lorth/fixedbike/bike-demo-test)
+              n1: 31744 0x10C2E3: crypto_kem_keypair(unsigned char*, unsigned char*) (in /home/lorth/fixedbike/bike-demo-test)
+               n0: 31744 0x10A7B2: main (in /home/lorth/fixedbike/bike-demo-test)
+  n2: 26576 0x4A02D7C: OPENSSL_LH_new (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+   n1: 25520 0x4A3EE4F: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+    n1: 25520 0x49E29A9: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+     n1: 25520 0x4A0279B: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+      n1: 25520 0x4A0265B: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+       n1: 25520 0x4A21CAA: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+        n1: 25520 0x4AEB427: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+         n2: 25520 0x4AEBA7D: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+          n1: 21824 0x49E3242: EVP_CIPHER_fetch (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+           n1: 21824 0x49EB74F: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+            n1: 21824 0x49EBBBE: EVP_CipherInit_ex (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+             n1: 21824 0x10FE69: randombytes(unsigned char*, unsigned long long) (in /home/lorth/fixedbike/bike-demo-test)
+              n1: 21824 0x10C2E3: crypto_kem_keypair(unsigned char*, unsigned char*) (in /home/lorth/fixedbike/bike-demo-test)
+               n0: 21824 0x10A7B2: main (in /home/lorth/fixedbike/bike-demo-test)
+          n0: 3696 in 1 place, below massif's threshold (1.00%)
+   n0: 1056 in 7 places, all below massif's threshold (1.00%)
+  n0: 26352 in 28 places, all below massif's threshold (1.00%)
+  n2: 18944 0x4A02D96: OPENSSL_LH_new (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+   n1: 18560 0x4A3EE4F: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+    n1: 18560 0x49E29A9: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+     n1: 18560 0x4A0279B: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+      n1: 18560 0x4A0265B: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+       n1: 18560 0x4A21CAA: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+        n1: 18560 0x4AEB427: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+         n2: 18560 0x4AEBA7D: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+          n1: 15872 0x49E3242: EVP_CIPHER_fetch (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+           n1: 15872 0x49EB74F: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+            n1: 15872 0x49EBBBE: EVP_CipherInit_ex (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+             n1: 15872 0x10FE69: randombytes(unsigned char*, unsigned long long) (in /home/lorth/fixedbike/bike-demo-test)
+              n1: 15872 0x10C2E3: crypto_kem_keypair(unsigned char*, unsigned char*) (in /home/lorth/fixedbike/bike-demo-test)
+               n0: 15872 0x10A7B2: main (in /home/lorth/fixedbike/bike-demo-test)
+          n0: 2688 in 1 place, below massif's threshold (1.00%)
+   n0: 384 in 7 places, all below massif's threshold (1.00%)
+  n1: 10024 0x4A18A63: CRYPTO_THREAD_lock_new (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+   n0: 10024 in 19 places, all below massif's threshold (1.00%)
+ n1: 72704 0x4FB1939: ??? (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.30)
+  n1: 72704 0x400647D: call_init.part.0 (dl-init.c:70)
+   n1: 72704 0x4006567: call_init (dl-init.c:33)
+    n1: 72704 0x4006567: _dl_init (dl-init.c:117)
+     n0: 72704 0x40202C9: ??? (in /usr/lib/x86_64-linux-gnu/ld-linux-x86-64.so.2)
+ n5: 62656 0x4D4BE37: NTL::WordVector::DoSetLength(long) (in /usr/lib/x86_64-linux-gnu/libntl.so.44.0.1)
+  n0: 15760 in 12 places, all below massif's threshold (1.00%)
+  n1: 13040 0x4D0F1C0: NTL::add(NTL::GF2X&, NTL::GF2X const&, NTL::GF2X const&) (in /usr/lib/x86_64-linux-gnu/libntl.so.44.0.1)
+   n0: 13040 in 6 places, all below massif's threshold (1.00%)
+  n1: 12848 0x4D0F2D7: NTL::add(NTL::GF2X&, NTL::GF2X const&, NTL::GF2X const&) (in /usr/lib/x86_64-linux-gnu/libntl.so.44.0.1)
+   n0: 12848 in 5 places, all below massif's threshold (1.00%)
+  n1: 10672 0x4D4BF7F: NTL::WordVector::operator=(NTL::WordVector const&) (in /usr/lib/x86_64-linux-gnu/libntl.so.44.0.1)
+   n0: 10672 in 27 places, all below massif's threshold (1.00%)
+  n1: 10336 0x4D0FEF7: NTL::mul(NTL::GF2X&, NTL::GF2X const&, NTL::GF2X const&) (in /usr/lib/x86_64-linux-gnu/libntl.so.44.0.1)
+   n0: 10336 in 5 places, all below massif's threshold (1.00%)
+ n3: 48336 0x4A030C5: OPENSSL_LH_insert (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+  n2: 33864 0x4AF45B2: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+   n1: 31896 0x49C17DF: ERR_load_strings_const (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+    n0: 31896 in 33 places, all below massif's threshold (1.00%)
+   n0: 1968 in 2 places, all below massif's threshold (1.00%)
+  n1: 8760 0x4A10482: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+   n0: 8760 in 3 places, all below massif's threshold (1.00%)
+  n0: 5712 in 6 places, all below massif's threshold (1.00%)
+ n2: 44800 0x4D4BDC6: NTL::WordVector::DoSetLength(long) (in /usr/lib/x86_64-linux-gnu/libntl.so.44.0.1)
+  n1: 22784 0x4D0F419: NTL::MulByX(NTL::GF2X&, NTL::GF2X const&) (in /usr/lib/x86_64-linux-gnu/libntl.so.44.0.1)
+   n2: 22784 0x4D11F10: NTL::PlainDivRem(NTL::GF2X&, NTL::GF2X&, NTL::GF2X const&, NTL::GF2X const&) (in /usr/lib/x86_64-linux-gnu/libntl.so.44.0.1)
+    n2: 22032 0x4D20BF7: ??? (in /usr/lib/x86_64-linux-gnu/libntl.so.44.0.1)
+     n1: 11632 0x4D20C1D: ??? (in /usr/lib/x86_64-linux-gnu/libntl.so.44.0.1)
+      n0: 11632 in 3 places, all below massif's threshold (1.00%)
+     n0: 10400 in 2 places, all below massif's threshold (1.00%)
+    n0: 752 in 2 places, all below massif's threshold (1.00%)
+  n0: 22016 in 9 places, all below massif's threshold (1.00%)
+ n0: 28757 in 50 places, all below massif's threshold (1.00%)
+ n1: 11264 0x4A03073: OPENSSL_LH_insert (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+  n0: 11264 in 4 places, all below massif's threshold (1.00%)
+#-----------
+snapshot=40
+#-----------
+time=66923826318
+mem_heap_B=708869
+mem_heap_extra_B=62211
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=41
+#-----------
+time=68163862494
+mem_heap_B=709541
+mem_heap_extra_B=62195
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=42
+#-----------
+time=69641283157
+mem_heap_B=780045
+mem_heap_extra_B=62395
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=43
+#-----------
+time=72119531932
+mem_heap_B=779373
+mem_heap_extra_B=62411
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=44
+#-----------
+time=73358611735
+mem_heap_B=779597
+mem_heap_extra_B=62427
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=45
+#-----------
+time=75598722409
+mem_heap_B=711845
+mem_heap_extra_B=62179
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=46
+#-----------
+time=77078108138
+mem_heap_B=779853
+mem_heap_extra_B=62395
+mem_stacks_B=0
+heap_tree=detailed
+n7: 779853 (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+ n7: 506856 0x4A0D6DD: CRYPTO_zalloc (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+  n1: 327680 0x4A189B4: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+   n1: 327680 0x4A3EE75: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+    n1: 327680 0x49E29A9: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+     n1: 327680 0x4A0279B: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+      n1: 327680 0x4A0265B: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+       n1: 327680 0x4A21CAA: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+        n1: 327680 0x4AEB427: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+         n2: 327680 0x4AEBA7D: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+          n1: 294912 0x49E3242: EVP_CIPHER_fetch (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+           n1: 294912 0x49EB74F: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+            n1: 294912 0x49EBBBE: EVP_CipherInit_ex (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+             n1: 294912 0x10FE69: randombytes(unsigned char*, unsigned long long) (in /home/lorth/fixedbike/bike-demo-test)
+              n1: 294912 0x10C2E3: crypto_kem_keypair(unsigned char*, unsigned char*) (in /home/lorth/fixedbike/bike-demo-test)
+               n0: 294912 0x10A7B2: main (in /home/lorth/fixedbike/bike-demo-test)
+          n1: 32768 0x49D6652: EVP_MD_fetch (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+           n1: 32768 0x49D4540: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+            n1: 32768 0x10C206: sha3_384(unsigned char*, unsigned char const*, unsigned long) (in /home/lorth/fixedbike/bike-demo-test)
+             n1: 32768 0x10C5B3: crypto_kem_enc(unsigned char*, unsigned char*, unsigned char const*) (in /home/lorth/fixedbike/bike-demo-test)
+              n0: 32768 0x10A945: main (in /home/lorth/fixedbike/bike-demo-test)
+  n1: 65536 0x4A18942: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+   n1: 65536 0x4A3EE75: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+    n1: 65536 0x49E29A9: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+     n1: 65536 0x4A0279B: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+      n1: 65536 0x4A0265B: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+       n1: 65536 0x4A21CAA: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+        n1: 65536 0x4AEB427: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+         n1: 65536 0x4AEBA7D: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+          n1: 65536 0x49E3242: EVP_CIPHER_fetch (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+           n1: 65536 0x49EB74F: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+            n1: 65536 0x49EBBBE: EVP_CipherInit_ex (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+             n1: 65536 0x10FE69: randombytes(unsigned char*, unsigned long long) (in /home/lorth/fixedbike/bike-demo-test)
+              n1: 65536 0x10C2E3: crypto_kem_keypair(unsigned char*, unsigned char*) (in /home/lorth/fixedbike/bike-demo-test)
+               n0: 65536 0x10A7B2: main (in /home/lorth/fixedbike/bike-demo-test)
+  n1: 31744 0x49EAA63: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+   n1: 31744 0x49EBD8D: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+    n1: 31744 0x49E2A49: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+     n1: 31744 0x4A02738: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+      n1: 31744 0x4A0265B: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+       n1: 31744 0x4A21CAA: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+        n1: 31744 0x4AEB427: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+         n1: 31744 0x4AEBA7D: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+          n1: 31744 0x49E3242: EVP_CIPHER_fetch (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+           n1: 31744 0x49EB74F: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+            n1: 31744 0x49EBBBE: EVP_CipherInit_ex (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+             n1: 31744 0x10FE69: randombytes(unsigned char*, unsigned long long) (in /home/lorth/fixedbike/bike-demo-test)
+              n1: 31744 0x10C2E3: crypto_kem_keypair(unsigned char*, unsigned char*) (in /home/lorth/fixedbike/bike-demo-test)
+               n0: 31744 0x10A7B2: main (in /home/lorth/fixedbike/bike-demo-test)
+  n2: 26576 0x4A02D7C: OPENSSL_LH_new (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+   n1: 25520 0x4A3EE4F: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+    n1: 25520 0x49E29A9: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+     n1: 25520 0x4A0279B: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+      n1: 25520 0x4A0265B: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+       n1: 25520 0x4A21CAA: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+        n1: 25520 0x4AEB427: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+         n2: 25520 0x4AEBA7D: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+          n1: 21824 0x49E3242: EVP_CIPHER_fetch (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+           n1: 21824 0x49EB74F: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+            n1: 21824 0x49EBBBE: EVP_CipherInit_ex (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+             n1: 21824 0x10FE69: randombytes(unsigned char*, unsigned long long) (in /home/lorth/fixedbike/bike-demo-test)
+              n1: 21824 0x10C2E3: crypto_kem_keypair(unsigned char*, unsigned char*) (in /home/lorth/fixedbike/bike-demo-test)
+               n0: 21824 0x10A7B2: main (in /home/lorth/fixedbike/bike-demo-test)
+          n0: 3696 in 1 place, below massif's threshold (1.00%)
+   n0: 1056 in 7 places, all below massif's threshold (1.00%)
+  n0: 26352 in 28 places, all below massif's threshold (1.00%)
+  n2: 18944 0x4A02D96: OPENSSL_LH_new (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+   n1: 18560 0x4A3EE4F: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+    n1: 18560 0x49E29A9: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+     n1: 18560 0x4A0279B: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+      n1: 18560 0x4A0265B: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+       n1: 18560 0x4A21CAA: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+        n1: 18560 0x4AEB427: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+         n2: 18560 0x4AEBA7D: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+          n1: 15872 0x49E3242: EVP_CIPHER_fetch (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+           n1: 15872 0x49EB74F: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+            n1: 15872 0x49EBBBE: EVP_CipherInit_ex (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+             n1: 15872 0x10FE69: randombytes(unsigned char*, unsigned long long) (in /home/lorth/fixedbike/bike-demo-test)
+              n1: 15872 0x10C2E3: crypto_kem_keypair(unsigned char*, unsigned char*) (in /home/lorth/fixedbike/bike-demo-test)
+               n0: 15872 0x10A7B2: main (in /home/lorth/fixedbike/bike-demo-test)
+          n0: 2688 in 1 place, below massif's threshold (1.00%)
+   n0: 384 in 7 places, all below massif's threshold (1.00%)
+  n1: 10024 0x4A18A63: CRYPTO_THREAD_lock_new (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+   n0: 10024 in 19 places, all below massif's threshold (1.00%)
+ n1: 72704 0x4FB1939: ??? (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.30)
+  n1: 72704 0x400647D: call_init.part.0 (dl-init.c:70)
+   n1: 72704 0x4006567: call_init (dl-init.c:33)
+    n1: 72704 0x4006567: _dl_init (dl-init.c:117)
+     n0: 72704 0x40202C9: ??? (in /usr/lib/x86_64-linux-gnu/ld-linux-x86-64.so.2)
+ n3: 59472 0x4D4BDC6: NTL::WordVector::DoSetLength(long) (in /usr/lib/x86_64-linux-gnu/libntl.so.44.0.1)
+  n1: 23456 0x4D0F419: NTL::MulByX(NTL::GF2X&, NTL::GF2X const&) (in /usr/lib/x86_64-linux-gnu/libntl.so.44.0.1)
+   n2: 23456 0x4D11F10: NTL::PlainDivRem(NTL::GF2X&, NTL::GF2X&, NTL::GF2X const&, NTL::GF2X const&) (in /usr/lib/x86_64-linux-gnu/libntl.so.44.0.1)
+    n3: 23456 0x4D20BF7: ??? (in /usr/lib/x86_64-linux-gnu/libntl.so.44.0.1)
+     n1: 12608 0x4D20C1D: ??? (in /usr/lib/x86_64-linux-gnu/libntl.so.44.0.1)
+      n0: 12608 in 3 places, all below massif's threshold (1.00%)
+     n1: 10848 0x4D20B5F: ??? (in /usr/lib/x86_64-linux-gnu/libntl.so.44.0.1)
+      n0: 10848 in 3 places, all below massif's threshold (1.00%)
+     n0: 0 in 1 place, below massif's threshold (1.00%)
+    n0: 0 in 2 places, all below massif's threshold (1.00%)
+  n0: 19904 in 8 places, all below massif's threshold (1.00%)
+  n1: 16112 0x4D0FEF7: NTL::mul(NTL::GF2X&, NTL::GF2X const&, NTL::GF2X const&) (in /usr/lib/x86_64-linux-gnu/libntl.so.44.0.1)
+   n0: 16112 in 14 places, all below massif's threshold (1.00%)
+ n4: 52464 0x4D4BE37: NTL::WordVector::DoSetLength(long) (in /usr/lib/x86_64-linux-gnu/libntl.so.44.0.1)
+  n0: 16272 in 13 places, all below massif's threshold (1.00%)
+  n1: 15328 0x4D0F2D7: NTL::add(NTL::GF2X&, NTL::GF2X const&, NTL::GF2X const&) (in /usr/lib/x86_64-linux-gnu/libntl.so.44.0.1)
+   n0: 15328 in 5 places, all below massif's threshold (1.00%)
+  n1: 10432 0x4D0F1C0: NTL::add(NTL::GF2X&, NTL::GF2X const&, NTL::GF2X const&) (in /usr/lib/x86_64-linux-gnu/libntl.so.44.0.1)
+   n0: 10432 in 6 places, all below massif's threshold (1.00%)
+  n1: 10432 0x4D4BF7F: NTL::WordVector::operator=(NTL::WordVector const&) (in /usr/lib/x86_64-linux-gnu/libntl.so.44.0.1)
+   n0: 10432 in 27 places, all below massif's threshold (1.00%)
+ n3: 48336 0x4A030C5: OPENSSL_LH_insert (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+  n2: 33864 0x4AF45B2: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+   n1: 31896 0x49C17DF: ERR_load_strings_const (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+    n0: 31896 in 33 places, all below massif's threshold (1.00%)
+   n0: 1968 in 2 places, all below massif's threshold (1.00%)
+  n1: 8760 0x4A10482: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+   n0: 8760 in 3 places, all below massif's threshold (1.00%)
+  n0: 5712 in 6 places, all below massif's threshold (1.00%)
+ n0: 28757 in 50 places, all below massif's threshold (1.00%)
+ n1: 11264 0x4A03073: OPENSSL_LH_insert (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+  n0: 11264 in 4 places, all below massif's threshold (1.00%)
+#-----------
+snapshot=47
+#-----------
+time=78317700774
+mem_heap_B=780493
+mem_heap_extra_B=62411
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=48
+#-----------
+time=80553897897
+mem_heap_B=710405
+mem_heap_extra_B=62195
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=49
+#-----------
+time=81794837227
+mem_heap_B=708261
+mem_heap_extra_B=62195
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=50
+#-----------
+time=83032104775
+mem_heap_B=753213
+mem_heap_extra_B=62691
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=51
+#-----------
+time=84269446479
+mem_heap_B=752573
+mem_heap_extra_B=62595
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=52
+#-----------
+time=85507003235
+mem_heap_B=700061
+mem_heap_extra_B=62203
+mem_stacks_B=0
+heap_tree=detailed
+n6: 700061 (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+ n7: 506928 0x4A0D6DD: CRYPTO_zalloc (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+  n1: 327680 0x4A189B4: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+   n1: 327680 0x4A3EE75: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+    n1: 327680 0x49E29A9: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+     n1: 327680 0x4A0279B: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+      n1: 327680 0x4A0265B: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+       n1: 327680 0x4A21CAA: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+        n1: 327680 0x4AEB427: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+         n2: 327680 0x4AEBA7D: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+          n1: 294912 0x49E3242: EVP_CIPHER_fetch (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+           n1: 294912 0x49EB74F: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+            n1: 294912 0x49EBBBE: EVP_CipherInit_ex (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+             n1: 294912 0x10FE69: randombytes(unsigned char*, unsigned long long) (in /home/lorth/fixedbike/bike-demo-test)
+              n1: 294912 0x10C2E3: crypto_kem_keypair(unsigned char*, unsigned char*) (in /home/lorth/fixedbike/bike-demo-test)
+               n0: 294912 0x10A7B2: main (in /home/lorth/fixedbike/bike-demo-test)
+          n1: 32768 0x49D6652: EVP_MD_fetch (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+           n1: 32768 0x49D4540: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+            n1: 32768 0x10C206: sha3_384(unsigned char*, unsigned char const*, unsigned long) (in /home/lorth/fixedbike/bike-demo-test)
+             n1: 32768 0x10C5B3: crypto_kem_enc(unsigned char*, unsigned char*, unsigned char const*) (in /home/lorth/fixedbike/bike-demo-test)
+              n0: 32768 0x10A945: main (in /home/lorth/fixedbike/bike-demo-test)
+  n1: 65536 0x4A18942: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+   n1: 65536 0x4A3EE75: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+    n1: 65536 0x49E29A9: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+     n1: 65536 0x4A0279B: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+      n1: 65536 0x4A0265B: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+       n1: 65536 0x4A21CAA: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+        n1: 65536 0x4AEB427: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+         n1: 65536 0x4AEBA7D: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+          n1: 65536 0x49E3242: EVP_CIPHER_fetch (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+           n1: 65536 0x49EB74F: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+            n1: 65536 0x49EBBBE: EVP_CipherInit_ex (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+             n1: 65536 0x10FE69: randombytes(unsigned char*, unsigned long long) (in /home/lorth/fixedbike/bike-demo-test)
+              n1: 65536 0x10C2E3: crypto_kem_keypair(unsigned char*, unsigned char*) (in /home/lorth/fixedbike/bike-demo-test)
+               n0: 65536 0x10A7B2: main (in /home/lorth/fixedbike/bike-demo-test)
+  n1: 31744 0x49EAA63: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+   n1: 31744 0x49EBD8D: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+    n1: 31744 0x49E2A49: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+     n1: 31744 0x4A02738: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+      n1: 31744 0x4A0265B: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+       n1: 31744 0x4A21CAA: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+        n1: 31744 0x4AEB427: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+         n1: 31744 0x4AEBA7D: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+          n1: 31744 0x49E3242: EVP_CIPHER_fetch (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+           n1: 31744 0x49EB74F: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+            n1: 31744 0x49EBBBE: EVP_CipherInit_ex (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+             n1: 31744 0x10FE69: randombytes(unsigned char*, unsigned long long) (in /home/lorth/fixedbike/bike-demo-test)
+              n1: 31744 0x10C2E3: crypto_kem_keypair(unsigned char*, unsigned char*) (in /home/lorth/fixedbike/bike-demo-test)
+               n0: 31744 0x10A7B2: main (in /home/lorth/fixedbike/bike-demo-test)
+  n2: 26576 0x4A02D7C: OPENSSL_LH_new (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+   n1: 25520 0x4A3EE4F: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+    n1: 25520 0x49E29A9: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+     n1: 25520 0x4A0279B: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+      n1: 25520 0x4A0265B: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+       n1: 25520 0x4A21CAA: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+        n1: 25520 0x4AEB427: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+         n2: 25520 0x4AEBA7D: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+          n1: 21824 0x49E3242: EVP_CIPHER_fetch (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+           n1: 21824 0x49EB74F: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+            n1: 21824 0x49EBBBE: EVP_CipherInit_ex (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+             n1: 21824 0x10FE69: randombytes(unsigned char*, unsigned long long) (in /home/lorth/fixedbike/bike-demo-test)
+              n1: 21824 0x10C2E3: crypto_kem_keypair(unsigned char*, unsigned char*) (in /home/lorth/fixedbike/bike-demo-test)
+               n0: 21824 0x10A7B2: main (in /home/lorth/fixedbike/bike-demo-test)
+          n0: 3696 in 1 place, below massif's threshold (1.00%)
+   n0: 1056 in 7 places, all below massif's threshold (1.00%)
+  n0: 26424 in 28 places, all below massif's threshold (1.00%)
+  n2: 18944 0x4A02D96: OPENSSL_LH_new (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+   n1: 18560 0x4A3EE4F: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+    n1: 18560 0x49E29A9: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+     n1: 18560 0x4A0279B: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+      n1: 18560 0x4A0265B: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+       n1: 18560 0x4A21CAA: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+        n1: 18560 0x4AEB427: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+         n2: 18560 0x4AEBA7D: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+          n1: 15872 0x49E3242: EVP_CIPHER_fetch (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+           n1: 15872 0x49EB74F: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+            n1: 15872 0x49EBBBE: EVP_CipherInit_ex (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+             n1: 15872 0x10FE69: randombytes(unsigned char*, unsigned long long) (in /home/lorth/fixedbike/bike-demo-test)
+              n1: 15872 0x10C2E3: crypto_kem_keypair(unsigned char*, unsigned char*) (in /home/lorth/fixedbike/bike-demo-test)
+               n0: 15872 0x10A7B2: main (in /home/lorth/fixedbike/bike-demo-test)
+          n0: 2688 in 1 place, below massif's threshold (1.00%)
+   n0: 384 in 7 places, all below massif's threshold (1.00%)
+  n1: 10024 0x4A18A63: CRYPTO_THREAD_lock_new (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+   n0: 10024 in 19 places, all below massif's threshold (1.00%)
+ n1: 72704 0x4FB1939: ??? (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.30)
+  n1: 72704 0x400647D: call_init.part.0 (dl-init.c:70)
+   n1: 72704 0x4006567: call_init (dl-init.c:33)
+    n1: 72704 0x4006567: _dl_init (dl-init.c:117)
+     n0: 72704 0x40202C9: ??? (in /usr/lib/x86_64-linux-gnu/ld-linux-x86-64.so.2)
+ n3: 48336 0x4A030C5: OPENSSL_LH_insert (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+  n2: 33864 0x4AF45B2: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+   n1: 31896 0x49C17DF: ERR_load_strings_const (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+    n0: 31896 in 33 places, all below massif's threshold (1.00%)
+   n0: 1968 in 2 places, all below massif's threshold (1.00%)
+  n1: 8760 0x4A10482: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+   n0: 8760 in 3 places, all below massif's threshold (1.00%)
+  n0: 5712 in 6 places, all below massif's threshold (1.00%)
+ n2: 31440 0x4D4BDC6: NTL::WordVector::DoSetLength(long) (in /usr/lib/x86_64-linux-gnu/libntl.so.44.0.1)
+  n1: 22256 0x4D0F419: NTL::MulByX(NTL::GF2X&, NTL::GF2X const&) (in /usr/lib/x86_64-linux-gnu/libntl.so.44.0.1)
+   n2: 22256 0x4D11F10: NTL::PlainDivRem(NTL::GF2X&, NTL::GF2X&, NTL::GF2X const&, NTL::GF2X const&) (in /usr/lib/x86_64-linux-gnu/libntl.so.44.0.1)
+    n2: 21568 0x4D20BF7: ??? (in /usr/lib/x86_64-linux-gnu/libntl.so.44.0.1)
+     n1: 13584 0x4D20C1D: ??? (in /usr/lib/x86_64-linux-gnu/libntl.so.44.0.1)
+      n0: 13584 in 3 places, all below massif's threshold (1.00%)
+     n0: 7984 in 2 places, all below massif's threshold (1.00%)
+    n0: 688 in 2 places, all below massif's threshold (1.00%)
+  n0: 9184 in 9 places, all below massif's threshold (1.00%)
+ n0: 29389 in 51 places, all below massif's threshold (1.00%)
+ n2: 11264 0x4A03073: OPENSSL_LH_insert (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+  n2: 8192 0x4AF45B2: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+   n2: 8192 0x49C17DF: ERR_load_strings_const (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+    n1: 8192 0x4A142CE: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+     n1: 8192 0x52D5EE7: __pthread_once_slow (pthread_once.c:116)
+      n1: 8192 0x4A18BDC: CRYPTO_THREAD_run_once (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+       n1: 8192 0x4A158D2: OPENSSL_init_crypto (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+        n1: 8192 0x49C3276: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+         n1: 8192 0x49C3C3C: ERR_set_mark (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+          n1: 8192 0x4970021: CONF_modules_load_file_ex (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+           n1: 8192 0x4A150DF: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+            n1: 8192 0x52D5EE7: __pthread_once_slow (pthread_once.c:116)
+             n1: 8192 0x4A18BDC: CRYPTO_THREAD_run_once (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+              n1: 8192 0x4A15B45: OPENSSL_init_crypto (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+               n1: 8192 0x4AEB1EC: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+                n1: 8192 0x49EB2E7: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+                 n1: 8192 0x49EBBBE: EVP_CipherInit_ex (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+                  n1: 8192 0x10FE69: randombytes(unsigned char*, unsigned long long) (in /home/lorth/fixedbike/bike-demo-test)
+                   n1: 8192 0x10C2E3: crypto_kem_keypair(unsigned char*, unsigned char*) (in /home/lorth/fixedbike/bike-demo-test)
+                    n0: 8192 0x10A7B2: main (in /home/lorth/fixedbike/bike-demo-test)
+    n0: 0 in 3 places, all below massif's threshold (1.00%)
+   n0: 0 in 2 places, all below massif's threshold (1.00%)
+  n0: 3072 in 3 places, all below massif's threshold (1.00%)
+#-----------
+snapshot=53
+#-----------
+time=86745902283
+mem_heap_B=709669
+mem_heap_extra_B=62195
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=54
+#-----------
+time=87984342077
+mem_heap_B=710341
+mem_heap_extra_B=62195
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=55
+#-----------
+time=89224957244
+mem_heap_B=710949
+mem_heap_extra_B=62195
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=56
+#-----------
+time=90463955207
+mem_heap_B=708133
+mem_heap_extra_B=62179
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=57
+#-----------
+time=91703594859
+mem_heap_B=711333
+mem_heap_extra_B=62179
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=58
+#-----------
+time=92941908773
+mem_heap_B=709925
+mem_heap_extra_B=62195
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=59
+#-----------
+time=94179552897
+mem_heap_B=708613
+mem_heap_extra_B=62195
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=60
+#-----------
+time=95417115348
+mem_heap_B=709093
+mem_heap_extra_B=62195
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=61
+#-----------
+time=96656251158
+mem_heap_B=714309
+mem_heap_extra_B=62195
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=62
+#-----------
+time=97897299798
+mem_heap_B=709861
+mem_heap_extra_B=62195
+mem_stacks_B=0
+heap_tree=detailed
+n7: 709861 (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+ n7: 506856 0x4A0D6DD: CRYPTO_zalloc (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+  n1: 327680 0x4A189B4: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+   n1: 327680 0x4A3EE75: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+    n1: 327680 0x49E29A9: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+     n1: 327680 0x4A0279B: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+      n1: 327680 0x4A0265B: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+       n1: 327680 0x4A21CAA: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+        n1: 327680 0x4AEB427: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+         n2: 327680 0x4AEBA7D: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+          n1: 294912 0x49E3242: EVP_CIPHER_fetch (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+           n1: 294912 0x49EB74F: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+            n1: 294912 0x49EBBBE: EVP_CipherInit_ex (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+             n1: 294912 0x10FE69: randombytes(unsigned char*, unsigned long long) (in /home/lorth/fixedbike/bike-demo-test)
+              n1: 294912 0x10C2E3: crypto_kem_keypair(unsigned char*, unsigned char*) (in /home/lorth/fixedbike/bike-demo-test)
+               n0: 294912 0x10A7B2: main (in /home/lorth/fixedbike/bike-demo-test)
+          n1: 32768 0x49D6652: EVP_MD_fetch (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+           n1: 32768 0x49D4540: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+            n1: 32768 0x10C206: sha3_384(unsigned char*, unsigned char const*, unsigned long) (in /home/lorth/fixedbike/bike-demo-test)
+             n1: 32768 0x10C5B3: crypto_kem_enc(unsigned char*, unsigned char*, unsigned char const*) (in /home/lorth/fixedbike/bike-demo-test)
+              n0: 32768 0x10A945: main (in /home/lorth/fixedbike/bike-demo-test)
+  n1: 65536 0x4A18942: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+   n1: 65536 0x4A3EE75: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+    n1: 65536 0x49E29A9: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+     n1: 65536 0x4A0279B: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+      n1: 65536 0x4A0265B: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+       n1: 65536 0x4A21CAA: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+        n1: 65536 0x4AEB427: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+         n1: 65536 0x4AEBA7D: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+          n1: 65536 0x49E3242: EVP_CIPHER_fetch (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+           n1: 65536 0x49EB74F: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+            n1: 65536 0x49EBBBE: EVP_CipherInit_ex (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+             n1: 65536 0x10FE69: randombytes(unsigned char*, unsigned long long) (in /home/lorth/fixedbike/bike-demo-test)
+              n1: 65536 0x10C2E3: crypto_kem_keypair(unsigned char*, unsigned char*) (in /home/lorth/fixedbike/bike-demo-test)
+               n0: 65536 0x10A7B2: main (in /home/lorth/fixedbike/bike-demo-test)
+  n1: 31744 0x49EAA63: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+   n1: 31744 0x49EBD8D: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+    n1: 31744 0x49E2A49: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+     n1: 31744 0x4A02738: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+      n1: 31744 0x4A0265B: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+       n1: 31744 0x4A21CAA: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+        n1: 31744 0x4AEB427: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+         n1: 31744 0x4AEBA7D: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+          n1: 31744 0x49E3242: EVP_CIPHER_fetch (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+           n1: 31744 0x49EB74F: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+            n1: 31744 0x49EBBBE: EVP_CipherInit_ex (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+             n1: 31744 0x10FE69: randombytes(unsigned char*, unsigned long long) (in /home/lorth/fixedbike/bike-demo-test)
+              n1: 31744 0x10C2E3: crypto_kem_keypair(unsigned char*, unsigned char*) (in /home/lorth/fixedbike/bike-demo-test)
+               n0: 31744 0x10A7B2: main (in /home/lorth/fixedbike/bike-demo-test)
+  n2: 26576 0x4A02D7C: OPENSSL_LH_new (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+   n1: 25520 0x4A3EE4F: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+    n1: 25520 0x49E29A9: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+     n1: 25520 0x4A0279B: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+      n1: 25520 0x4A0265B: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+       n1: 25520 0x4A21CAA: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+        n1: 25520 0x4AEB427: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+         n2: 25520 0x4AEBA7D: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+          n1: 21824 0x49E3242: EVP_CIPHER_fetch (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+           n1: 21824 0x49EB74F: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+            n1: 21824 0x49EBBBE: EVP_CipherInit_ex (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+             n1: 21824 0x10FE69: randombytes(unsigned char*, unsigned long long) (in /home/lorth/fixedbike/bike-demo-test)
+              n1: 21824 0x10C2E3: crypto_kem_keypair(unsigned char*, unsigned char*) (in /home/lorth/fixedbike/bike-demo-test)
+               n0: 21824 0x10A7B2: main (in /home/lorth/fixedbike/bike-demo-test)
+          n0: 3696 in 1 place, below massif's threshold (1.00%)
+   n0: 1056 in 7 places, all below massif's threshold (1.00%)
+  n0: 26352 in 28 places, all below massif's threshold (1.00%)
+  n2: 18944 0x4A02D96: OPENSSL_LH_new (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+   n1: 18560 0x4A3EE4F: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+    n1: 18560 0x49E29A9: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+     n1: 18560 0x4A0279B: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+      n1: 18560 0x4A0265B: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+       n1: 18560 0x4A21CAA: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+        n1: 18560 0x4AEB427: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+         n2: 18560 0x4AEBA7D: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+          n1: 15872 0x49E3242: EVP_CIPHER_fetch (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+           n1: 15872 0x49EB74F: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+            n1: 15872 0x49EBBBE: EVP_CipherInit_ex (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+             n1: 15872 0x10FE69: randombytes(unsigned char*, unsigned long long) (in /home/lorth/fixedbike/bike-demo-test)
+              n1: 15872 0x10C2E3: crypto_kem_keypair(unsigned char*, unsigned char*) (in /home/lorth/fixedbike/bike-demo-test)
+               n0: 15872 0x10A7B2: main (in /home/lorth/fixedbike/bike-demo-test)
+          n0: 2688 in 1 place, below massif's threshold (1.00%)
+   n0: 384 in 7 places, all below massif's threshold (1.00%)
+  n1: 10024 0x4A18A63: CRYPTO_THREAD_lock_new (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+   n0: 10024 in 19 places, all below massif's threshold (1.00%)
+ n1: 72704 0x4FB1939: ??? (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.30)
+  n1: 72704 0x400647D: call_init.part.0 (dl-init.c:70)
+   n1: 72704 0x4006567: call_init (dl-init.c:33)
+    n1: 72704 0x4006567: _dl_init (dl-init.c:117)
+     n0: 72704 0x40202C9: ??? (in /usr/lib/x86_64-linux-gnu/ld-linux-x86-64.so.2)
+ n3: 48336 0x4A030C5: OPENSSL_LH_insert (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+  n2: 33864 0x4AF45B2: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+   n1: 31896 0x49C17DF: ERR_load_strings_const (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+    n0: 31896 in 33 places, all below massif's threshold (1.00%)
+   n0: 1968 in 2 places, all below massif's threshold (1.00%)
+  n1: 8760 0x4A10482: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+   n0: 8760 in 3 places, all below massif's threshold (1.00%)
+  n0: 5712 in 6 places, all below massif's threshold (1.00%)
+ n2: 31024 0x4D4BDC6: NTL::WordVector::DoSetLength(long) (in /usr/lib/x86_64-linux-gnu/libntl.so.44.0.1)
+  n1: 21472 0x4D0F419: NTL::MulByX(NTL::GF2X&, NTL::GF2X const&) (in /usr/lib/x86_64-linux-gnu/libntl.so.44.0.1)
+   n2: 21472 0x4D11F10: NTL::PlainDivRem(NTL::GF2X&, NTL::GF2X&, NTL::GF2X const&, NTL::GF2X const&) (in /usr/lib/x86_64-linux-gnu/libntl.so.44.0.1)
+    n2: 19312 0x4D20BF7: ??? (in /usr/lib/x86_64-linux-gnu/libntl.so.44.0.1)
+     n2: 14160 0x4D20C1D: ??? (in /usr/lib/x86_64-linux-gnu/libntl.so.44.0.1)
+      n2: 7808 0x4D22E10: ??? (in /usr/lib/x86_64-linux-gnu/libntl.so.44.0.1)
+       n2: 7808 0x4D22EB0: ??? (in /usr/lib/x86_64-linux-gnu/libntl.so.44.0.1)
+        n1: 7808 0x4D23209: NTL::XGCD(NTL::GF2X&, NTL::GF2X&, NTL::GF2X&, NTL::GF2X const&, NTL::GF2X const&) (in /usr/lib/x86_64-linux-gnu/libntl.so.44.0.1)
+         n1: 7808 0x4D234B7: ??? (in /usr/lib/x86_64-linux-gnu/libntl.so.44.0.1)
+          n1: 7808 0x4D2361D: NTL::InvMod(NTL::GF2X&, NTL::GF2X const&, NTL::GF2X const&) (in /usr/lib/x86_64-linux-gnu/libntl.so.44.0.1)
+           n1: 7808 0x10F10D: ntl_mod_inv(unsigned char*, unsigned char const*) (in /home/lorth/fixedbike/bike-demo-test)
+            n1: 7808 0x10C3B0: crypto_kem_keypair(unsigned char*, unsigned char*) (in /home/lorth/fixedbike/bike-demo-test)
+             n0: 7808 0x10A7B2: main (in /home/lorth/fixedbike/bike-demo-test)
+        n0: 0 in 1 place, below massif's threshold (1.00%)
+       n0: 0 in 1 place, below massif's threshold (1.00%)
+      n0: 6352 in 2 places, all below massif's threshold (1.00%)
+     n0: 5152 in 2 places, all below massif's threshold (1.00%)
+    n0: 2160 in 2 places, all below massif's threshold (1.00%)
+  n0: 9552 in 9 places, all below massif's threshold (1.00%)
+ n0: 28701 in 50 places, all below massif's threshold (1.00%)
+ n2: 11264 0x4A03073: OPENSSL_LH_insert (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+  n2: 8192 0x4AF45B2: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+   n2: 8192 0x49C17DF: ERR_load_strings_const (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+    n1: 8192 0x4A142CE: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+     n1: 8192 0x52D5EE7: __pthread_once_slow (pthread_once.c:116)
+      n1: 8192 0x4A18BDC: CRYPTO_THREAD_run_once (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+       n1: 8192 0x4A158D2: OPENSSL_init_crypto (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+        n1: 8192 0x49C3276: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+         n1: 8192 0x49C3C3C: ERR_set_mark (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+          n1: 8192 0x4970021: CONF_modules_load_file_ex (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+           n1: 8192 0x4A150DF: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+            n1: 8192 0x52D5EE7: __pthread_once_slow (pthread_once.c:116)
+             n1: 8192 0x4A18BDC: CRYPTO_THREAD_run_once (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+              n1: 8192 0x4A15B45: OPENSSL_init_crypto (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+               n1: 8192 0x4AEB1EC: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+                n1: 8192 0x49EB2E7: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+                 n1: 8192 0x49EBBBE: EVP_CipherInit_ex (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+                  n1: 8192 0x10FE69: randombytes(unsigned char*, unsigned long long) (in /home/lorth/fixedbike/bike-demo-test)
+                   n1: 8192 0x10C2E3: crypto_kem_keypair(unsigned char*, unsigned char*) (in /home/lorth/fixedbike/bike-demo-test)
+                    n0: 8192 0x10A7B2: main (in /home/lorth/fixedbike/bike-demo-test)
+    n0: 0 in 3 places, all below massif's threshold (1.00%)
+   n0: 0 in 2 places, all below massif's threshold (1.00%)
+  n0: 3072 in 3 places, all below massif's threshold (1.00%)
+ n2: 10976 0x4D4BE37: NTL::WordVector::DoSetLength(long) (in /usr/lib/x86_64-linux-gnu/libntl.so.44.0.1)
+  n2: 10288 0x4D17DF4: NTL::GF2XFromBytes(NTL::GF2X&, unsigned char const*, long) (in /usr/lib/x86_64-linux-gnu/libntl.so.44.0.1)
+   n2: 10288 0x10F4FD: ntl_split_polynomial(unsigned char*, unsigned char*, unsigned char const*) (in /home/lorth/fixedbike/bike-demo-test)
+    n1: 10288 0x10C92D: crypto_kem_dec(unsigned char*, unsigned char const*, unsigned char const*) (in /home/lorth/fixedbike/bike-demo-test)
+     n0: 10288 0x10AB9D: main (in /home/lorth/fixedbike/bike-demo-test)
+    n0: 0 in 2 places, all below massif's threshold (1.00%)
+   n0: 0 in 3 places, all below massif's threshold (1.00%)
+  n0: 688 in 15 places, all below massif's threshold (1.00%)
+#-----------
+snapshot=63
+#-----------
+time=99137740568
+mem_heap_B=709509
+mem_heap_extra_B=62195
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=64
+#-----------
+time=100378593769
+mem_heap_B=712069
+mem_heap_extra_B=62195
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=65
+#-----------
+time=101618325455
+mem_heap_B=711461
+mem_heap_extra_B=62179
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=66
+#-----------
+time=102858692711
+mem_heap_B=708133
+mem_heap_extra_B=62179
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=67
+#-----------
+time=104096659404
+mem_heap_B=709253
+mem_heap_extra_B=62179
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=68
+#-----------
+time=105334445835
+mem_heap_B=710213
+mem_heap_extra_B=62195
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=69
+#-----------
+time=106575034438
+mem_heap_B=711365
+mem_heap_extra_B=62211
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=70
+#-----------
+time=107812741537
+mem_heap_B=710341
+mem_heap_extra_B=62179
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=71
+#-----------
+time=109050690269
+mem_heap_B=708741
+mem_heap_extra_B=62179
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=72
+#-----------
+time=110291248693
+mem_heap_B=710917
+mem_heap_extra_B=62195
+mem_stacks_B=0
+heap_tree=detailed
+n7: 710917 (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+ n7: 506856 0x4A0D6DD: CRYPTO_zalloc (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+  n1: 327680 0x4A189B4: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+   n1: 327680 0x4A3EE75: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+    n1: 327680 0x49E29A9: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+     n1: 327680 0x4A0279B: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+      n1: 327680 0x4A0265B: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+       n1: 327680 0x4A21CAA: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+        n1: 327680 0x4AEB427: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+         n2: 327680 0x4AEBA7D: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+          n1: 294912 0x49E3242: EVP_CIPHER_fetch (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+           n1: 294912 0x49EB74F: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+            n1: 294912 0x49EBBBE: EVP_CipherInit_ex (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+             n1: 294912 0x10FE69: randombytes(unsigned char*, unsigned long long) (in /home/lorth/fixedbike/bike-demo-test)
+              n1: 294912 0x10C2E3: crypto_kem_keypair(unsigned char*, unsigned char*) (in /home/lorth/fixedbike/bike-demo-test)
+               n0: 294912 0x10A7B2: main (in /home/lorth/fixedbike/bike-demo-test)
+          n1: 32768 0x49D6652: EVP_MD_fetch (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+           n1: 32768 0x49D4540: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+            n1: 32768 0x10C206: sha3_384(unsigned char*, unsigned char const*, unsigned long) (in /home/lorth/fixedbike/bike-demo-test)
+             n1: 32768 0x10C5B3: crypto_kem_enc(unsigned char*, unsigned char*, unsigned char const*) (in /home/lorth/fixedbike/bike-demo-test)
+              n0: 32768 0x10A945: main (in /home/lorth/fixedbike/bike-demo-test)
+  n1: 65536 0x4A18942: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+   n1: 65536 0x4A3EE75: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+    n1: 65536 0x49E29A9: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+     n1: 65536 0x4A0279B: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+      n1: 65536 0x4A0265B: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+       n1: 65536 0x4A21CAA: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+        n1: 65536 0x4AEB427: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+         n1: 65536 0x4AEBA7D: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+          n1: 65536 0x49E3242: EVP_CIPHER_fetch (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+           n1: 65536 0x49EB74F: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+            n1: 65536 0x49EBBBE: EVP_CipherInit_ex (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+             n1: 65536 0x10FE69: randombytes(unsigned char*, unsigned long long) (in /home/lorth/fixedbike/bike-demo-test)
+              n1: 65536 0x10C2E3: crypto_kem_keypair(unsigned char*, unsigned char*) (in /home/lorth/fixedbike/bike-demo-test)
+               n0: 65536 0x10A7B2: main (in /home/lorth/fixedbike/bike-demo-test)
+  n1: 31744 0x49EAA63: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+   n1: 31744 0x49EBD8D: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+    n1: 31744 0x49E2A49: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+     n1: 31744 0x4A02738: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+      n1: 31744 0x4A0265B: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+       n1: 31744 0x4A21CAA: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+        n1: 31744 0x4AEB427: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+         n1: 31744 0x4AEBA7D: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+          n1: 31744 0x49E3242: EVP_CIPHER_fetch (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+           n1: 31744 0x49EB74F: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+            n1: 31744 0x49EBBBE: EVP_CipherInit_ex (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+             n1: 31744 0x10FE69: randombytes(unsigned char*, unsigned long long) (in /home/lorth/fixedbike/bike-demo-test)
+              n1: 31744 0x10C2E3: crypto_kem_keypair(unsigned char*, unsigned char*) (in /home/lorth/fixedbike/bike-demo-test)
+               n0: 31744 0x10A7B2: main (in /home/lorth/fixedbike/bike-demo-test)
+  n2: 26576 0x4A02D7C: OPENSSL_LH_new (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+   n1: 25520 0x4A3EE4F: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+    n1: 25520 0x49E29A9: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+     n1: 25520 0x4A0279B: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+      n1: 25520 0x4A0265B: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+       n1: 25520 0x4A21CAA: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+        n1: 25520 0x4AEB427: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+         n2: 25520 0x4AEBA7D: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+          n1: 21824 0x49E3242: EVP_CIPHER_fetch (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+           n1: 21824 0x49EB74F: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+            n1: 21824 0x49EBBBE: EVP_CipherInit_ex (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+             n1: 21824 0x10FE69: randombytes(unsigned char*, unsigned long long) (in /home/lorth/fixedbike/bike-demo-test)
+              n1: 21824 0x10C2E3: crypto_kem_keypair(unsigned char*, unsigned char*) (in /home/lorth/fixedbike/bike-demo-test)
+               n0: 21824 0x10A7B2: main (in /home/lorth/fixedbike/bike-demo-test)
+          n0: 3696 in 1 place, below massif's threshold (1.00%)
+   n0: 1056 in 7 places, all below massif's threshold (1.00%)
+  n0: 26352 in 28 places, all below massif's threshold (1.00%)
+  n2: 18944 0x4A02D96: OPENSSL_LH_new (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+   n1: 18560 0x4A3EE4F: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+    n1: 18560 0x49E29A9: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+     n1: 18560 0x4A0279B: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+      n1: 18560 0x4A0265B: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+       n1: 18560 0x4A21CAA: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+        n1: 18560 0x4AEB427: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+         n2: 18560 0x4AEBA7D: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+          n1: 15872 0x49E3242: EVP_CIPHER_fetch (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+           n1: 15872 0x49EB74F: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+            n1: 15872 0x49EBBBE: EVP_CipherInit_ex (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+             n1: 15872 0x10FE69: randombytes(unsigned char*, unsigned long long) (in /home/lorth/fixedbike/bike-demo-test)
+              n1: 15872 0x10C2E3: crypto_kem_keypair(unsigned char*, unsigned char*) (in /home/lorth/fixedbike/bike-demo-test)
+               n0: 15872 0x10A7B2: main (in /home/lorth/fixedbike/bike-demo-test)
+          n0: 2688 in 1 place, below massif's threshold (1.00%)
+   n0: 384 in 7 places, all below massif's threshold (1.00%)
+  n1: 10024 0x4A18A63: CRYPTO_THREAD_lock_new (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+   n0: 10024 in 19 places, all below massif's threshold (1.00%)
+ n1: 72704 0x4FB1939: ??? (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.30)
+  n1: 72704 0x400647D: call_init.part.0 (dl-init.c:70)
+   n1: 72704 0x4006567: call_init (dl-init.c:33)
+    n1: 72704 0x4006567: _dl_init (dl-init.c:117)
+     n0: 72704 0x40202C9: ??? (in /usr/lib/x86_64-linux-gnu/ld-linux-x86-64.so.2)
+ n3: 48336 0x4A030C5: OPENSSL_LH_insert (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+  n2: 33864 0x4AF45B2: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+   n1: 31896 0x49C17DF: ERR_load_strings_const (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+    n0: 31896 in 33 places, all below massif's threshold (1.00%)
+   n0: 1968 in 2 places, all below massif's threshold (1.00%)
+  n1: 8760 0x4A10482: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+   n0: 8760 in 3 places, all below massif's threshold (1.00%)
+  n0: 5712 in 6 places, all below massif's threshold (1.00%)
+ n3: 32400 0x4D4BDC6: NTL::WordVector::DoSetLength(long) (in /usr/lib/x86_64-linux-gnu/libntl.so.44.0.1)
+  n1: 20784 0x4D0F419: NTL::MulByX(NTL::GF2X&, NTL::GF2X const&) (in /usr/lib/x86_64-linux-gnu/libntl.so.44.0.1)
+   n2: 20784 0x4D11F10: NTL::PlainDivRem(NTL::GF2X&, NTL::GF2X&, NTL::GF2X const&, NTL::GF2X const&) (in /usr/lib/x86_64-linux-gnu/libntl.so.44.0.1)
+    n3: 20096 0x4D20BF7: ??? (in /usr/lib/x86_64-linux-gnu/libntl.so.44.0.1)
+     n1: 10480 0x4D20C1D: ??? (in /usr/lib/x86_64-linux-gnu/libntl.so.44.0.1)
+      n0: 10480 in 3 places, all below massif's threshold (1.00%)
+     n1: 9616 0x4D20B5F: ??? (in /usr/lib/x86_64-linux-gnu/libntl.so.44.0.1)
+      n0: 9616 in 3 places, all below massif's threshold (1.00%)
+     n0: 0 in 1 place, below massif's threshold (1.00%)
+    n0: 688 in 2 places, all below massif's threshold (1.00%)
+  n2: 9296 0x4D4BF7F: NTL::WordVector::operator=(NTL::WordVector const&) (in /usr/lib/x86_64-linux-gnu/libntl.so.44.0.1)
+   n2: 8704 0x4D11ECF: NTL::PlainDivRem(NTL::GF2X&, NTL::GF2X&, NTL::GF2X const&, NTL::GF2X const&) (in /usr/lib/x86_64-linux-gnu/libntl.so.44.0.1)
+    n1: 8704 0x4D20BF7: ??? (in /usr/lib/x86_64-linux-gnu/libntl.so.44.0.1)
+     n0: 8704 in 3 places, all below massif's threshold (1.00%)
+    n0: 0 in 2 places, all below massif's threshold (1.00%)
+   n0: 592 in 6 places, all below massif's threshold (1.00%)
+  n0: 2320 in 8 places, all below massif's threshold (1.00%)
+ n0: 28701 in 50 places, all below massif's threshold (1.00%)
+ n2: 11264 0x4A03073: OPENSSL_LH_insert (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+  n2: 8192 0x4AF45B2: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+   n2: 8192 0x49C17DF: ERR_load_strings_const (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+    n1: 8192 0x4A142CE: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+     n1: 8192 0x52D5EE7: __pthread_once_slow (pthread_once.c:116)
+      n1: 8192 0x4A18BDC: CRYPTO_THREAD_run_once (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+       n1: 8192 0x4A158D2: OPENSSL_init_crypto (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+        n1: 8192 0x49C3276: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+         n1: 8192 0x49C3C3C: ERR_set_mark (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+          n1: 8192 0x4970021: CONF_modules_load_file_ex (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+           n1: 8192 0x4A150DF: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+            n1: 8192 0x52D5EE7: __pthread_once_slow (pthread_once.c:116)
+             n1: 8192 0x4A18BDC: CRYPTO_THREAD_run_once (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+              n1: 8192 0x4A15B45: OPENSSL_init_crypto (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+               n1: 8192 0x4AEB1EC: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+                n1: 8192 0x49EB2E7: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+                 n1: 8192 0x49EBBBE: EVP_CipherInit_ex (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+                  n1: 8192 0x10FE69: randombytes(unsigned char*, unsigned long long) (in /home/lorth/fixedbike/bike-demo-test)
+                   n1: 8192 0x10C2E3: crypto_kem_keypair(unsigned char*, unsigned char*) (in /home/lorth/fixedbike/bike-demo-test)
+                    n0: 8192 0x10A7B2: main (in /home/lorth/fixedbike/bike-demo-test)
+    n0: 0 in 3 places, all below massif's threshold (1.00%)
+   n0: 0 in 2 places, all below massif's threshold (1.00%)
+  n0: 3072 in 3 places, all below massif's threshold (1.00%)
+ n2: 10656 0x4D4BE37: NTL::WordVector::DoSetLength(long) (in /usr/lib/x86_64-linux-gnu/libntl.so.44.0.1)
+  n2: 10288 0x4D17DF4: NTL::GF2XFromBytes(NTL::GF2X&, unsigned char const*, long) (in /usr/lib/x86_64-linux-gnu/libntl.so.44.0.1)
+   n2: 10288 0x10F4FD: ntl_split_polynomial(unsigned char*, unsigned char*, unsigned char const*) (in /home/lorth/fixedbike/bike-demo-test)
+    n1: 10288 0x10C92D: crypto_kem_dec(unsigned char*, unsigned char const*, unsigned char const*) (in /home/lorth/fixedbike/bike-demo-test)
+     n0: 10288 0x10AB9D: main (in /home/lorth/fixedbike/bike-demo-test)
+    n0: 0 in 2 places, all below massif's threshold (1.00%)
+   n0: 0 in 3 places, all below massif's threshold (1.00%)
+  n0: 368 in 15 places, all below massif's threshold (1.00%)
+#-----------
+snapshot=73
+#-----------
+time=111528791366
+mem_heap_B=713701
+mem_heap_extra_B=62195
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=74
+#-----------
+time=112767505746
+mem_heap_B=707173
+mem_heap_extra_B=62195
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=75
+#-----------
+time=114008368563
+mem_heap_B=709029
+mem_heap_extra_B=62179
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=76
+#-----------
+time=115248199036
+mem_heap_B=710565
+mem_heap_extra_B=62211
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=77
+#-----------
+time=116487590604
+mem_heap_B=712901
+mem_heap_extra_B=62179
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=78
+#-----------
+time=117727437719
+mem_heap_B=710565
+mem_heap_extra_B=62179
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=79
+#-----------
+time=118964783668
+mem_heap_B=711173
+mem_heap_extra_B=62211
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=80
+#-----------
+time=120205297503
+mem_heap_B=711109
+mem_heap_extra_B=62195
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=81
+#-----------
+time=121446051912
+mem_heap_B=708965
+mem_heap_extra_B=62195
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=82
+#-----------
+time=122686211497
+mem_heap_B=709925
+mem_heap_extra_B=62195
+mem_stacks_B=0
+heap_tree=detailed
+n7: 709925 (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+ n7: 506856 0x4A0D6DD: CRYPTO_zalloc (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+  n1: 327680 0x4A189B4: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+   n1: 327680 0x4A3EE75: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+    n1: 327680 0x49E29A9: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+     n1: 327680 0x4A0279B: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+      n1: 327680 0x4A0265B: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+       n1: 327680 0x4A21CAA: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+        n1: 327680 0x4AEB427: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+         n2: 327680 0x4AEBA7D: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+          n1: 294912 0x49E3242: EVP_CIPHER_fetch (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+           n1: 294912 0x49EB74F: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+            n1: 294912 0x49EBBBE: EVP_CipherInit_ex (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+             n1: 294912 0x10FE69: randombytes(unsigned char*, unsigned long long) (in /home/lorth/fixedbike/bike-demo-test)
+              n1: 294912 0x10C2E3: crypto_kem_keypair(unsigned char*, unsigned char*) (in /home/lorth/fixedbike/bike-demo-test)
+               n0: 294912 0x10A7B2: main (in /home/lorth/fixedbike/bike-demo-test)
+          n1: 32768 0x49D6652: EVP_MD_fetch (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+           n1: 32768 0x49D4540: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+            n1: 32768 0x10C206: sha3_384(unsigned char*, unsigned char const*, unsigned long) (in /home/lorth/fixedbike/bike-demo-test)
+             n1: 32768 0x10C5B3: crypto_kem_enc(unsigned char*, unsigned char*, unsigned char const*) (in /home/lorth/fixedbike/bike-demo-test)
+              n0: 32768 0x10A945: main (in /home/lorth/fixedbike/bike-demo-test)
+  n1: 65536 0x4A18942: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+   n1: 65536 0x4A3EE75: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+    n1: 65536 0x49E29A9: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+     n1: 65536 0x4A0279B: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+      n1: 65536 0x4A0265B: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+       n1: 65536 0x4A21CAA: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+        n1: 65536 0x4AEB427: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+         n1: 65536 0x4AEBA7D: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+          n1: 65536 0x49E3242: EVP_CIPHER_fetch (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+           n1: 65536 0x49EB74F: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+            n1: 65536 0x49EBBBE: EVP_CipherInit_ex (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+             n1: 65536 0x10FE69: randombytes(unsigned char*, unsigned long long) (in /home/lorth/fixedbike/bike-demo-test)
+              n1: 65536 0x10C2E3: crypto_kem_keypair(unsigned char*, unsigned char*) (in /home/lorth/fixedbike/bike-demo-test)
+               n0: 65536 0x10A7B2: main (in /home/lorth/fixedbike/bike-demo-test)
+  n1: 31744 0x49EAA63: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+   n1: 31744 0x49EBD8D: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+    n1: 31744 0x49E2A49: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+     n1: 31744 0x4A02738: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+      n1: 31744 0x4A0265B: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+       n1: 31744 0x4A21CAA: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+        n1: 31744 0x4AEB427: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+         n1: 31744 0x4AEBA7D: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+          n1: 31744 0x49E3242: EVP_CIPHER_fetch (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+           n1: 31744 0x49EB74F: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+            n1: 31744 0x49EBBBE: EVP_CipherInit_ex (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+             n1: 31744 0x10FE69: randombytes(unsigned char*, unsigned long long) (in /home/lorth/fixedbike/bike-demo-test)
+              n1: 31744 0x10C2E3: crypto_kem_keypair(unsigned char*, unsigned char*) (in /home/lorth/fixedbike/bike-demo-test)
+               n0: 31744 0x10A7B2: main (in /home/lorth/fixedbike/bike-demo-test)
+  n2: 26576 0x4A02D7C: OPENSSL_LH_new (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+   n1: 25520 0x4A3EE4F: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+    n1: 25520 0x49E29A9: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+     n1: 25520 0x4A0279B: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+      n1: 25520 0x4A0265B: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+       n1: 25520 0x4A21CAA: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+        n1: 25520 0x4AEB427: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+         n2: 25520 0x4AEBA7D: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+          n1: 21824 0x49E3242: EVP_CIPHER_fetch (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+           n1: 21824 0x49EB74F: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+            n1: 21824 0x49EBBBE: EVP_CipherInit_ex (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+             n1: 21824 0x10FE69: randombytes(unsigned char*, unsigned long long) (in /home/lorth/fixedbike/bike-demo-test)
+              n1: 21824 0x10C2E3: crypto_kem_keypair(unsigned char*, unsigned char*) (in /home/lorth/fixedbike/bike-demo-test)
+               n0: 21824 0x10A7B2: main (in /home/lorth/fixedbike/bike-demo-test)
+          n0: 3696 in 1 place, below massif's threshold (1.00%)
+   n0: 1056 in 7 places, all below massif's threshold (1.00%)
+  n0: 26352 in 28 places, all below massif's threshold (1.00%)
+  n2: 18944 0x4A02D96: OPENSSL_LH_new (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+   n1: 18560 0x4A3EE4F: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+    n1: 18560 0x49E29A9: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+     n1: 18560 0x4A0279B: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+      n1: 18560 0x4A0265B: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+       n1: 18560 0x4A21CAA: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+        n1: 18560 0x4AEB427: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+         n2: 18560 0x4AEBA7D: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+          n1: 15872 0x49E3242: EVP_CIPHER_fetch (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+           n1: 15872 0x49EB74F: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+            n1: 15872 0x49EBBBE: EVP_CipherInit_ex (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+             n1: 15872 0x10FE69: randombytes(unsigned char*, unsigned long long) (in /home/lorth/fixedbike/bike-demo-test)
+              n1: 15872 0x10C2E3: crypto_kem_keypair(unsigned char*, unsigned char*) (in /home/lorth/fixedbike/bike-demo-test)
+               n0: 15872 0x10A7B2: main (in /home/lorth/fixedbike/bike-demo-test)
+          n0: 2688 in 1 place, below massif's threshold (1.00%)
+   n0: 384 in 7 places, all below massif's threshold (1.00%)
+  n1: 10024 0x4A18A63: CRYPTO_THREAD_lock_new (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+   n0: 10024 in 19 places, all below massif's threshold (1.00%)
+ n1: 72704 0x4FB1939: ??? (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.30)
+  n1: 72704 0x400647D: call_init.part.0 (dl-init.c:70)
+   n1: 72704 0x4006567: call_init (dl-init.c:33)
+    n1: 72704 0x4006567: _dl_init (dl-init.c:117)
+     n0: 72704 0x40202C9: ??? (in /usr/lib/x86_64-linux-gnu/ld-linux-x86-64.so.2)
+ n3: 48336 0x4A030C5: OPENSSL_LH_insert (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+  n2: 33864 0x4AF45B2: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+   n1: 31896 0x49C17DF: ERR_load_strings_const (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+    n0: 31896 in 33 places, all below massif's threshold (1.00%)
+   n0: 1968 in 2 places, all below massif's threshold (1.00%)
+  n1: 8760 0x4A10482: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+   n0: 8760 in 3 places, all below massif's threshold (1.00%)
+  n0: 5712 in 6 places, all below massif's threshold (1.00%)
+ n3: 31088 0x4D4BDC6: NTL::WordVector::DoSetLength(long) (in /usr/lib/x86_64-linux-gnu/libntl.so.44.0.1)
+  n1: 19280 0x4D0F419: NTL::MulByX(NTL::GF2X&, NTL::GF2X const&) (in /usr/lib/x86_64-linux-gnu/libntl.so.44.0.1)
+   n2: 19280 0x4D11F10: NTL::PlainDivRem(NTL::GF2X&, NTL::GF2X&, NTL::GF2X const&, NTL::GF2X const&) (in /usr/lib/x86_64-linux-gnu/libntl.so.44.0.1)
+    n2: 15840 0x4D20BF7: ??? (in /usr/lib/x86_64-linux-gnu/libntl.so.44.0.1)
+     n1: 8736 0x4D20C1D: ??? (in /usr/lib/x86_64-linux-gnu/libntl.so.44.0.1)
+      n0: 8736 in 3 places, all below massif's threshold (1.00%)
+     n0: 7104 in 2 places, all below massif's threshold (1.00%)
+    n0: 3440 in 2 places, all below massif's threshold (1.00%)
+  n2: 9808 0x4D4BF7F: NTL::WordVector::operator=(NTL::WordVector const&) (in /usr/lib/x86_64-linux-gnu/libntl.so.44.0.1)
+   n2: 9216 0x4D11ECF: NTL::PlainDivRem(NTL::GF2X&, NTL::GF2X&, NTL::GF2X const&, NTL::GF2X const&) (in /usr/lib/x86_64-linux-gnu/libntl.so.44.0.1)
+    n1: 9216 0x4D20BF7: ??? (in /usr/lib/x86_64-linux-gnu/libntl.so.44.0.1)
+     n0: 9216 in 3 places, all below massif's threshold (1.00%)
+    n0: 0 in 2 places, all below massif's threshold (1.00%)
+   n0: 592 in 6 places, all below massif's threshold (1.00%)
+  n0: 2000 in 8 places, all below massif's threshold (1.00%)
+ n0: 28701 in 50 places, all below massif's threshold (1.00%)
+ n2: 11264 0x4A03073: OPENSSL_LH_insert (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+  n2: 8192 0x4AF45B2: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+   n2: 8192 0x49C17DF: ERR_load_strings_const (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+    n1: 8192 0x4A142CE: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+     n1: 8192 0x52D5EE7: __pthread_once_slow (pthread_once.c:116)
+      n1: 8192 0x4A18BDC: CRYPTO_THREAD_run_once (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+       n1: 8192 0x4A158D2: OPENSSL_init_crypto (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+        n1: 8192 0x49C3276: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+         n1: 8192 0x49C3C3C: ERR_set_mark (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+          n1: 8192 0x4970021: CONF_modules_load_file_ex (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+           n1: 8192 0x4A150DF: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+            n1: 8192 0x52D5EE7: __pthread_once_slow (pthread_once.c:116)
+             n1: 8192 0x4A18BDC: CRYPTO_THREAD_run_once (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+              n1: 8192 0x4A15B45: OPENSSL_init_crypto (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+               n1: 8192 0x4AEB1EC: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+                n1: 8192 0x49EB2E7: ??? (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+                 n1: 8192 0x49EBBBE: EVP_CipherInit_ex (in /usr/lib/x86_64-linux-gnu/libcrypto.so.3)
+                  n1: 8192 0x10FE69: randombytes(unsigned char*, unsigned long long) (in /home/lorth/fixedbike/bike-demo-test)
+                   n1: 8192 0x10C2E3: crypto_kem_keypair(unsigned char*, unsigned char*) (in /home/lorth/fixedbike/bike-demo-test)
+                    n0: 8192 0x10A7B2: main (in /home/lorth/fixedbike/bike-demo-test)
+    n0: 0 in 3 places, all below massif's threshold (1.00%)
+   n0: 0 in 2 places, all below massif's threshold (1.00%)
+  n0: 3072 in 3 places, all below massif's threshold (1.00%)
+ n2: 10976 0x4D4BE37: NTL::WordVector::DoSetLength(long) (in /usr/lib/x86_64-linux-gnu/libntl.so.44.0.1)
+  n2: 10288 0x4D17DF4: NTL::GF2XFromBytes(NTL::GF2X&, unsigned char const*, long) (in /usr/lib/x86_64-linux-gnu/libntl.so.44.0.1)
+   n2: 10288 0x10F4FD: ntl_split_polynomial(unsigned char*, unsigned char*, unsigned char const*) (in /home/lorth/fixedbike/bike-demo-test)
+    n1: 10288 0x10C92D: crypto_kem_dec(unsigned char*, unsigned char const*, unsigned char const*) (in /home/lorth/fixedbike/bike-demo-test)
+     n0: 10288 0x10AB9D: main (in /home/lorth/fixedbike/bike-demo-test)
+    n0: 0 in 2 places, all below massif's threshold (1.00%)
+   n0: 0 in 3 places, all below massif's threshold (1.00%)
+  n0: 688 in 15 places, all below massif's threshold (1.00%)
+#-----------
+snapshot=83
+#-----------
+time=123926654954
+mem_heap_B=708805
+mem_heap_extra_B=62179
+mem_stacks_B=0
+heap_tree=empty
