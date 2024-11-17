@@ -40,7 +40,7 @@
 
 #include "hash_wrapper.h"
 #include "utilities.h"
-#include "openssl/sha.h"
+//#include "openssl/sha.h"
 #include "string.h"
 #include "stdio.h"
 #include "types.h"
@@ -60,6 +60,6 @@ typedef struct sha384_hash_s
 
 // Wrapper for OpenSSL SHA3-384
 void sha3_384(unsigned char* output, const unsigned char* input, uint64_t size);
-
+void sha3_384_openssl(unsigned char* output, const unsigned char* input, uint64_t size);
 #endif //__AES_CTR_REF_H_INCLUDED__
 

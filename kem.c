@@ -39,7 +39,7 @@
 #include <string.h>
 
 #include "hash_wrapper.h"
-#include "openssl_utils.h"
+//#include "openssl_utils.h"
 #include "ntl.h"
 #include "decode.h"
 #include "sampling.h"
@@ -83,7 +83,7 @@ _INLINE_ status_t functionL(
 
     // select hash function
     sha3_384(hash_value, e_split, 2*R_SIZE);
-
+    
     memcpy(output, hash_value, ELL_SIZE);
 
     DMSG("  Exit functionL.\n");

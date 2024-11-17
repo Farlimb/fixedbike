@@ -174,8 +174,8 @@ typedef struct double_seed_s
 /////////////////////////////
 
 //This convention will work all over the code.
-#define ERR(v) {res = v; goto EXIT;}
-#define CHECK_STATUS(stat) {if(stat != SUCCESS) {goto EXIT;}}
+#define ERR(v) {res = v; stderr;}
+#define CHECK_STATUS(stat) {if(stat != SUCCESS) {stderr;}}
 
 enum _status
 {

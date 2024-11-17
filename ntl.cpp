@@ -40,8 +40,8 @@ extern "C" {
 }
 #include <stdint.h>
 #include <string.h>
-//#include <NTL/GF2X.h>
-//using namespace NTL;
+#include <NTL/GF2X.h>
+using namespace NTL;
 
 typedef unsigned char uint8_t;
 
@@ -77,7 +77,7 @@ uint64_t gf2_mod_inv(uint64_t a, uint64_t mod) {
     uint64_t u = a, v = mod;
     uint64_t g1 = 1, g2 = 0;
 
-    while (u != 1) {
+    while (u != 1) { // u is instatly 1
         uint64_t remainder;
         uint64_t q = gf2_div(u, v, &remainder);
         u = v;
@@ -108,31 +108,105 @@ void uint64_to_bin(uint64_t value, uint8_t bin[R_SIZE]) {
     }
 }
 
-// ntl_mod_inv()
-// Main function to compute modular inverse without NTL
-void ntl_mod_inv(OUT uint8_t res_bin[R_SIZE], IN const uint8_t a_bin[R_SIZE]) {
-     uint64_t a = bin_to_uint64(a_bin);
-     uint64_t mod = (1ULL << R_BITS) | 1;
-     uint64_t inv = gf2_mod_inv(a, mod);
-     uint64_to_bin(inv, res_bin);
-}
+//ntl_mod_inv()
+//Main function to compute modular inverse without NTL
+// void ntl_mod_inv(OUT uint8_t res_bin[R_SIZE], IN const uint8_t a_bin[R_SIZE]) {
+//     uint64_t a = bin_to_uint64(a_bin);
+//     uint64_t mod = (1ULL << R_BITS) | 1;
+//     uint64_t inv = gf2_mod_inv(a, mod);
+//     uint64_to_bin(inv, res_bin);
+// }
+
+
+// Your custom functions (slightly adjusted for clarity and consistency)
+// uint64_t modular_exponentiation(uint64_t x, uint64_t y, uint64_t z) {
+//     uint64_t res = 1;
+//     x = x % z;
+//     while (y > 0) {
+//         if (y & 1)
+//             res = (res * x) % z;
+//         y = y >> 1;
+//         x = (x * x) % z;
+//     }
+//     return res;
+// }
+
+// uint64_t moduloMultiplication(uint64_t a, uint64_t b, uint64_t z) {
+//     uint64_t res = 0;
+//     a %= z;
+//     while (b) {
+//         if (b & 1)
+//             res = (res + a) % z;
+//         a = (2 * a) % z; // Corrected 'p' to 'z'
+//         b >>= 1;
+//     }
+//     return res;
+// }
+
+// void extendedEuclid(uint64_t A, uint64_t B, uint64_t* d, uint64_t* x, uint64_t* y) {
+//     uint64_t temp;
+//     if (B == 0) {
+//         *d = A;
+//         *x = 1;
+//         *y = 0;
+//     }
+//     else {
+//         extendedEuclid(B, A % B, d, y, &temp);
+//         *x = *y;
+//         *y = temp - (A / B) * *y;
+//     }
+// }
+
+// int modInverse(uint64_t A, uint64_t M, uint64_t* x) {
+//     uint64_t d, y;
+//     extendedEuclid(A, M, &d, x, &y);
+//     if (*x < 0)
+//         *x += M;
+//     return (*x!= 0); // Return success if inverse exists
+// }
+
+// //Function to convert byte array to uint64_t (simplified, assumes little-endian)
+// uint64_t bytesToUint64_t(const uint8_t bytes[R_SIZE]) {
+//     uint64_t result = 0;
+//     for (int i = 0; i < R_SIZE; i++) {
+//         result |= (uint64_t)bytes[i] << (8 * i);
+//     }
+//     return result;
+// }
 
 // void ntl_mod_inv(OUT uint8_t res_bin[R_SIZE],
 //         IN const uint8_t a_bin[R_SIZE])
-// {
-//     GF2X _m, a, res;
-
-//     GF2XFromBytes(a, a_bin, R_SIZE);
-
-//     //Create the modulus
-//     GF2XModulus m;
-//     SetCoeff(_m, 0, 1);
-//     SetCoeff(_m, R_BITS, 1);
-//     build(m, _m);
-
-//     InvMod(res, a, m);
-//     BytesFromGF2X(res_bin, res, R_SIZE);
+//  {
+//     uint64_t a = bytesToUint64_t(a_bin);
+//     uint64_t x;
+//     uint64_t z = (1ULL << (R_BITS + 1)) | 1; // Example modulus, adjust as necessary
+//     if (modInverse(a, z, &x)) {
+//         // Convert result back to byte array (simplified, assumes little-endian)
+//         for (int i = R_SIZE - 1; i >= 0; i--) {
+//             res_bin[i] = x & 0xFF;
+//             x >>= 8;
+//         }
+//     }
+//      else {
+//         // Handle case where inverse does not exist
+//     }
 // }
+
+ void ntl_mod_inv(OUT uint8_t res_bin[R_SIZE],
+        IN const uint8_t a_bin[R_SIZE])
+{
+    GF2X _m, a, res;
+
+    GF2XFromBytes(a, a_bin, R_SIZE);
+
+    //Create the modulus
+    GF2XModulus m;
+    SetCoeff(_m, 0, 1);
+    SetCoeff(_m, R_BITS, 1);
+    build(m, _m);
+    InvMod(res, a, m);
+    BytesFromGF2X(res_bin, res, R_SIZE);
+}
 
 void ntl_add(uint8_t res_bin[R_SIZE], const uint8_t a_bin[R_SIZE], const uint8_t b_bin[R_SIZE])
 {

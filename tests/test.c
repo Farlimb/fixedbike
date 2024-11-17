@@ -37,7 +37,8 @@
 #include "kem.h"
 #include "utilities.h"
 #include "measurements.h"
-
+#include "hash_wrapper.h"
+#include "FromNIST/rng.h"
 void print_memory_usage(FILE *fpt) {
     struct rusage usage;
     getrusage(RUSAGE_SELF, &usage);
@@ -55,6 +56,54 @@ int main(void)
     ct_t ct = { 0 }; // ciphertext:  (c0, c1)
     ss_t k_enc = { 0 }; // shared secret after encapsulate
     ss_t k_dec = { 0 }; // shared secret after decapsulate
+
+    const char* input1 = "The quick brown fox jumps over the lazy dog";
+    unsigned char output_openssl1[48ULL];
+    unsigned char output_new1[48ULL];
+    //sha3_384_openssl(output_openssl1, (const unsigned char*)input1, strlen(input1));
+
+    // Compute hash using new function
+    //sha3_384(output_new1, (const unsigned char*)input1, strlen(input1));
+    
+    // Compare results
+    // if (memcmp(output_openssl1, output_new1, 48ULL) == 0) {
+    //     printf("The outputs match!\n");
+    // } else {
+    //     printf("The outputs do not match.\n");
+    // }
+// Print the values of output_new1 and output_openssl1
+    // printf("output_new1: ");
+    // for (int i = 0; i < 48ULL; i++) {
+    //     printf("%02x", output_new1[i]);
+    // }
+    // printf("\n");
+
+    // printf("output_openssl1: ");
+    // for (int i = 0; i < 48ULL; i++) {
+    //     printf("%02x", output_openssl1[i]);
+    // }
+    // printf("\n");
+    
+    unsigned char key[32] = {0x00, 0x01, 0x02, 0x03, 0x04, 0x05, 0x06, 0x07,
+                                0x08, 0x09, 0x0A, 0x0B, 0x0C, 0x0D, 0x0E, 0x0F,
+                                0x10, 0x11, 0x12, 0x13, 0x14, 0x15, 0x16, 0x17,
+                                0x18, 0x19, 0x1A, 0x1B, 0x1C, 0x1D, 0x1E, 0x1F};
+    const unsigned char input[16] = "TestInputBlock!";
+    unsigned char output_openssl[16];
+    unsigned char output_new[16];
+
+    // Compute encrypted output using OpenSSL-based function
+    AES256_ECB(key, (unsigned char*)input, (unsigned char*)output_openssl);
+
+    // Compute encrypted output using new function
+    AES256_ECB_AES(key, (unsigned char*)input, (unsigned char*)output_new);
+
+    // Compare results
+    if (memcmp(output_openssl, output_new, 16) == 0) {
+        printf("The outputs match!\n");
+    } else {
+        printf("The outputs do not match.\n");
+    }
 
     MSG("BIKE Demo Test:\n");
 

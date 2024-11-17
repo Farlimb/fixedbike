@@ -61,6 +61,11 @@
         "thread": "cpp",
         "cinttypes": "cpp",
         "typeinfo": "cpp",
-        "ntl.h": "c"
+        "ntl.h": "c",
+        "err.h": "c",
+        "hash_wrapper.h": "c",
+        "rng.h": "c",
+        "stdio.h": "c",
+        "utilities.h": "c"
     }
 }

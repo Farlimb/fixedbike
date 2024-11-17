@@ -29,7 +29,8 @@ typedef struct {
     int             reseed_counter;
 } AES256_CTR_DRBG_struct;
 
-
+void AES256_ECB_AES(unsigned char *key, unsigned char *ctr, unsigned char *buffer);
+void AES256_ECB(unsigned char *key, unsigned char *ctr, unsigned char *buffer);
 void
 AES256_CTR_DRBG_Update(unsigned char *provided_data,
                        unsigned char *Key,
