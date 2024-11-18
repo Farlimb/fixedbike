@@ -84,26 +84,41 @@ int main(void)
     // }
     // printf("\n");
     
-    unsigned char key[32] = {0x00, 0x01, 0x02, 0x03, 0x04, 0x05, 0x06, 0x07,
-                                0x08, 0x09, 0x0A, 0x0B, 0x0C, 0x0D, 0x0E, 0x0F,
-                                0x10, 0x11, 0x12, 0x13, 0x14, 0x15, 0x16, 0x17,
-                                0x18, 0x19, 0x1A, 0x1B, 0x1C, 0x1D, 0x1E, 0x1F};
-    const unsigned char input[16] = "TestInputBlock!";
-    unsigned char output_openssl[16];
-    unsigned char output_new[16];
+   unsigned char key[32] = {1, 2, 3, 4, 5, 6, 7, 8,
+                        9, 10, 11, 12, 13, 14, 15, 16,
+                        17, 18, 19, 20, 21, 22, 23, 24,
+                        25, 26, 27, 28, 29, 30, 31, 32};
+unsigned char input[16] = {'T','e','s','t','I','n','p','u',
+                          't','B','l','o','c','k','!','!'};  // Ensure 16 bytes exactly
+unsigned char output_openssl[16];
+unsigned char output_new[16];
 
-    // Compute encrypted output using OpenSSL-based function
-    AES256_ECB(key, (unsigned char*)input, (unsigned char*)output_openssl);
+// Compute encrypted output using OpenSSL-based function
+//AES256_ECB(key, input, output_openssl);
 
-    // Compute encrypted output using new function
-    AES256_ECB_AES(key, (unsigned char*)input, (unsigned char*)output_new);
+// Compute encrypted output using new function
+AES256_ECB(key, input, output_new);
 
-    // Compare results
-    if (memcmp(output_openssl, output_new, 16) == 0) {
-        printf("The outputs match!\n");
-    } else {
-        printf("The outputs do not match.\n");
-    }
+// // Print first output (16 bytes)
+// printf("OpenSSL output: ");
+// for (int i = 0; i < 16; i++) {
+//     printf("%02x", output_openssl[i]);
+// }
+// printf("\n");
+
+// Print second output (16 bytes)
+printf("New implementation output: ");
+for (int i = 0; i < 16; i++) {
+    printf("%02x", output_new[i]);
+}
+printf("\n");
+
+// Compare results (16 bytes)
+if (memcmp(output_openssl, output_new, 16) == 0) {
+    printf("The outputs match!\n");
+} else {
+    printf("The outputs do not match.\n");
+}
 
     MSG("BIKE Demo Test:\n");
 

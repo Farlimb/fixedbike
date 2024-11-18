@@ -7,14 +7,13 @@
 
 #include <string.h>
 #include "rng.h"
-#include <openssl/conf.h>
-#include <openssl/evp.h>
-#include <openssl/err.h>
+// #include <openssl/conf.h>
+// #include <openssl/evp.h>
+// #include <openssl/err.h>
 #include "aes.h"
 
 AES256_CTR_DRBG_struct  DRBG_ctx;
-
-void    AES256_ECB(unsigned char *key, unsigned char *ctr, unsigned char *buffer);
+void AES256_ECB(unsigned char *key, unsigned char *ctr, unsigned char *buffer);
 
 /*
  seedexpander_init()
@@ -105,50 +104,46 @@ seedexpander(AES_XOF_struct *ctx, unsigned char *x, unsigned long xlen)
 
 void handleErrors(void)
 {
-    ERR_print_errors_fp(stderr);
-    abort();
+    // ERR_print_errors_fp(stderr);
+    // abort();
+    stderr;
 }
 
 // Use whatever AES implementation you have. This uses AES from openSSL library
 //    key - 256-bit AES key
 //    ctr - a 128-bit plaintext value
 //    buffer - a 128-bit ciphertext value
-void AES256_ECB(unsigned char *key, unsigned char *ctr, unsigned char *buffer) {    
-    EVP_CIPHER_CTX *ctx;
-    int len;
-    int ciphertext_len;
+// void AES256_ECB(unsigned char *key, unsigned char *ctr, unsigned char *buffer)
+// {
+//     EVP_CIPHER_CTX *ctx;
+    
+//     int len;
+    
+//     int ciphertext_len;
+    
+//     /* Create and initialise the context */
+//     if(!(ctx = EVP_CIPHER_CTX_new())) handleErrors();
+    
+//     if(1 != EVP_EncryptInit_ex(ctx, EVP_aes_256_ecb(), NULL, key, NULL))
+//         handleErrors();
+    
+//     if(1 != EVP_EncryptUpdate(ctx, buffer, &len, ctr, 16))
+//         handleErrors();
+//     ciphertext_len = len;
+    
+//     /* Clean up */
+//     EVP_CIPHER_CTX_free(ctx);
+// }
 
-    /* Create and initialise the context */
-    if(!(ctx = EVP_CIPHER_CTX_new())) handleErrors();
-
-    /* Initialise encryption operation */
-    if(1 != EVP_EncryptInit_ex(ctx, EVP_aes_256_ecb(), NULL, key, NULL))
-        handleErrors();
-
-    /* Disable padding */
-    EVP_CIPHER_CTX_set_padding(ctx, 0);
-
-    /* Perform the encryption */
-    if(1 != EVP_EncryptUpdate(ctx, buffer, &len, ctr, 16))
-        handleErrors();
-    ciphertext_len = len;
-
-    /* Further encryption steps can be performed if needed */
-
-    /* Clean up */
-    EVP_CIPHER_CTX_free(ctx);
-}
-
-void AES256_ECB_AES(unsigned char *key, unsigned char *ctr, unsigned char *buffer)
+void AES256_ECB(unsigned char *key, unsigned char *ctr, unsigned char *buffer)
 {
     struct AES_ctx ctx;
-    
     // Initialize the AES context with the key
+    memcpy(buffer, ctr, 16);
     AES_init_ctx(&ctx, key);
     
     // Encrypt the buffer using AES-256 in ECB mode
     AES_ECB_encrypt(&ctx, buffer);
-    
 }
 
 void
@@ -227,8 +222,6 @@ AES256_CTR_DRBG_Update(unsigned char *provided_data,
     memcpy(Key, temp, 32);
     memcpy(V, temp+32, 16);
 }
-
-
 
 
 
