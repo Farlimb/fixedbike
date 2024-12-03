@@ -144,7 +144,7 @@
 ////////////////////////////////////////////
 //              Testing
 ///////////////////////////////////////////
-#define NUM_OF_CODE_TESTS       5ULL
+#define NUM_OF_CODE_TESTS       100ULL
 #define NUM_OF_ENCRYPTION_TESTS 1ULL
 
 #endif //__TYPES_H_INCLUDED__

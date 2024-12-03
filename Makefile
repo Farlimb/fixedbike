@@ -13,7 +13,7 @@
 VERBOSE=0
 
 CC:=g++
-CFLAGS:=-m64 -O0 -g
+CFLAGS:=-m64 -O0 -g #-i
 
 SRC:=*.c ntl.cpp FromNIST/rng.c FromNIST/aes.c
 INCLUDE:=-I. -I$(OpenSSL)/include -L$(OpenSSL)/lib -std=c++11 -lcrypto -lssl -lm -ldl -lntl -lgmp -lgf2x -lpthread

@@ -5,6 +5,7 @@
             "name": "(gdb) Launch",
             "type": "cppdbg",
             "request": "launch",
+            //"program": "${workspaceFolder}/bike-demo-test",
             "program": "${workspaceFolder}/bike-demo-test",
             "args": [],
             "stopAtEntry": false,

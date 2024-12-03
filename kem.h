@@ -64,8 +64,8 @@ _INLINE_ void get_seeds(OUT double_seed_t* seeds, seeds_purpose_t seeds_type)
         seeds->s2.raw[i] = rand(); // not cryptographically secure !
     }
 #endif
-    EDMSG("s1: "); print(seeds->s1.qwords, sizeof(seed_t)*8);
-    EDMSG("s2: "); print(seeds->s2.qwords, sizeof(seed_t)*8);
+    //EDMSG("s1: "); print(seeds->s1.qwords, sizeof(seed_t)*8);
+    //EDMSG("s2: "); print(seeds->s2.qwords, sizeof(seed_t)*8);
 }
 
 ////////////////////////////////////////////////////////////////

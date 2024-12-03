@@ -46,6 +46,9 @@ void ntl_add(OUT uint8_t res_bin[R_SIZE],
 
 void ntl_mod_inv(OUT uint8_t res_bin[R_SIZE],
         IN const uint8_t a_bin[R_SIZE]);
+        
+void ntl_mod_inv_mine(OUT uint8_t res_bin[R_SIZE],
+        IN const uint8_t a_bin[R_SIZE]);
 
 void ntl_mod_mul(OUT uint8_t res_bin[R_SIZE],
         IN const uint8_t a_bin[R_SIZE],

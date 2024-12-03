@@ -41,8 +41,8 @@
 #include "string.h"
 #include "types.h"
 #include "utilities.h"
-#include "openssl/bn.h"
-
+#include "openssl/bn.h" //math.h
+//long long namiesto big number 
 //Perform a cyclic product by using OpenSSL.
 _INLINE_ status_t cyclic_product(OUT BIGNUM *r,
         IN const BIGNUM *a,

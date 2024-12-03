@@ -57,68 +57,68 @@ int main(void)
     ss_t k_enc = { 0 }; // shared secret after encapsulate
     ss_t k_dec = { 0 }; // shared secret after decapsulate
 
-    const char* input1 = "The quick brown fox jumps over the lazy dog";
-    unsigned char output_openssl1[48ULL];
-    unsigned char output_new1[48ULL];
-    //sha3_384_openssl(output_openssl1, (const unsigned char*)input1, strlen(input1));
+//     const char* input1 = "The quick brown fox jumps over the lazy dog";
+//     unsigned char output_openssl1[48ULL];
+//     unsigned char output_new1[48ULL];
+//     //sha3_384_openssl(output_openssl1, (const unsigned char*)input1, strlen(input1));
 
-    // Compute hash using new function
-    //sha3_384(output_new1, (const unsigned char*)input1, strlen(input1));
+//     //Compute hash using new function
+//     sha3_384(output_new1, (const unsigned char*)input1, strlen(input1));
     
-    // Compare results
-    // if (memcmp(output_openssl1, output_new1, 48ULL) == 0) {
-    //     printf("The outputs match!\n");
-    // } else {
-    //     printf("The outputs do not match.\n");
-    // }
-// Print the values of output_new1 and output_openssl1
-    // printf("output_new1: ");
-    // for (int i = 0; i < 48ULL; i++) {
-    //     printf("%02x", output_new1[i]);
-    // }
-    // printf("\n");
+//     //Compare results
+//     if (memcmp(output_openssl1, output_new1, 48ULL) == 0) {
+//         printf("SHA outputs match!\n");
+//     } else {
+//         printf("The outputs do not match.\n");
+//     }
+//     //Print the values of output_new1 and output_openssl1
+//     printf("output_new1: ");
+//     for (int i = 0; i < 48ULL; i++) {
+//         printf("%02x", output_new1[i]);
+//     }
+//     printf("\n");
 
-    // printf("output_openssl1: ");
-    // for (int i = 0; i < 48ULL; i++) {
-    //     printf("%02x", output_openssl1[i]);
-    // }
-    // printf("\n");
+//     printf("output_openssl1: ");
+//     for (int i = 0; i < 48ULL; i++) {
+//         printf("%02x", output_openssl1[i]);
+//     }
+//     printf("\n");
     
-   unsigned char key[32] = {1, 2, 3, 4, 5, 6, 7, 8,
-                        9, 10, 11, 12, 13, 14, 15, 16,
-                        17, 18, 19, 20, 21, 22, 23, 24,
-                        25, 26, 27, 28, 29, 30, 31, 32};
-unsigned char input[16] = {'T','e','s','t','I','n','p','u',
-                          't','B','l','o','c','k','!','!'};  // Ensure 16 bytes exactly
-unsigned char output_openssl[16];
-unsigned char output_new[16];
+//    unsigned char key[32] = {1, 2, 3, 4, 5, 6, 7, 8,
+//                         9, 10, 11, 12, 13, 14, 15, 16,
+//                         17, 18, 19, 20, 21, 22, 23, 24,
+//                         25, 26, 27, 28, 29, 30, 31, 32};
+// unsigned char input[16] = {'T','e','s','t','I','n','p','u',
+//                           't','B','l','o','c','k','!','!'};  // Ensure 16 bytes exactly
+// unsigned char output_openssl[16];
+// unsigned char output_new[16];
 
-// Compute encrypted output using OpenSSL-based function
-//AES256_ECB(key, input, output_openssl);
+// // Compute encrypted output using OpenSSL-based function
+// AES256_ECB(key, input, output_openssl);
 
-// Compute encrypted output using new function
-AES256_ECB(key, input, output_new);
+// // Compute encrypted output using new function
+// //AES256_ECB_AES(key, input, output_new);
 
 // // Print first output (16 bytes)
-// printf("OpenSSL output: ");
+// printf("AES OpenSSL output: ");
 // for (int i = 0; i < 16; i++) {
 //     printf("%02x", output_openssl[i]);
 // }
 // printf("\n");
 
-// Print second output (16 bytes)
-printf("New implementation output: ");
-for (int i = 0; i < 16; i++) {
-    printf("%02x", output_new[i]);
-}
-printf("\n");
+// // Print second output (16 bytes)
+// printf("AES New implementation output: ");
+// for (int i = 0; i < 16; i++) {
+//     printf("%02x", output_new[i]);
+// }
+// printf("\n");
 
-// Compare results (16 bytes)
-if (memcmp(output_openssl, output_new, 16) == 0) {
-    printf("The outputs match!\n");
-} else {
-    printf("The outputs do not match.\n");
-}
+// // Compare results (16 bytes)
+// if (memcmp(output_openssl, output_new, 16) == 0) {
+//     printf("AES outputs match!\n");
+// } else {
+//     printf("The outputs do not match.\n");
+// }
 
     MSG("BIKE Demo Test:\n");
 

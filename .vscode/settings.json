@@ -4,6 +4,11 @@
             "cwd": "/home/lorth/fixedbike",
             "binaryPath": "/home/lorth/fixedbike/bike-demo-test",
             "binaryArgs": []
+        },
+        {
+            "cwd": "/home/lorth/fixedbike",
+            "binaryPath": "/home/lorth/fixedbike/bike-nist-kat",
+            "binaryArgs": []
         }
     ],
     "files.associations": {
@@ -66,6 +71,8 @@
         "hash_wrapper.h": "c",
         "rng.h": "c",
         "stdio.h": "c",
-        "utilities.h": "c"
+        "utilities.h": "c",
+        "aes.h": "c",
+        "sampling.h": "c"
     }
 }

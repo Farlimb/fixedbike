@@ -39,7 +39,7 @@
 #define _SAMPLE_H_
 
 #include "FromNIST/rng.h"
-#include "openssl_utils.h"
+//#include "openssl_utils.h"
 #include "shake_prng.h"
 
 typedef enum
