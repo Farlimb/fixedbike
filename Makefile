@@ -1,8 +1,8 @@
-
 # BIKE reference and optimized implementations assume that OpenSSL and NTL libraries are available in the platform.
 
 # To compile this code for NIST KAT routine use: make bike-nist-kat
 # To compile this code for demo tests use: make bike-demo-test
+# To compile client and server use: make bike-client-server
 
 # TO EDIT PARAMETERS AND SELECT THE BIKE VARIANT: please edit defs.h file in the indicated sections.
 
@@ -18,7 +18,7 @@ CFLAGS:=-m64 -O0 -g #-i
 SRC:=*.c ntl.cpp FromNIST/rng.c FromNIST/aes.c
 INCLUDE:=-I. -I$(OpenSSL)/include -L$(OpenSSL)/lib -std=c++11 -lcrypto -lssl -lm -ldl -lntl -lgmp -lgf2x -lpthread
 
-all: bike-nist-kat
+all: bike-nist-kat bike-client bike-server
 
 bike-demo-test: $(SRC) *.h tests/test.c
 	$(CC) $(CFLAGS) tests/test.c $(SRC) $(INCLUDE) -DVERBOSE=$(VERBOSE) -DNIST_RAND=1 -o $@
@@ -26,7 +26,14 @@ bike-demo-test: $(SRC) *.h tests/test.c
 bike-nist-kat: $(SRC) *.h FromNIST/*.h FromNIST/PQCgenKAT_kem.c
 	$(CC) $(CFLAGS) FromNIST/PQCgenKAT_kem.c $(SRC) $(INCLUDE) -DVERBOSE=$(VERBOSE) -DNIST_RAND=1 -o $@
 
+bike-client: $(SRC) *.h tests/client.c
+	$(CC) $(CFLAGS) tests/client.c $(SRC) $(INCLUDE) -DVERBOSE=$(VERBOSE) -DNIST_RAND=1 -o $@
+
+bike-server: $(SRC) *.h tests/server.c
+	$(CC) $(CFLAGS) tests/server.c $(SRC) $(INCLUDE) -DVERBOSE=$(VERBOSE) -DNIST_RAND=1 -o $@
+
+bike-client-server: bike-client bike-server
+
 clean:
 	rm -f PQCkemKAT_*
 	rm -f bike*
-
