@@ -6,21 +6,89 @@
 #include <arpa/inet.h>
 #include <sys/socket.h>
 #include "kem.h"
-#include "utilities.h"
-#include "measurements.h"
 #include "hash_wrapper.h"
 #include "FromNIST/rng.h"
 #include <time.h>
+#include "FromNIST/aes.h"
+
 #define PORT 8080
 #define BUFFER_SIZE 4096
+#define BLOCK_SIZE 32
+#define MAC_SIZE 48
+#define MIN_PADDING 16
+#define MAX_MESSAGE_SIZE 896
+#define AES_KEYLEN 32
+#define AES_BLOCKLEN 16
 
 int client_socket;
 char buffer[BUFFER_SIZE];
 
+typedef struct {
+    unsigned char iv[BLOCK_SIZE];
+    unsigned char ciphertext[MAX_MESSAGE_SIZE + BLOCK_SIZE];
+    unsigned char hmac[MAC_SIZE];
+    size_t length;
+} secure_message_t;
+
+void generate_hmac(const unsigned char* key, size_t key_len,
+                  const unsigned char* data, size_t data_len,
+                  unsigned char* hmac) {
+    unsigned char k_ipad[BLOCK_SIZE];
+    unsigned char k_opad[BLOCK_SIZE];
+    
+    memset(k_ipad, 0x36, BLOCK_SIZE);
+    memset(k_opad, 0x5c, BLOCK_SIZE);
+    
+    for (size_t i = 0; i < key_len && i < BLOCK_SIZE; i++) {
+        k_ipad[i] ^= key[i];
+        k_opad[i] ^= key[i];
+    }
+    
+    unsigned char inner_hash[MAC_SIZE];
+    unsigned char temp[BLOCK_SIZE + 1024];
+    memcpy(temp, k_ipad, BLOCK_SIZE);
+    memcpy(temp + BLOCK_SIZE, data, data_len);
+    sha3_384(inner_hash, temp, BLOCK_SIZE + data_len);
+    
+    memcpy(temp, k_opad, BLOCK_SIZE);
+    memcpy(temp + BLOCK_SIZE, inner_hash, MAC_SIZE);
+    sha3_384(hmac, temp, BLOCK_SIZE + MAC_SIZE);
+}
+
+bool encrypt_secure_message(const unsigned char* message, size_t message_len,
+                          const ss_t* key, secure_message_t* secure_msg) {
+    if (message_len > MAX_MESSAGE_SIZE) {
+        printf("Message too long: %zu bytes (max: %d)\n", message_len, MAX_MESSAGE_SIZE);
+        return false;
+    }
+
+    randombytes(secure_msg->iv, AES_BLOCKLEN);
+
+    size_t pad_len = AES_BLOCKLEN - (message_len % AES_BLOCKLEN);
+    size_t total_len = message_len + pad_len;
+
+    unsigned char* padded_msg = secure_msg->ciphertext;
+    memcpy(padded_msg, message, message_len);
+    memset(padded_msg + message_len, pad_len, pad_len);
+
+    struct AES_ctx ctx;
+    AES_init_ctx_iv(&ctx, key->raw, secure_msg->iv);
+
+    AES_CBC_encrypt_buffer(&ctx, padded_msg, total_len);
+    secure_msg->length = total_len;
+
+    unsigned char hmac_data[AES_BLOCKLEN + MAX_MESSAGE_SIZE + AES_BLOCKLEN];
+    memcpy(hmac_data, secure_msg->iv, AES_BLOCKLEN);
+    memcpy(hmac_data + AES_BLOCKLEN, secure_msg->ciphertext, total_len);
+    generate_hmac(key->raw, sizeof(ss_t), hmac_data, AES_BLOCKLEN + total_len,
+                 secure_msg->hmac);
+
+    return true;
+}
+
 void init_client(void) {
     struct sockaddr_in serv_addr;
 
-    // Create socket
     if ((client_socket = socket(AF_INET, SOCK_STREAM, 0)) < 0) {
         perror("Socket creation failed");
         exit(EXIT_FAILURE);
@@ -29,13 +97,11 @@ void init_client(void) {
     serv_addr.sin_family = AF_INET;
     serv_addr.sin_port = htons(PORT);
 
-    // Convert IPv4 and IPv6 addresses from text to binary
     if (inet_pton(AF_INET, "127.0.0.1", &serv_addr.sin_addr) <= 0) {
         perror("Invalid address");
         exit(EXIT_FAILURE);
     }
 
-    // Connect to server
     if (connect(client_socket, (struct sockaddr*)&serv_addr, sizeof(serv_addr)) < 0) {
         perror("Connection failed");
         exit(EXIT_FAILURE);
@@ -73,11 +139,9 @@ void receive_message(void* data, size_t size) {
 }
 
 void combine_secrets(const ss_t* secret1, const ss_t* secret2, ss_t* final_secret) {
-    // Compare the secrets to determine order
     int compare = memcmp(secret1->raw, secret2->raw, sizeof(ss_t));
-    
-    // Combine the secrets in consistent order (smaller first)
     unsigned char combined[sizeof(ss_t) * 2];
+    
     if (compare < 0) {
         memcpy(combined, secret1->raw, sizeof(ss_t));
         memcpy(combined + sizeof(ss_t), secret2->raw, sizeof(ss_t));
@@ -86,86 +150,16 @@ void combine_secrets(const ss_t* secret1, const ss_t* secret2, ss_t* final_secre
         memcpy(combined + sizeof(ss_t), secret1->raw, sizeof(ss_t));
     }
     
-    // Hash the combined secrets using SHA3-384
     sha3_384(final_secret->raw, combined, sizeof(combined));
 }
 
-void generate_iv(unsigned char* iv, size_t iv_len) {
-    // Use the existing randombytes function from NIST RNG
-    randombytes(iv, iv_len);
-}
-
-// Function to print hex data for debugging
-void print_hex(const char* label, const unsigned char* data, size_t len) {
-    printf("%s: ", label);
-    for(size_t i = 0; i < len; i++) {
-        printf("%02x", data[i]);
-    }
-    printf("\n");
-}
-
-// Modified create_extended_message function with verification
-void create_extended_message(const unsigned char* message, size_t message_len, 
-                           unsigned char* extended) {
-    // Create hash of the original message
-    unsigned char hash[48];
-    sha3_384(hash, message, message_len);
-    
-    // Print original message and its hash for debugging
-    print_hex("Original message", message, message_len);
-    print_hex("Generated hash", hash, 48);
-    
-    // Combine message and hash
-    memcpy(extended, message, message_len);
-    memcpy(extended + message_len, hash, 48);
-}
-
-void encrypt_message(const unsigned char* message, size_t message_len, 
-                    unsigned char* encrypted, const unsigned char* iv, 
-                    const ss_t* key) {
-    // Create extended message (message + 48-byte hash)
-    unsigned char extended[1024 + 48];
-    create_extended_message(message, message_len, extended);
-    size_t total_len = message_len + 48;  // Always add 48 bytes for hash
-    
-    // Encrypt the extended message
-    for(size_t i = 0; i < total_len; i++) {
-        encrypted[i] = extended[i] ^ iv[i % 16];
-    }
-    for(size_t i = 0; i < total_len; i++) {
-        encrypted[i] = encrypted[i] ^ key->raw[i % sizeof(ss_t)];
-    }
-}
-
-// Modified decrypt_message function with verification
-bool decrypt_message(const unsigned char* encrypted, size_t msg_len,
-                    const unsigned char* iv, unsigned char* decrypted,
-                    const ss_t* key) {
-    size_t total_len = msg_len + 48;
-    
-    // Decrypt the entire message
-    for(size_t i = 0; i < total_len; i++) {
-        decrypted[i] = encrypted[i] ^ key->raw[i % sizeof(ss_t)];
-    }
-    for(size_t i = 0; i < total_len; i++) {
-        decrypted[i] = decrypted[i] ^ iv[i % 16];
-    }
-    
-    // Verify hash
-    unsigned char* received_hash = decrypted + msg_len;
-    unsigned char calculated_hash[48];
-    sha3_384(calculated_hash, decrypted, msg_len);
-    
-    print_hex("Received hash", received_hash, 48);
-    print_hex("Calculated hash", calculated_hash, 48);
-    
-    return (memcmp(received_hash, calculated_hash, 48) == 0);
-}
-
 int main(void) {
-    sk_t client_sk = { 0 };
-    pk_t client_pk = { 0 };
-    
+    // sk_t client_sk = { 0 };
+    // pk_t client_pk = { 0 };
+    sk_t client_sk;
+        memset(&client_sk, 0, sizeof(sk_t));
+        pk_t client_pk;
+        memset(&client_pk, 0, sizeof(pk_t));
     pk_t server_pk = { 0 };
     ct_t client_ct = { 0 };
     ct_t server_ct = { 0 };
@@ -177,11 +171,10 @@ int main(void) {
 
     // Initialize random seed with different value for client
     unsigned char entropy_input[48];
+    
     for (int i = 0; i < 48; i++) {
-        entropy_input[i] = (time(NULL) + i) & 0xFF;  // Client uses time + position
+        entropy_input[i] = rand() ^ ((unsigned char)time(NULL) + i);
     }
-    // Add a client-specific modifier
-    entropy_input[0] ^= 0xAA;  // XOR with a different value for client
     randombytes_init(entropy_input, NULL, 256);
 
     // Generate client's keypair
@@ -191,6 +184,11 @@ int main(void) {
         return -1;
     }
     
+    printf("Clients private key ");
+        for(size_t i = 0; i < 1024; i++) {
+            printf("%02x", client_sk.raw[i]);
+        }
+    printf("...\n");
     printf("Client public key: ");
     for(size_t i = 0; i < 32; i++) {  // Print first 32 bytes for brevity
         printf("%02x", client_pk.raw[i]);
@@ -248,34 +246,32 @@ int main(void) {
     printf("\n");
     while(1) {
         printf("Enter message (or 'quit' to exit): ");
-        char message[1024];
-        fgets(message, sizeof(message), stdin);
-        message[strcspn(message, "\n")] = 0;
-        
-        if(strcmp(message, "quit") == 0) {
+        char message[MAX_MESSAGE_SIZE];
+        if (fgets(message, sizeof(message), stdin) == NULL) {
             break;
         }
         
-        size_t msg_len = strlen(message);
-        unsigned char encrypted[1024 + 48];
-        unsigned char iv[16];
-        
-        // Generate IV
-        generate_iv(iv, 16);
-        
-        // Create extended message and encrypt
-        unsigned char extended[1024 + 48];
-        create_extended_message((unsigned char*)message, msg_len, extended);
-        
-        // Encrypt the extended message
-        encrypt_message((unsigned char*)message, msg_len, encrypted, iv, &final_shared_secret);
-        
-        print_hex("Encrypted data", encrypted, msg_len + 48);
-        
-        // Send data
-        send_message(iv, 16);
-        send_message(&msg_len, sizeof(msg_len));
-        send_message(encrypted, msg_len + 48);
+        message[strcspn(message, "\n")] = 0;
+        if (strcmp(message, "quit") == 0) break;
+
+        size_t message_len = strlen(message);
+        if (message_len > MAX_MESSAGE_SIZE) {
+            printf("Message too long (max %d bytes)\n", MAX_MESSAGE_SIZE);
+            continue;
+        }
+
+        secure_message_t secure_msg = {0};  // Initialize to zero
+        if (!encrypt_secure_message((unsigned char*)message, message_len,
+                                &final_shared_secret, &secure_msg)) {
+            printf("Encryption failed\n");
+            continue;
+        }
+        printf("Secure message ciphertext: ");
+        for(size_t i = 0; i < sizeof(secure_msg.ciphertext); i++) {
+            printf("%02x", secure_msg.ciphertext[i]);
+        }
+        printf("\n");
+        send_message(&secure_msg, sizeof(secure_message_t));
     }
     close(client_socket);
     return 0;

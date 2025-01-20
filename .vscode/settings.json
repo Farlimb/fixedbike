@@ -87,6 +87,16 @@
             "cwd": "/home/lorth/Diplomovka/Server_Client",
             "binaryPath": "/home/lorth/Diplomovka/Server_Client/bike-server",
             "binaryArgs": []
+        },
+        {
+            "cwd": "/home/lorth/Diplomovka/Server_Client",
+            "binaryPath": "/home/lorth/Diplomovka/Server_Client/bike-demo-test",
+            "binaryArgs": []
         }
-    ]
+    ],
+    "files.associations": {
+        "aes.h": "c",
+        "rng.h": "c",
+        "resource.h": "c"
+    }
 }

@@ -143,6 +143,10 @@ int main(void)
         // Key generation
         clock_gettime(CLOCK_MONOTONIC, &start);
         MEASURE("  keygen", res = static_cast<status_t>(crypto_kem_keypair(pk.raw, sk.raw)););
+        printf("Clients private key ");
+                for(size_t i = 0; i < 32; i++) {
+                    printf("%02x", sk.raw[i]);
+                }
         clock_gettime(CLOCK_MONOTONIC, &end);   // End time
         double time_taken = (end.tv_sec - start.tv_sec) +
             (end.tv_nsec - start.tv_nsec) / 1e9; // Time in seconds
@@ -163,6 +167,7 @@ int main(void)
             // Encapsulate
             clock_gettime(CLOCK_MONOTONIC, &start);
             MEASURE("  encaps", res = static_cast<status_t>(crypto_kem_enc(ct.raw, k_enc.raw, pk.raw)););
+            
             clock_gettime(CLOCK_MONOTONIC, &end);   // End time
             time_taken = (end.tv_sec - start.tv_sec) +
                 (end.tv_nsec - start.tv_nsec) / 1e9; // Time in seconds
