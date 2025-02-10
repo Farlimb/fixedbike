@@ -32,22 +32,38 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  ******************************************************************************/
 #include <time.h>
-#include <sys/resource.h>
+//#include <sys/resource.h>
+#include <windows.h>
+#include <psapi.h>
 #include "stdio.h"
 #include "kem.h"
 #include "utilities.h"
 #include "measurements.h"
 #include "hash_wrapper.h"
 #include "FromNIST/rng.h"
+// void print_memory_usage(FILE *fpt) {
+//     struct rusage usage;
+//     getrusage(RUSAGE_SELF, &usage);
+//     //printf("Memory usage: %ld kilobytes\n", usage.ru_maxrss);
+//     if (fpt != NULL) {
+//         fprintf(fpt, "%ld,", usage.ru_maxrss);  // Write memory usage to CSV
+//     }
+// }
 void print_memory_usage(FILE *fpt) {
-    struct rusage usage;
-    getrusage(RUSAGE_SELF, &usage);
-    //printf("Memory usage: %ld kilobytes\n", usage.ru_maxrss);
-    if (fpt != NULL) {
-        fprintf(fpt, "%ld,", usage.ru_maxrss);  // Write memory usage to CSV
+    PROCESS_MEMORY_COUNTERS memCounter;
+    if (GetProcessMemoryInfo(GetCurrentProcess(), &memCounter, sizeof(memCounter))) {
+        // Convert bytes to kilobytes
+        size_t mem_usage_kb = memCounter.WorkingSetSize  / 1024;
+        
+        if (fpt != NULL) {
+            fprintf(fpt, "%zu,", mem_usage_kb);  // Write memory usage to CSV
+        } else {
+            printf("Memory usage: %zu KB\n", mem_usage_kb);
+        }
+    } else {
+        perror("Failed to get memory usage");
     }
 }
-
 int main(void)
 {
     struct timespec start, end;

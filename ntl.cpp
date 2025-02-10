@@ -35,113 +35,95 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  ******************************************************************************/
 
-extern "C" {
 #include "types.h"
-}
-#include <cstdio>
 #include <string.h>
 
-void ntl_mod_inv(OUT uint8_t res_bin[R_SIZE], IN const uint8_t a_bin[R_SIZE]) {
-    const size_t WORDS = (R_BITS + 63) / 64;
-    
-    // Use aligned memory for better performance
-    alignas(32) uint64_t a[WORDS] = {0};
-    alignas(32) uint64_t m[WORDS] = {0};
-    alignas(32) uint64_t u[WORDS] = {0};
-    alignas(32) uint64_t v[WORDS] = {0};
-    alignas(32) uint64_t g1[WORDS] = {0};
-    alignas(32) uint64_t g2[WORDS] = {0};
 
-    // Fast byte to word conversion using unaligned loads
-    #pragma GCC unroll 8
-    for(size_t i = 0; i < (R_SIZE + 7) / 8; i++) {
-        uint64_t word = 0;
-        size_t remaining_bytes = (i * 8 + 8 <= R_SIZE) ? 8 : R_SIZE - i * 8;
-        memcpy(&word, a_bin + i * 8, remaining_bytes);
-        a[i] = word;
+#define WORD_BITS 64
+#define WORDS ((R_BITS + WORD_BITS - 1) / WORD_BITS)
+#define MOD_WORD (R_BITS / WORD_BITS)
+#define MOD_BIT (R_BITS % WORD_BITS)
+#define MOD_MASK ((1ULL << MOD_BIT) - 1)
+
+void ntl_mod_inv(uint8_t res_bin[R_SIZE], const uint8_t a_bin[R_SIZE]) {
+    // Working buffers with optimal alignment
+    alignas(32) uint64_t u[WORDS], v[WORDS], g1[WORDS], g2[WORDS];
+    uint64_t *pu = u, *pv = v, *pg1 = g1, *pg2 = g2;
+
+    // Initialize from input
+    memset(pu, 0, sizeof(u));
+    memcpy(pu, a_bin, R_SIZE);
+    if (MOD_BIT) pu[MOD_WORD] &= MOD_MASK;
+
+    // Initialize modulus (x^R_BITS + 1)
+    memset(pv, 0, sizeof(v));
+    pv[0] = 1;
+    if (MOD_WORD < WORDS) pv[MOD_WORD] ^= 1ULL << MOD_BIT;
+
+    // Initialize Bézout coefficients
+    memset(pg1, 0, sizeof(g1));
+    pg1[0] = 1;
+    memset(pg2, 0, sizeof(g2));
+
+    // Degree tracking
+    int deg_u = -1, deg_v = -1;
+    for (int i = WORDS-1; i >= 0; --i) {
+        if (pu[i] && deg_u == -1) deg_u = i * WORD_BITS + 63 - __builtin_clzll(pu[i]);
+        if (pv[i] && deg_v == -1) deg_v = i * WORD_BITS + 63 - __builtin_clzll(pv[i]);
     }
 
-    // Set up modulus (x^R_BITS + 1)
-    m[0] = 1;
-    m[R_BITS/64] |= 1ULL << (R_BITS % 64);
-
-    // Initialize working variables
-    memcpy(u, a, sizeof(uint64_t) * WORDS);
-    memcpy(v, m, sizeof(uint64_t) * WORDS);
-    g1[0] = 1;
-
-    // Precompute masks for performance
-    const uint64_t WORD_MASK = (uint64_t)-1;
-    
-    while(1) {
-        // Find degrees using __builtin_clzll with branch prediction hints
-        int deg_u = -1;
-        int deg_v = -1;
-        
-        // Find degree of u
-        #pragma GCC unroll 4
-        for(int i = WORDS-1; i >= 0; i--) {
-            if(__builtin_expect(u[i] != 0, 0)) {
-                deg_u = i * 64 + 63 - __builtin_clzll(u[i]);
-                break;
-            }
-        }
-
-        if(__builtin_expect(deg_u == 0, 0)) break;
-
-        // Find degree of v
-        #pragma GCC unroll 4
-        for(int i = WORDS-1; i >= 0; i--) {
-            if(__builtin_expect(v[i] != 0, 0)) {
-                deg_v = i * 64 + 63 - __builtin_clzll(v[i]);
-                break;
-            }
-        }
-
-        // Conditional swap using XOR - eliminates branches
-        if(deg_u < deg_v) {
-            #pragma GCC unroll 4
-            for(size_t i = 0; i < WORDS; i++) {
-                uint64_t tmp;
-                tmp = u[i] ^ v[i];
-                u[i] ^= tmp;
-                v[i] ^= tmp;
-                
-                tmp = g1[i] ^ g2[i];
-                g1[i] ^= tmp;
-                g2[i] ^= tmp;
-            }
+    while (deg_u > 0) {
+        if (deg_u < deg_v) {
+            // Swap pointers instead of arrays
+            uint64_t *tmp;
+            tmp = pu; pu = pv; pv = tmp;
+            tmp = pg1; pg1 = pg2; pg2 = tmp;
+            int t = deg_u; deg_u = deg_v; deg_v = t;
             continue;
         }
 
         const int shift = deg_u - deg_v;
-        const size_t word_shift = shift / 64;
-        const size_t bit_shift = shift % 64;
-        const size_t inv_bit_shift = 64 - bit_shift;
+        const int wshift = shift / WORD_BITS;
+        const int bshift = shift % WORD_BITS;
+        const int carry_shift = WORD_BITS - bshift;
 
-        // Optimized shifting using SIMD instructions if available
-        #pragma GCC unroll 4
-        for(size_t i = 0; i < WORDS - word_shift; i++) {
-            uint64_t v_shifted = (bit_shift == 0) ? 
-                v[i] : 
-                (v[i] << bit_shift) | ((i > 0) ? (v[i-1] >> inv_bit_shift) : 0);
-                
-            uint64_t g2_shifted = (bit_shift == 0) ? 
-                g2[i] : 
-                (g2[i] << bit_shift) | ((i > 0) ? (g2[i-1] >> inv_bit_shift) : 0);
+        // Process words in reverse for better cache utilization
+        for (int i = WORDS-1 - wshift; i >= 0; --i) {
+            const int ti = i + wshift;
+            const uint64_t v_val = pv[i];
+            const uint64_t g_val = pg2[i];
 
-            u[i + word_shift] ^= v_shifted;
-            g1[i + word_shift] ^= g2_shifted;
+            if (bshift) {
+                pu[ti] ^= v_val << bshift;
+                pg1[ti] ^= g_val << bshift;
+                if (ti+1 < WORDS) {
+                    pu[ti+1] ^= v_val >> carry_shift;
+                    pg1[ti+1] ^= g_val >> carry_shift;
+                }
+            } else {
+                pu[ti] ^= v_val;
+                pg1[ti] ^= g_val;
+            }
+        }
+
+        // Update degree using CLZ optimization
+        deg_u = -1;
+        for (int i = WORDS-1; i >= 0; --i) {
+            if (pu[i]) {
+                deg_u = i * WORD_BITS + 63 - __builtin_clzll(pu[i]);
+                break;
+            }
         }
     }
 
-    // Fast word to byte conversion using unaligned stores
-    #pragma GCC unroll 8
-    for(size_t i = 0; i < (R_SIZE + 7) / 8; i++) {
-        uint64_t word = g1[i];
-        size_t remaining_bytes = (i * 8 + 8 <= R_SIZE) ? 8 : R_SIZE - i * 8;
-        memcpy(res_bin + i * 8, &word, remaining_bytes);
+    // Final check and output
+    if (pu[0] != 1) {
+        memset(res_bin, 0, R_SIZE);
+        return;
     }
+
+    memcpy(res_bin, pg1, R_SIZE);
+    if (MOD_BIT) res_bin[R_SIZE-1] &= (1U << (R_BITS % 8)) - 1;
 }
 
 void ntl_add(uint8_t res_bin[R_SIZE], const uint8_t a_bin[R_SIZE], const uint8_t b_bin[R_SIZE])
@@ -151,57 +133,92 @@ void ntl_add(uint8_t res_bin[R_SIZE], const uint8_t a_bin[R_SIZE], const uint8_t
     }
 }
 
- void ntl_mod_mul(uint8_t res_bin[R_SIZE], const uint8_t a_bin[R_SIZE], const uint8_t b_bin[R_SIZE]) {
-     uint8_t result[2 * R_SIZE] = {0};
-     uint8_t modulus[R_SIZE] = {0};
-     modulus[0] = 1;
-     modulus[R_BITS / 8] = 1 << (R_BITS % 8);
+void ntl_mod_mul(uint8_t res_bin[R_SIZE], const uint8_t a_bin[R_SIZE], const uint8_t b_bin[R_SIZE]) {
+    uint8_t result[2 * R_SIZE] = {0};
 
-     // Polynomial multiplication over GF(2)
-     for (int i = 0; i < R_SIZE * 8; i++) {
-         if ((a_bin[i / 8] >> (i % 8)) & 1) {
-             for (int j = 0; j < R_SIZE * 8; j++) {
-                 if ((b_bin[j / 8] >> (j % 8)) & 1) {
-                     result[(i + j) / 8] ^= (1 << ((i + j) % 8));
-                 }
-             }
-         }
-     }
+    // Polynomial multiplication over GF(2)
+    for (int i = 0; i < R_SIZE * 8; i++) {
+        if ((a_bin[i / 8] >> (i % 8)) & 1) {
+            int shift_byte = i / 8;
+            int shift_bit = i % 8;
+            
+            for (int j = 0; j < R_SIZE; j++) {
+                uint8_t b_byte = b_bin[j];
+                int target_byte = j + shift_byte;
+                int carry_shift = 8 - shift_bit;
 
-     // Modular reduction
-     for (int i = (2 * R_SIZE * 8) - 1; i >= R_BITS; i--) {
-         if ((result[i / 8] >> (i % 8)) & 1) {
-             int shift = i - R_BITS;
-             for (int j = 0; j < R_SIZE * 8; j++) {
-                 if ((modulus[j / 8] >> (j % 8)) & 1) {
-                     result[(j + shift) / 8] ^= (1 << ((j + shift) % 8));
-                 }
-             }
-         }
-     }
+                // Handle main shift
+                if (target_byte < 2 * R_SIZE) {
+                    result[target_byte] ^= (b_byte << shift_bit);
+                }
 
-     memcpy(res_bin, result, R_SIZE);
- }
- 
-void ntl_split_polynomial(uint8_t e0[R_SIZE], uint8_t e1[R_SIZE], const uint8_t e[2*R_SIZE]) {
-    // Iterate over the input bytes
-    int bit_offset = 0;
-    for (int i = 0; i < 2*R_SIZE; i++) {
-        // Process the current byte
-        uint8_t byte = e[i];
-        for (int j = 0; j < 8; j++) {
-            // Check if the current bit is within the lower R_BITS bits
-            if (bit_offset < R_BITS) {
-                // Set the corresponding bit in e0
-                e0[bit_offset / 8] |= (byte & (1 << j)) >> j << (bit_offset % 8);
+                // Handle carry-over bits
+                if (shift_bit != 0 && target_byte + 1 < 2 * R_SIZE) {
+                    result[target_byte + 1] ^= (b_byte >> carry_shift);
+                }
             }
-            // Check if the current bit is within the upper R_BITS bits
-            if (bit_offset >= R_BITS && bit_offset < 2 * R_BITS) {
-                // Set the corresponding bit in e1
-                e1[(bit_offset - R_BITS) / 8] |= (byte & (1 << j)) >> j << ((bit_offset - R_BITS) % 8);
-            }
-            bit_offset++;
         }
+    }
+
+    // Modular reduction using x^R_BITS + 1
+    const int modulus_bit = R_BITS;
+    for (int i = 2 * R_SIZE * 8 - 1; i >= modulus_bit; i--) {
+        int byte_pos = i / 8;
+        int bit_pos = i % 8;
+        
+        if ((result[byte_pos] >> bit_pos) & 1) {
+            // Clear current bit
+            result[byte_pos] ^= (1 << bit_pos);
+            
+            // Toggle corresponding reduced bit
+            int reduced_bit = i - modulus_bit;
+            int red_byte = reduced_bit / 8;
+            int red_bit = reduced_bit % 8;
+            result[red_byte] ^= (1 << red_bit);
+        }
+    }
+
+    memcpy(res_bin, result, R_SIZE);
+}
+ 
+void ntl_split_polynomial(uint8_t e0[R_SIZE],
+                            uint8_t e1[R_SIZE],
+                            const uint8_t e[2*R_SIZE]) {
+    // Clear the outputs (if needed)
+    memset(e0, 0, R_SIZE);
+    memset(e1, 0, R_SIZE);
+
+    // Compute how many whole bytes and extra bits we need to copy.
+    int full_bytes = R_BITS / 8;
+    int rem_bits   = R_BITS % 8;
+
+    // --- Extract the first R_BITS bits into e0 ---
+    // If we have full bytes, copy them directly.
+    if (full_bytes > 0) {
+        memcpy(e0, e, full_bytes);
+    }
+    // If there are remaining bits, copy and mask the last byte.
+    if (rem_bits > 0) {
+        e0[full_bytes] = e[full_bytes] & ((1 << rem_bits) - 1);
+    }
+
+    // Process the full bytes for e1.
+    for (int i = 0; i < full_bytes; i++) {
+        // If the starting bit is byte aligned, we can copy a full byte.
+        if (rem_bits == 0) {
+            e1[i] = e[full_bytes + i];
+        } else {
+            // Otherwise, the desired byte is split across two bytes in e.
+            e1[i] = (e[full_bytes + i] >> rem_bits)
+                    | (e[full_bytes + i + 1] << (8 - rem_bits));
+        }
+    }
+    // Process any remaining bits (if R_BITS is not a multiple of 8).
+    if (rem_bits > 0) {
+            // Combine bits from the two adjacent bytes.
+            uint16_t combined = (e[full_bytes + full_bytes] >> rem_bits)
+                                | (e[full_bytes + full_bytes + 1] << (8 - rem_bits));
+            e1[full_bytes] = combined & ((1 << rem_bits) - 1);
     }
 }
 

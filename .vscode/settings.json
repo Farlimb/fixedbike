@@ -92,11 +92,19 @@
             "cwd": "/home/lorth/Diplomovka/Server_Client",
             "binaryPath": "/home/lorth/Diplomovka/Server_Client/bike-demo-test",
             "binaryArgs": []
+        },
+        {
+            "cwd": "c:\\Users\\lorth\\OneDrive - Technicka univerzita v�Kosiciach\\Desktop\\bikehodnotywsl\\Server_Client",
+            "binaryPath": "c:\\Users\\lorth\\OneDrive - Technicka univerzita v�Kosiciach\\Desktop\\bikehodnotywsl\\Server_Client\\bike-nist-kat",
+            "binaryArgs": []
         }
     ],
     "files.associations": {
         "aes.h": "c",
         "rng.h": "c",
-        "resource.h": "c"
-    }
+        "resource.h": "c",
+        "string.h": "c",
+        "windows.h": "c"
+    },
+    "makefile.makePath": "C:\\mingw64\\bin\\g++.exe"
 }

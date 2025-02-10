@@ -12,27 +12,28 @@
 # Verbose levels: 0, 1, 2 or 3
 VERBOSE=0
 
-CC:=g++
-CFLAGS:=-m64 -O0 -g #-i
+CC:=C:/msys64/mingw64/bin/g++.exe
+CFLAGS:=-m64 -O0 -g -march=native -funroll-loops -ffast-math -lole32 -loleaut32 -lwbemuuid#-i
 
 SRC:=*.c ntl.cpp FromNIST/rng.c FromNIST/aes.c
-INCLUDE:=-I. -I$(OpenSSL)/include -L$(OpenSSL)/lib -std=c++11 -lcrypto -lssl -lm -ldl -lntl -lgmp -lgf2x -lpthread
+INCLUDE:=-I. -I$(OpenSSL)/include -L$(OpenSSL)/lib -std=c++11 -lcrypto -lssl -lm -lgmp -lpthread -lws2_32
 
-all: bike-nist-kat bike-client bike-server
+all: bike-nist-kat bike-client bike-server bike-demo-test
 
 bike-demo-test: $(SRC) *.h tests/test.c
-	$(CC) $(CFLAGS) tests/test.c $(SRC) $(INCLUDE) -DVERBOSE=$(VERBOSE) -DNIST_RAND=1 -o $@
+	$(CC) $(CFLAGS) tests/test.c $(SRC) $(INCLUDE) -DVERBOSE=$(VERBOSE) -DNIST_RAND=1 -lole32 -loleaut32 -lwbemuuid -o $@
 
 bike-nist-kat: $(SRC) *.h FromNIST/*.h FromNIST/PQCgenKAT_kem.c
-	$(CC) $(CFLAGS) FromNIST/PQCgenKAT_kem.c $(SRC) $(INCLUDE) -DVERBOSE=$(VERBOSE) -DNIST_RAND=1 -o $@
+	$(CC) $(CFLAGS) FromNIST/PQCgenKAT_kem.c $(SRC) $(INCLUDE) -DVERBOSE=$(VERBOSE) -DNIST_RAND=1 -lole32 -loleaut32 -lwbemuuid -o $@
 
 bike-client: $(SRC) *.h tests/client.c
-	$(CC) $(CFLAGS) tests/client.c $(SRC) $(INCLUDE) -DVERBOSE=$(VERBOSE) -DNIST_RAND=1 -o $@
+	$(CC) $(CFLAGS) tests/client.c $(SRC) $(INCLUDE) -DVERBOSE=$(VERBOSE) -DNIST_RAND=1 -lole32 -loleaut32 -lwbemuuid -o $@
 
 bike-server: $(SRC) *.h tests/server.c
-	$(CC) $(CFLAGS) tests/server.c $(SRC) $(INCLUDE) -DVERBOSE=$(VERBOSE) -DNIST_RAND=1 -o $@
+	$(CC) $(CFLAGS) tests/server.c $(SRC) $(INCLUDE) -DVERBOSE=$(VERBOSE) -DNIST_RAND=1 -lole32 -loleaut32 -lwbemuuid -o $@
 
 bike-client-server: bike-client bike-server
+	@echo "Built bike-client and bike-server"
 
 clean:
 	rm -f PQCkemKAT_*

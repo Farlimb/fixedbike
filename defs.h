@@ -43,9 +43,9 @@
 ///////////////////////////////////////////
 
 // UNCOMMENT TO SELECT THE NIST SECURITY LEVEL 1, 3 OR 5:
-//#define PARAM64 // NIST LEVEL 1
+#define PARAM64 // NIST LEVEL 1
 // #define PARAM96 // NIST LEVEL 3
- #define PARAM128 // NIST LEVEL 5
+// #define PARAM128 // NIST LEVEL 5
 
 // UNCOMMENT TO ENABLE BANDWIDTH OPTIMISATION FOR BIKE-3:
 //#define BANDWIDTH_OPTIMIZED
@@ -144,8 +144,8 @@
 ////////////////////////////////////////////
 //              Testing
 ///////////////////////////////////////////
-#define NUM_OF_CODE_TESTS       10ULL
-#define NUM_OF_ENCRYPTION_TESTS 1ULL
+#define NUM_OF_CODE_TESTS       100ULL
+#define NUM_OF_ENCRYPTION_TESTS 10ULL
 
 #endif //__TYPES_H_INCLUDED__
 

@@ -1,15 +1,25 @@
+#define WIN32_LEAN_AND_MEAN
+#define _WINSOCK_DEPRECATED_NO_WARNINGS
+#include <winsock2.h>
+#include <windows.h>
+#include <ws2tcpip.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 #include <stdbool.h>
-#include <arpa/inet.h>
-#include <sys/socket.h>
-#include <unistd.h>
-#include <time.h>
 #include "kem.h"
 #include "hash_wrapper.h"
 #include "FromNIST/rng.h"
+#include <time.h>
 #include "FromNIST/aes.h"
+#pragma comment(lib, "ws2_32.lib")
+
+#ifdef _WIN32
+SOCKET server_fd, client_socket;
+#else
+int server_fd, client_socket;
+#endif
+
 
 #define PORT 8080
 #define BUFFER_SIZE 4096
@@ -27,7 +37,6 @@ typedef struct {
     size_t length;
 } secure_message_t;
 
-int server_fd, client_socket;
 char buffer[BUFFER_SIZE];
 
 void generate_hmac(const unsigned char* key, size_t key_len,
@@ -102,39 +111,58 @@ bool decrypt_secure_message(const secure_message_t* secure_msg,
 }
 
 void init_server(void) {
+    WSADATA wsaData;
+    if (WSAStartup(MAKEWORD(2, 2), &wsaData) != 0) {
+        printf("WSAStartup failed with error: %d\n", WSAGetLastError());
+        exit(EXIT_FAILURE);
+    }
+
     struct sockaddr_in address;
     int opt = 1;
     int addrlen = sizeof(address);
     
-    if ((server_fd = socket(AF_INET, SOCK_STREAM, 0)) < 0) {
-        perror("Socket creation failed");
+    if ((server_fd = socket(AF_INET, SOCK_STREAM, 0)) == INVALID_SOCKET) {
+        printf("Socket creation failed with error: %d\n", WSAGetLastError());
+        WSACleanup();
         exit(EXIT_FAILURE);
     }
     
-    if (setsockopt(server_fd, SOL_SOCKET, SO_REUSEADDR, &opt, sizeof(opt))) {
-        perror("Setsockopt failed");
+    if (setsockopt(server_fd, SOL_SOCKET, SO_REUSEADDR, (char*)&opt, sizeof(opt)) == SOCKET_ERROR) {
+        printf("Setsockopt failed with error: %d\n", WSAGetLastError());
+        closesocket(server_fd);
+        WSACleanup();
         exit(EXIT_FAILURE);
     }
     
     address.sin_family = AF_INET;
-    address.sin_addr.s_addr = INADDR_ANY;
+    //address.sin_addr.s_addr = INADDR_ANY;
+    address.sin_addr.s_addr = inet_addr("0.0.0.0");
     address.sin_port = htons(PORT);
     
-    if (bind(server_fd, (struct sockaddr*)&address, sizeof(address)) < 0) {
-        perror("Bind failed");
+    if (bind(server_fd, (struct sockaddr*)&address, sizeof(address)) == SOCKET_ERROR) {
+        printf("Bind failed with error: %d\n", WSAGetLastError());
+        closesocket(server_fd);
+        WSACleanup();
         exit(EXIT_FAILURE);
     }
     
-    if (listen(server_fd, 3) < 0) {
-        perror("Listen failed");
-        exit(EXIT_FAILURE);
+    if (listen(server_fd, 3) == SOCKET_ERROR) {
+    printf("Listen failed with error: %d\n", WSAGetLastError());
+    printf("Make sure port %d is not in use\n", PORT);
+    closesocket(server_fd);
+    WSACleanup();
+    exit(EXIT_FAILURE);
     }
+    printf("Server is listening on port %d...\n", PORT);
     
-    if ((client_socket = accept(server_fd, (struct sockaddr*)&address, 
-                            (socklen_t*)&addrlen)) < 0) {
-        perror("Accept failed");
+    if ((client_socket = accept(server_fd, (struct sockaddr*)&address, &addrlen)) == INVALID_SOCKET) {
+        printf("Accept failed with error: %d\n", WSAGetLastError());
+        closesocket(server_fd);
+        WSACleanup();
         exit(EXIT_FAILURE);
     }
+
+    printf("Client connected\n");
 }
 
 void send_message(const void* data, size_t size) {
@@ -142,9 +170,13 @@ void send_message(const void* data, size_t size) {
     const char* data_ptr = (const char*)data;
     
     while (total_sent < size) {
-        ssize_t sent = send(client_socket, data_ptr + total_sent, size - total_sent, 0);
-        if (sent < 0) {
-            perror("Send failed");
+        int sent = send(client_socket, data_ptr + total_sent, 
+                       (int)(size - total_sent), 0);
+        if (sent == SOCKET_ERROR) {
+            printf("Send failed with error: %d\n", WSAGetLastError());
+            closesocket(client_socket);
+            closesocket(server_fd);
+            WSACleanup();
             exit(EXIT_FAILURE);
         }
         total_sent += sent;
@@ -156,9 +188,13 @@ void receive_message(void* data, size_t size) {
     char* data_ptr = (char*)data;
     
     while (total_received < size) {
-        ssize_t received = read(client_socket, data_ptr + total_received, size - total_received);
-        if (received <= 0) {
-            perror("Receive failed");
+        int received = recv(client_socket, data_ptr + total_received, 
+                          (int)(size - total_received), 0);
+        if (received == SOCKET_ERROR || received == 0) {
+            printf("Receive failed with error: %d\n", WSAGetLastError());
+            closesocket(client_socket);
+            closesocket(server_fd);
+            WSACleanup();
             exit(EXIT_FAILURE);
         }
         total_received += received;
@@ -284,7 +320,14 @@ void combine_secrets(const ss_t* secret1, const ss_t* secret2, ss_t* final_secre
                 printf("Message verification failed!\n");
             }
         }
-        close(client_socket);
-        close(server_fd);
+            #ifdef _WIN32
+                closesocket(client_socket);
+                closesocket(server_fd);
+                WSACleanup();
+            #else
+                close(client_socket);
+                close(server_fd);
+            #endif
+            return 0;
         return 0;
     }
