@@ -1,8 +1,17 @@
-#define WIN32_LEAN_AND_MEAN
-#define _WINSOCK_DEPRECATED_NO_WARNINGS
-#include <winsock2.h>
-#include <windows.h>
-#include <ws2tcpip.h>
+#ifdef _WIN32
+    #define WIN32_LEAN_AND_MEAN
+    #define _WINSOCK_DEPRECATED_NO_WARNINGS
+    #include <winsock2.h>
+    #include <ws2tcpip.h>
+    #pragma comment(lib, "ws2_32.lib")
+#else
+    #include <sys/socket.h>
+    #include <netinet/in.h>
+    #include <arpa/inet.h>
+    #include <unistd.h>
+    #include <errno.h>
+#endif
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -12,7 +21,21 @@
 #include "FromNIST/rng.h"
 #include <time.h>
 #include "FromNIST/aes.h"
-#pragma comment(lib, "ws2_32.lib")
+
+// Cross-platform socket definitions
+#ifdef _WIN32
+    #define SOCKET_TYPE SOCKET
+    #define INVALID_SOCK INVALID_SOCKET
+    #define SOCKET_ERROR_RETURN SOCKET_ERROR
+    #define CLOSE_SOCKET(s) closesocket(s)
+    #define GET_SOCKET_ERROR WSAGetLastError()
+#else
+    #define SOCKET_TYPE int
+    #define INVALID_SOCK (-1)
+    #define SOCKET_ERROR_RETURN (-1)
+    #define CLOSE_SOCKET(s) close(s)
+    #define GET_SOCKET_ERROR errno
+#endif
 
 #define PORT 8080
 #define BUFFER_SIZE 4096
@@ -23,11 +46,7 @@
 #define AES_KEYLEN 32
 #define AES_BLOCKLEN 16
 
-#ifdef _WIN32
-SOCKET client_socket;
-#else
-int client_socket;
-#endif
+SOCKET_TYPE client_socket;
 char buffer[BUFFER_SIZE];
 
 // #ifdef _WIN32
@@ -98,69 +117,66 @@ bool encrypt_secure_message(const unsigned char* message, size_t message_len,
 }
 
 void init_client(void) {
-    WSADATA wsaData;
-    if (WSAStartup(MAKEWORD(2, 2), &wsaData) != 0) {
-        printf("WSAStartup failed with error: %d\n", WSAGetLastError());
-        exit(EXIT_FAILURE);
-    }
+    #ifdef _WIN32
+        WSADATA wsaData;
+        if (WSAStartup(MAKEWORD(2, 2), &wsaData) != 0) {
+            printf("WSAStartup failed with error: %d\n", GET_SOCKET_ERROR);
+            exit(EXIT_FAILURE);
+        }
+    #endif
 
     struct sockaddr_in serv_addr;
     memset(&serv_addr, 0, sizeof(serv_addr));
 
-    if ((client_socket = socket(AF_INET, SOCK_STREAM, 0)) == INVALID_SOCKET) {
-        printf("Socket creation failed with error: %d\n", WSAGetLastError());
-        WSACleanup();
+    if ((client_socket = socket(AF_INET, SOCK_STREAM, 0)) == INVALID_SOCK) {
+        printf("Socket creation failed with error: %d\n", GET_SOCKET_ERROR);
+        #ifdef _WIN32
+            WSACleanup();
+        #endif
         exit(EXIT_FAILURE);
     }
 
     serv_addr.sin_family = AF_INET;
     serv_addr.sin_port = htons(PORT);
 
-    // Use IP address directly for testing
-    //const char* server_ip = "192.168.0.132";
     const char* server_ip = "127.0.0.1"; // Replace with your server's IP
     printf("Attempting to connect to %s:%d\n", server_ip, PORT);
-    serv_addr.sin_addr.s_addr = inet_addr(server_ip);
 
-    if (serv_addr.sin_addr.s_addr == INADDR_NONE) {
+    #ifdef _WIN32
+        serv_addr.sin_addr.s_addr = inet_addr(server_ip);
+        if (serv_addr.sin_addr.s_addr == INADDR_NONE)
+    #else
+        if (inet_pton(AF_INET, server_ip, &serv_addr.sin_addr) <= 0)
+    #endif
+    {
         printf("Invalid IP address\n");
-        closesocket(client_socket);
-        WSACleanup();
+        CLOSE_SOCKET(client_socket);
+        #ifdef _WIN32
+            WSACleanup();
+        #endif
         exit(EXIT_FAILURE);
     }
 
     // Set timeout
-    DWORD timeout = 10000; // 10 seconds
-    if (setsockopt(client_socket, SOL_SOCKET, SO_RCVTIMEO, (const char*)&timeout, sizeof(timeout)) == SOCKET_ERROR) {
-        printf("setsockopt SO_RCVTIMEO failed: %d\n", WSAGetLastError());
-    }
-    if (setsockopt(client_socket, SOL_SOCKET, SO_SNDTIMEO, (const char*)&timeout, sizeof(timeout)) == SOCKET_ERROR) {
-        printf("setsockopt SO_SNDTIMEO failed: %d\n", WSAGetLastError());
-    }
+    #ifdef _WIN32
+        DWORD timeout = 10000; // 10 seconds
+        setsockopt(client_socket, SOL_SOCKET, SO_RCVTIMEO, (const char*)&timeout, sizeof(timeout));
+        setsockopt(client_socket, SOL_SOCKET, SO_SNDTIMEO, (const char*)&timeout, sizeof(timeout));
+    #else
+        struct timeval timeout;
+        timeout.tv_sec = 10;
+        timeout.tv_usec = 0;
+        setsockopt(client_socket, SOL_SOCKET, SO_RCVTIMEO, &timeout, sizeof(timeout));
+        setsockopt(client_socket, SOL_SOCKET, SO_SNDTIMEO, &timeout, sizeof(timeout));
+    #endif
 
-    // Try to connect
     printf("Attempting connection...\n");
-    if (connect(client_socket, (struct sockaddr*)&serv_addr, sizeof(serv_addr)) == SOCKET_ERROR) {
-        int error = WSAGetLastError();
-        printf("Connect failed with error: %d\n", error);
-        switch(error) {
-            case WSAETIMEDOUT:
-                printf("Connection timed out. Check if:\n");
-                printf("1. Server is running\n");
-                printf("2. IP address is correct\n");
-                printf("3. Firewall is allowing connections\n");
-                break;
-            case WSAECONNREFUSED:
-                printf("Connection refused. Server might not be running\n");
-                break;
-            case WSAEHOSTUNREACH:
-                printf("Host unreachable. Check network connection\n");
-                break;
-            default:
-                printf("Unknown error occurred\n");
-        }
-        closesocket(client_socket);
-        WSACleanup();
+    if (connect(client_socket, (struct sockaddr*)&serv_addr, sizeof(serv_addr)) == SOCKET_ERROR_RETURN) {
+        printf("Connect failed with error: %d\n", GET_SOCKET_ERROR);
+        CLOSE_SOCKET(client_socket);
+        #ifdef _WIN32
+            WSACleanup();
+        #endif
         exit(EXIT_FAILURE);
     }
 
@@ -172,12 +188,20 @@ void send_message(const void* data, size_t size) {
     const char* data_ptr = (const char*)data;
     
     while (total_sent < size) {
-        int sent = send(client_socket, data_ptr + total_sent, 
-                       (int)(size - total_sent), 0);
-        if (sent == SOCKET_ERROR) {
-            printf("Send failed with error: %d\n", WSAGetLastError());
-            closesocket(client_socket);
-            WSACleanup();
+        #ifdef _WIN32
+            int sent = send(client_socket, data_ptr + total_sent, 
+                          (int)(size - total_sent), 0);
+        #else
+            ssize_t sent = send(client_socket, data_ptr + total_sent, 
+                              size - total_sent, 0);
+        #endif
+
+        if (sent == SOCKET_ERROR_RETURN) {
+            printf("Send failed with error: %d\n", GET_SOCKET_ERROR);
+            CLOSE_SOCKET(client_socket);
+            #ifdef _WIN32
+                WSACleanup();
+            #endif
             exit(EXIT_FAILURE);
         }
         total_sent += sent;
@@ -189,12 +213,20 @@ void receive_message(void* data, size_t size) {
     char* data_ptr = (char*)data;
     
     while (total_received < size) {
-        int received = recv(client_socket, data_ptr + total_received, 
-                          (int)(size - total_received), 0);
-        if (received == SOCKET_ERROR || received == 0) {
-            printf("Receive failed with error: %d\n", WSAGetLastError());
-            closesocket(client_socket);
-            WSACleanup();
+        #ifdef _WIN32
+            int received = recv(client_socket, data_ptr + total_received, 
+                              (int)(size - total_received), 0);
+        #else
+            ssize_t received = recv(client_socket, data_ptr + total_received, 
+                                  size - total_received, 0);
+        #endif
+
+        if (received <= 0) {
+            printf("Receive failed with error: %d\n", GET_SOCKET_ERROR);
+            CLOSE_SOCKET(client_socket);
+            #ifdef _WIN32
+                WSACleanup();
+            #endif
             exit(EXIT_FAILURE);
         }
         total_received += received;
@@ -336,11 +368,9 @@ int main(void) {
         printf("\n");
         send_message(&secure_msg, sizeof(secure_message_t));
     }
+    CLOSE_SOCKET(client_socket);
     #ifdef _WIN32
-    closesocket(client_socket);
-    WSACleanup();
-    #else
-        close(client_socket);
+        WSACleanup();
     #endif
     return 0;
 }

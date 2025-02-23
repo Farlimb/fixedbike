@@ -32,15 +32,36 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  ******************************************************************************/
 #include <time.h>
-//#include <sys/resource.h>
-#include <windows.h>
-#include <psapi.h>
-#include "stdio.h"
+#include <stdio.h>
 #include "kem.h"
 #include "utilities.h"
 #include "measurements.h"
 #include "hash_wrapper.h"
 #include "FromNIST/rng.h"
+#include <stdlib.h>
+#include <string.h>
+#include <dirent.h>
+#include <unistd.h>
+
+#ifdef _WIN32
+    #include <windows.h>
+    #include <psapi.h>
+#else
+    #include <sys/resource.h>
+    #include <sys/time.h>
+#endif
+
+// Cross-platform time measurement
+#ifdef _WIN32
+    #define CLOCK_TYPE LARGE_INTEGER
+    #define GET_TIME(t) QueryPerformanceCounter(&t)
+    #define GET_TIME_DIFF(end, start, freq) ((double)(end.QuadPart - start.QuadPart) / freq.QuadPart)
+#else
+    #define CLOCK_TYPE struct timespec
+    #define GET_TIME(t) clock_gettime(CLOCK_MONOTONIC, &t)
+    #define GET_TIME_DIFF(end, start, freq) \
+        ((end.tv_sec - start.tv_sec) + (end.tv_nsec - start.tv_nsec) / 1e9)
+#endif
 // void print_memory_usage(FILE *fpt) {
 //     struct rusage usage;
 //     getrusage(RUSAGE_SELF, &usage);
@@ -50,23 +71,80 @@
 //     }
 // }
 void print_memory_usage(FILE *fpt) {
-    PROCESS_MEMORY_COUNTERS memCounter;
-    if (GetProcessMemoryInfo(GetCurrentProcess(), &memCounter, sizeof(memCounter))) {
-        // Convert bytes to kilobytes
-        size_t mem_usage_kb = memCounter.WorkingSetSize  / 1024;
-        
-        if (fpt != NULL) {
-            fprintf(fpt, "%zu,", mem_usage_kb);  // Write memory usage to CSV
+    #ifdef _WIN32
+        PROCESS_MEMORY_COUNTERS memCounter;
+        if (GetProcessMemoryInfo(GetCurrentProcess(), &memCounter, sizeof(memCounter))) {
+            size_t mem_usage_kb = memCounter.WorkingSetSize / 1024;
+            if (fpt != NULL) {
+                fprintf(fpt, "%zu,", mem_usage_kb);
+            } else {
+                printf("Memory usage: %zu KB\n", mem_usage_kb);
+            }
         } else {
-            printf("Memory usage: %zu KB\n", mem_usage_kb);
+            perror("Failed to get memory usage");
         }
-    } else {
-        perror("Failed to get memory usage");
-    }
+    #else
+        struct rusage usage;
+        if (getrusage(RUSAGE_SELF, &usage) == 0) {
+            if (fpt != NULL) {
+                fprintf(fpt, "%ld,", usage.ru_maxrss);
+            } else {
+                printf("Memory usage: %ld kilobytes\n", usage.ru_maxrss);
+            }
+        } else {
+            perror("Failed to get memory usage");
+        }
+    #endif
 }
+
+double get_amd_cpu_temp() {
+    FILE *temp_file;
+    char buffer[128];
+    double temp = -1.0;
+    
+    // Search through hwmon devices for k10temp
+    DIR *dir = opendir("/sys/class/hwmon");
+    if (dir) {
+        struct dirent *entry;
+        while ((entry = readdir(dir)) != NULL) {
+            char name_path[256];
+            snprintf(name_path, sizeof(name_path), "/sys/class/hwmon/%s/name", entry->d_name);
+            
+            FILE *name_file = fopen(name_path, "r");
+            if (name_file) {
+                char name[32];
+                if (fgets(name, sizeof(name), name_file) != NULL) {
+                    // Check if this is the AMD CPU temperature sensor
+                    if (strstr(name, "k10temp")) {
+                        char temp_path[256];
+                        snprintf(temp_path, sizeof(temp_path), 
+                                "/sys/class/hwmon/%s/temp1_input", entry->d_name);
+                        
+                        temp_file = fopen(temp_path, "r");
+                        if (temp_file) {
+                            if (fgets(buffer, sizeof(buffer), temp_file) != NULL) {
+                                temp = atof(buffer) / 1000.0; // Convert from millidegrees to degrees
+                            }
+                            fclose(temp_file);
+                        }
+                    }
+                }
+                fclose(name_file);
+            }
+        }
+        closedir(dir);
+    }
+    
+    return temp;
+}
+
 int main(void)
 {
-    struct timespec start, end;
+    #ifdef _WIN32
+        LARGE_INTEGER frequency;
+        QueryPerformanceFrequency(&frequency);
+    #endif
+    CLOCK_TYPE start, end;
     sk_t sk = { 0 }; // private-key: (h0, h1)
     pk_t pk = { 0 }; // public-key:  (g0, g1)
     ct_t ct = { 0 }; // ciphertext:  (c0, c1)
@@ -138,97 +216,96 @@ int main(void)
 
     MSG("BIKE Demo Test:\n");
 
-    // Open the CSV file to write results
-    FILE *fpt;
-    fpt = fopen("values.csv", "w+");
-    
-    // Check if the file opened successfully
+    FILE *fpt = fopen("valuesNove.csv", "w+");
     if (fpt == NULL) {
         perror("Failed to open file");
-        return 1; // Exit if the file can't be opened
+        return 1;
     }
-    
-    // Write the headers to the CSV
+
     fprintf(fpt, "KeyGen Time (s),KeyGen Memory (KB),Encaps Time (s),Encaps Memory (KB),Decaps Time (s),Decaps Memory (KB)\n");
 
-    for (uint32_t i = 1; i <= NUM_OF_CODE_TESTS; ++i)
-    {
+    for (uint32_t i = 1; i <= NUM_OF_CODE_TESTS; ++i) {
         status_t res = SUCCESS;
         MSG("r: %d Code test: %d \n", (int)R_BITS, i);
 
         // Key generation
-        clock_gettime(CLOCK_MONOTONIC, &start);
+        GET_TIME(start);
         MEASURE("  keygen", res = static_cast<status_t>(crypto_kem_keypair(pk.raw, sk.raw)););
-        printf("Clients private key ");
-                for(size_t i = 0; i < 32; i++) {
-                    printf("%02x", sk.raw[i]);
-                }
-        clock_gettime(CLOCK_MONOTONIC, &end);   // End time
-        double time_taken = (end.tv_sec - start.tv_sec) +
-            (end.tv_nsec - start.tv_nsec) / 1e9; // Time in seconds
-        //printf("Time taken: %f seconds for keygen\n", time_taken);
-        fprintf(fpt, "%f,", time_taken);  // Write keygen time to CSV
-        print_memory_usage(fpt);  // Write keygen memory usage to CSV
+        GET_TIME(end);
+        #ifdef _WIN32
+            double time_taken = GET_TIME_DIFF(end, start, frequency);
+        #else
+            double time_taken = GET_TIME_DIFF(end, start, 0);
+        #endif
 
-        if (res != SUCCESS)
-        {
+        fprintf(fpt, "%f,", time_taken);
+        print_memory_usage(fpt);
+
+        printf("Clients private key ");
+        for(size_t i = 0; i < 32; i++) {
+            printf("%02x", sk.raw[i]);
+        }
+        printf("\n");
+
+        if (res != SUCCESS) {
             MSG("Keypair failed with error: %d\n", res);
             continue;
         }
 
-        for (uint32_t j = 1; j <= NUM_OF_ENCRYPTION_TESTS; ++j)
-        {
+        for (uint32_t j = 1; j <= NUM_OF_ENCRYPTION_TESTS; ++j) {
             uint32_t dec_rc = 0;
 
             // Encapsulate
-            clock_gettime(CLOCK_MONOTONIC, &start);
+            GET_TIME(start);
             MEASURE("  encaps", res = static_cast<status_t>(crypto_kem_enc(ct.raw, k_enc.raw, pk.raw)););
-            
-            clock_gettime(CLOCK_MONOTONIC, &end);   // End time
-            time_taken = (end.tv_sec - start.tv_sec) +
-                (end.tv_nsec - start.tv_nsec) / 1e9; // Time in seconds
-            //printf("Time taken: %f seconds for encaps\n", time_taken);
-            fprintf(fpt, "%f,", time_taken);  // Write encaps time to CSV
-            print_memory_usage(fpt);  // Write encaps memory usage to CSV
+            GET_TIME(end);
+            double temp = get_amd_cpu_temp();
+            if (temp > 0) {
+                printf("AMD CPU Temperature: %.1f°C\n", temp);
+            } else {
+                printf("Could not read AMD CPU temperature\n");
+            }
+            #ifdef _WIN32
+                time_taken = GET_TIME_DIFF(end, start, frequency);
+            #else
+                time_taken = GET_TIME_DIFF(end, start, 0);
+            #endif
 
-            if (res != SUCCESS)
-            {
+            fprintf(fpt, "%f,", time_taken);
+            print_memory_usage(fpt);
+
+            if (res != SUCCESS) {
                 MSG("encapsulate failed with error: %d\n", res);
                 continue;
             }
 
             // Decapsulate
-            clock_gettime(CLOCK_MONOTONIC, &start);
+            GET_TIME(start);
             MEASURE("  decaps", dec_rc = crypto_kem_dec(k_dec.raw, ct.raw, sk.raw););
-            clock_gettime(CLOCK_MONOTONIC, &end);   // End time
-            time_taken = (end.tv_sec - start.tv_sec) +
-                (end.tv_nsec - start.tv_nsec) / 1e9; // Time in seconds
-            //printf("Time taken: %f seconds for decaps\n", time_taken);
-            fprintf(fpt, "%f,", time_taken);  // Write decaps time to CSV
-            print_memory_usage(fpt);  // Write decaps memory usage to CSV
+            GET_TIME(end);
 
-            // Add a newline to end the row after all values for this cycle have been written
+            #ifdef _WIN32
+                time_taken = GET_TIME_DIFF(end, start, frequency);
+            #else
+                time_taken = GET_TIME_DIFF(end, start, 0);
+            #endif
+
+            fprintf(fpt, "%f,", time_taken);
+            print_memory_usage(fpt);
             fprintf(fpt, "\n");
 
-            if (dec_rc != 0)
-            {
+            if (dec_rc != 0) {
                 MSG("Decoding failed after %d code tests and %d enc/dec tests!\n", i, j);
-            }
-            else
-            {
-                if (safe_cmp(k_enc.raw, k_dec.raw, sizeof(k_dec) / sizeof(uint64_t)))
-                {
+            } else {
+                if (safe_cmp(k_enc.raw, k_dec.raw, sizeof(k_dec) / sizeof(uint64_t))) {
                     MSG("Success! decapsulated key is the same as encapsulated key!\n");
-                }
-                else {
+                } else {
                     MSG("Failure! decapsulated key is NOT the same as encapsulated key!\n");
                 }
             }
         }
     }
 
-    // Close the CSV file
     fclose(fpt);
-
     return 0;
 }
