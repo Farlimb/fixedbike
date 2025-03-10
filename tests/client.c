@@ -24,7 +24,7 @@
 #include <x86intrin.h>
 #include <time.h>
 
-// Cross-platform socket definitions
+// Cross-platform socket definitions, RNG is not working for windows, so we need to use the linux version. If needed you can use the windows version without RNG.
 #ifdef _WIN32
 #define SOCKET_TYPE SOCKET
 #define INVALID_SOCK INVALID_SOCKET
