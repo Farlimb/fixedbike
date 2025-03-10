@@ -42,6 +42,13 @@
 #include <string.h>
 #include <dirent.h>
 #include <unistd.h>
+#include <sys/io.h>
+#include <math.h>
+#include <x86intrin.h>
+#include <stdint.h>
+#include <sys/stat.h>
+#include <limits.h>
+#include <pthread.h>
 
 #ifdef _WIN32
     #include <windows.h>
@@ -70,6 +77,193 @@
 //         fprintf(fpt, "%ld,", usage.ru_maxrss);  // Write memory usage to CSV
 //     }
 // }
+// Function to generate random bytes from temperature readings
+
+
+
+void create_test_directory() {
+    const char* dir_name = "random_test_files";
+    mkdir(dir_name, 0777);  // Read/write for all
+
+    char abs_path[PATH_MAX];
+    if (realpath(dir_name, abs_path) != NULL) {
+        printf("Test files will be saved in: %s\n", abs_path);
+    }
+}
+
+typedef struct {
+    uint64_t raw_value;
+    uint64_t microseconds;
+    double temp;
+} temp_data;
+
+static inline uint64_t get_microseconds() {
+    struct timespec ts;
+    clock_gettime(CLOCK_MONOTONIC, &ts);
+    return (uint64_t)ts.tv_sec * 1000000 + ts.tv_nsec / 1000;
+}
+
+// Function to get temperature reading
+temp_data get_temp_reading() {
+    temp_data reading = {0};
+    FILE *fp;
+    char buffer[128];
+    
+    reading.microseconds = get_microseconds();
+    
+    fp = fopen("/sys/class/thermal/thermal_zone0/temp", "r");
+    if (fp) {
+        if (fgets(buffer, sizeof(buffer), fp) != NULL) {
+            reading.raw_value = strtoull(buffer, NULL, 10);
+            reading.temp = (double)reading.raw_value / 1000.0;
+        }
+        fclose(fp);
+    }
+    
+    return reading;
+}
+
+// Function to generate random bytes from temperature readings
+void generate_random_file(const char* filename, size_t num_bytes) {
+    char filepath[PATH_MAX];
+    snprintf(filepath, sizeof(filepath), "random_test_files/%s", filename);
+    
+    FILE* output = fopen(filepath, "wb");
+    if (!output) {
+        fprintf(stderr, "Cannot open output file: %s\n", filepath);
+        return;
+    }
+    
+    unsigned char byte = 0;
+    temp_data prev = get_temp_reading();
+    
+    for (size_t i = 0; i < num_bytes; i++) {
+        temp_data current = get_temp_reading();
+        
+        // Get various sources of entropy
+        uint64_t temp_delta = current.raw_value - prev.raw_value;
+        uint64_t time_delta = current.microseconds - prev.microseconds;
+        uint64_t cycles = __rdtsc();
+        
+        // Combine entropy sources
+        unsigned char entropy_bytes[8];
+        memcpy(entropy_bytes, &temp_delta, sizeof(temp_delta));
+        memcpy(entropy_bytes + 4, &time_delta, sizeof(uint32_t));
+        
+        // XOR with CPU cycles
+        for (int j = 0; j < 8; j++) {
+            entropy_bytes[j] ^= (cycles >> (j * 8)) & 0xFF;
+        }
+        
+        // Additional mixing
+        entropy_bytes[i % 8] = (entropy_bytes[i % 8] << 3) | (entropy_bytes[i % 8] >> 5);
+        
+        // Write byte to file
+        fwrite(&entropy_bytes[i % 8], 1, 1, output);
+        
+        prev = current;
+        usleep(10); // Small delay to allow temperature to vary
+    }
+    
+    fclose(output);
+    printf("Generated %zu bytes of random data in %s\n", num_bytes, filepath);
+}
+
+// Enhanced random byte generation
+unsigned char get_enhanced_random_byte() {
+    temp_data reading = get_temp_reading();
+    uint64_t cycles = __rdtsc();
+    struct timespec ts;
+    clock_gettime(CLOCK_MONOTONIC, &ts);
+    
+    // Combine multiple entropy sources
+    unsigned char byte = 0;
+    byte ^= (reading.raw_value & 0xFF);
+    byte ^= ((cycles >> 32) & 0xFF);
+    byte ^= ((cycles) & 0xFF);
+    byte ^= (ts.tv_nsec & 0xFF);
+    
+    // Additional mixing
+    byte = (byte << 3) | (byte >> 5); // Rotate
+    byte ^= (reading.microseconds & 0xFF);
+    
+    return byte;
+}
+
+// Modify generate_enhanced_random_file to use the directory
+void generate_enhanced_random_file(const char* filename, size_t num_bytes) {
+    char filepath[PATH_MAX];
+    snprintf(filepath, sizeof(filepath), "random_test_files/%s", filename);
+    
+    FILE* output = fopen(filepath, "wb");
+    if (!output) {
+        fprintf(stderr, "Cannot open output file: %s\n", filepath);
+        return;
+    }
+    
+    unsigned char buffer[4096];
+    size_t bytes_remaining = num_bytes;
+    
+    while (bytes_remaining > 0) {
+        size_t chunk_size = (bytes_remaining < 4096) ? bytes_remaining : 4096;
+        
+        for (size_t i = 0; i < chunk_size; i++) {
+            buffer[i] = get_enhanced_random_byte();
+        }
+        
+        fwrite(buffer, 1, chunk_size, output);
+        bytes_remaining -= chunk_size;
+    }
+    
+    fclose(output);
+    printf("Generated %zu bytes of enhanced random data in %s\n", num_bytes, filepath);
+}
+
+// Function to generate test files of different sizes
+void generate_test_files() {
+    const char* sizes[] = {"1KB", "10KB", "100KB", "1MB"};
+    const size_t bytes[] = {1024, 10240, 102400, 1048576};
+    
+    for (int i = 0; i < 4; i++) {
+        char filename[64];
+        snprintf(filename, sizeof(filename), "random_%s.bin", sizes[i]);
+        printf("Generating %s file: %s\n", sizes[i], filename);
+        generate_random_file(filename, bytes[i]);
+    }
+}
+
+
+// Function to test random number generation
+void test_random_generator() {
+    printf("\nGenerating test files for ENT analysis...\n");
+    create_test_directory();
+    
+    // Generate both standard and enhanced random files
+    printf("\nGenerating standard random files...\n");
+    generate_test_files();
+    
+    printf("\nGenerating enhanced random files...\n");
+    const char* sizes[] = {"1KB", "10KB", "100KB", "1MB"};
+    const size_t bytes[] = {1024, 10240, 102400, 1048576};
+    
+    for (int i = 0; i < 4; i++) {
+        char filename[64];
+        snprintf(filename, sizeof(filename), "enhanced_random_%s.bin", sizes[i]);
+        printf("Generating %s file: %s\n", sizes[i], filename);
+        generate_enhanced_random_file(filename, bytes[i]);
+    }
+    
+    // Print full paths for ENT commands
+    char abs_path[PATH_MAX];
+    if (realpath("random_test_files", abs_path) != NULL) {
+        printf("\nTo test the files with ENT, run:\n");
+        printf("ent %s/random_1KB.bin\n", abs_path);
+        printf("ent -b %s/random_1KB.bin  # for bit-level analysis\n", abs_path);
+        printf("ent -c %s/random_1KB.bin  # for character frequency analysis\n", abs_path);
+        printf("ent %s/enhanced_random_1KB.bin  # for enhanced version\n", abs_path);
+    }
+}
+
 void print_memory_usage(FILE *fpt) {
     #ifdef _WIN32
         PROCESS_MEMORY_COUNTERS memCounter;
@@ -95,47 +289,6 @@ void print_memory_usage(FILE *fpt) {
             perror("Failed to get memory usage");
         }
     #endif
-}
-
-double get_amd_cpu_temp() {
-    FILE *temp_file;
-    char buffer[128];
-    double temp = -1.0;
-    
-    // Search through hwmon devices for k10temp
-    DIR *dir = opendir("/sys/class/hwmon");
-    if (dir) {
-        struct dirent *entry;
-        while ((entry = readdir(dir)) != NULL) {
-            char name_path[256];
-            snprintf(name_path, sizeof(name_path), "/sys/class/hwmon/%s/name", entry->d_name);
-            
-            FILE *name_file = fopen(name_path, "r");
-            if (name_file) {
-                char name[32];
-                if (fgets(name, sizeof(name), name_file) != NULL) {
-                    // Check if this is the AMD CPU temperature sensor
-                    if (strstr(name, "k10temp")) {
-                        char temp_path[256];
-                        snprintf(temp_path, sizeof(temp_path), 
-                                "/sys/class/hwmon/%s/temp1_input", entry->d_name);
-                        
-                        temp_file = fopen(temp_path, "r");
-                        if (temp_file) {
-                            if (fgets(buffer, sizeof(buffer), temp_file) != NULL) {
-                                temp = atof(buffer) / 1000.0; // Convert from millidegrees to degrees
-                            }
-                            fclose(temp_file);
-                        }
-                    }
-                }
-                fclose(name_file);
-            }
-        }
-        closedir(dir);
-    }
-    
-    return temp;
 }
 
 int main(void)
@@ -214,6 +367,8 @@ int main(void)
 //     printf("The outputs do not match.\n");
 // }
 
+    printf("\nStarting random number generation tests...\n");
+    test_random_generator();
     MSG("BIKE Demo Test:\n");
 
     FILE *fpt = fopen("valuesNove.csv", "w+");
@@ -259,12 +414,8 @@ int main(void)
             GET_TIME(start);
             MEASURE("  encaps", res = static_cast<status_t>(crypto_kem_enc(ct.raw, k_enc.raw, pk.raw)););
             GET_TIME(end);
-            double temp = get_amd_cpu_temp();
-            if (temp > 0) {
-                printf("AMD CPU Temperature: %.1f°C\n", temp);
-            } else {
-                printf("Could not read AMD CPU temperature\n");
-            }
+
+            
             #ifdef _WIN32
                 time_taken = GET_TIME_DIFF(end, start, frequency);
             #else

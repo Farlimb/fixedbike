@@ -102,6 +102,11 @@
             "cwd": "/home/lorth/Last_Server_client/fixedbike",
             "binaryPath": "/home/lorth/Last_Server_client/fixedbike/bike-demo-test",
             "binaryArgs": []
+        },
+        {
+            "cwd": "/home/mrdofuz/Documents/Diplomovka/fixedbike",
+            "binaryPath": "/home/mrdofuz/Documents/Diplomovka/fixedbike/bike-demo-test",
+            "binaryArgs": []
         }
     ],
     "files.associations": {
