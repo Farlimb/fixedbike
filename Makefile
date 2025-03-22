@@ -38,7 +38,8 @@
 # clean:
 # 	rm -f PQCkemKAT_*
 # 	rm -f bike*
-//above is old makefile
+
+#above is old makefile
 VERBOSE=0
 
 CC=g++
