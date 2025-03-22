@@ -291,174 +291,174 @@ void print_memory_usage(FILE *fpt) {
     #endif
 }
 
-int main(void)
-{
-    #ifdef _WIN32
-        LARGE_INTEGER frequency;
-        QueryPerformanceFrequency(&frequency);
-    #endif
-    CLOCK_TYPE start, end;
-    sk_t sk = { 0 }; // private-key: (h0, h1)
-    pk_t pk = { 0 }; // public-key:  (g0, g1)
-    ct_t ct = { 0 }; // ciphertext:  (c0, c1)
-    ss_t k_enc = { 0 }; // shared secret after encapsulate
-    ss_t k_dec = { 0 }; // shared secret after decapsulate
+// int main(void)
+// {
+//     #ifdef _WIN32
+//         LARGE_INTEGER frequency;
+//         QueryPerformanceFrequency(&frequency);
+//     #endif
+//     CLOCK_TYPE start, end;
+//     sk_t sk = { 0 }; // private-key: (h0, h1)
+//     pk_t pk = { 0 }; // public-key:  (g0, g1)
+//     ct_t ct = { 0 }; // ciphertext:  (c0, c1)
+//     ss_t k_enc = { 0 }; // shared secret after encapsulate
+//     ss_t k_dec = { 0 }; // shared secret after decapsulate
 
-    const char* input1 = "The quick brown fox jumps over the lazy dog";
-    unsigned char output_openssl1[48ULL];
-    unsigned char output_new1[48ULL];
-    sha3_384_openssl(output_openssl1, (const unsigned char*)input1, strlen(input1));
+//     const char* input1 = "The quick brown fox jumps over the lazy dog";
+//     unsigned char output_openssl1[48ULL];
+//     unsigned char output_new1[48ULL];
+//     sha3_384_openssl(output_openssl1, (const unsigned char*)input1, strlen(input1));
 
-    //Compute hash using new function
-    sha3_384(output_new1, (const unsigned char*)input1, strlen(input1));
+//     //Compute hash using new function
+//     sha3_384(output_new1, (const unsigned char*)input1, strlen(input1));
     
-    //Print the values of output_new1 and output_openssl1
-    printf("SHA vlastna implementacia vystup: ");
-    for (int i = 0; i < 48ULL; i++) {
-        printf("%02x", output_new1[i]);
-    }
-    printf("\n");
+//     //Print the values of output_new1 and output_openssl1
+//     printf("SHA vlastna implementacia vystup: ");
+//     for (int i = 0; i < 48ULL; i++) {
+//         printf("%02x", output_new1[i]);
+//     }
+//     printf("\n");
 
-    printf("SHA OpenSSL vystup: ");
-    for (int i = 0; i < 48ULL; i++) {
-        printf("%02x", output_openssl1[i]);
-    }
-    printf("\n");
+//     printf("SHA OpenSSL vystup: ");
+//     for (int i = 0; i < 48ULL; i++) {
+//         printf("%02x", output_openssl1[i]);
+//     }
+//     printf("\n");
 
-    if (memcmp(output_openssl1, output_new1, 48ULL) == 0) {
-        printf("Vysledky SHA3_384 hashovani su zhodne!\n");
-    } else {
-        printf("Vysledky SHA3_384 hashovani nie su zhodne!\n");
-    }
-   unsigned char key[32] = {1, 2, 3, 4, 5, 6, 7, 8,
-                        9, 10, 11, 12, 13, 14, 15, 16,
-                        17, 18, 19, 20, 21, 22, 23, 24,
-                        25, 26, 27, 28, 29, 30, 31, 32};
-unsigned char input[16] = {'T','e','s','t','I','n','p','u',
-                          't','B','l','o','c','k','!','!'};  // Ensure 16 bytes exactly
-unsigned char output_openssl[16];
-unsigned char output_new[16];
+//     if (memcmp(output_openssl1, output_new1, 48ULL) == 0) {
+//         printf("Vysledky SHA3_384 hashovani su zhodne!\n");
+//     } else {
+//         printf("Vysledky SHA3_384 hashovani nie su zhodne!\n");
+//     }
+//    unsigned char key[32] = {1, 2, 3, 4, 5, 6, 7, 8,
+//                         9, 10, 11, 12, 13, 14, 15, 16,
+//                         17, 18, 19, 20, 21, 22, 23, 24,
+//                         25, 26, 27, 28, 29, 30, 31, 32};
+// unsigned char input[16] = {'T','e','s','t','I','n','p','u',
+//                           't','B','l','o','c','k','!','!'};  // Ensure 16 bytes exactly
+// unsigned char output_openssl[16];
+// unsigned char output_new[16];
 
-// Compute encrypted output using OpenSSL-based function
-AES256_ECB(key, input, output_openssl);
+// // Compute encrypted output using OpenSSL-based function
+// AES256_ECB(key, input, output_openssl);
 
-// Compute encrypted output using new function
-AES256_ECB_AES(key, input, output_new);
+// // Compute encrypted output using new function
+// AES256_ECB_AES(key, input, output_new);
 
-// Print first output (16 bytes)
-printf("AES OpenSSL vystup : ");
-for (int i = 0; i < 16; i++) {
-    printf("%02x", output_openssl[i]);
-}
-printf("\n");
+// // Print first output (16 bytes)
+// printf("AES OpenSSL vystup : ");
+// for (int i = 0; i < 16; i++) {
+//     printf("%02x", output_openssl[i]);
+// }
+// printf("\n");
 
-// Print second output (16 bytes)
-printf("AES vlastna implementancia vystup: ");
-for (int i = 0; i < 16; i++) {
-    printf("%02x", output_new[i]);
-}
-printf("\n");
+// // Print second output (16 bytes)
+// printf("AES vlastna implementancia vystup: ");
+// for (int i = 0; i < 16; i++) {
+//     printf("%02x", output_new[i]);
+// }
+// printf("\n");
 
-// Compare results (16 bytes)
-if (memcmp(output_openssl, output_new, 16) == 0) {
-    printf("Vysledky AES sifrovani su zhodne!\n");
-} else {
-    printf("Vysledky AES sifrovani nie su zhodne!\n");
-}
+// // Compare results (16 bytes)
+// if (memcmp(output_openssl, output_new, 16) == 0) {
+//     printf("Vysledky AES sifrovani su zhodne!\n");
+// } else {
+//     printf("Vysledky AES sifrovani nie su zhodne!\n");
+// }
 
-    // //printf("\nStarting random number generation tests...\n");
-    // //test_random_generator();
-    // MSG("BIKE Demo Test:\n");
+//     // //printf("\nStarting random number generation tests...\n");
+//     // //test_random_generator();
+//     // MSG("BIKE Demo Test:\n");
 
-    // FILE *fpt = fopen("valuesNove.csv", "w+");
-    // if (fpt == NULL) {
-    //     perror("Failed to open file");
-    //     return 1;
-    // }
+//     // FILE *fpt = fopen("valuesNove.csv", "w+");
+//     // if (fpt == NULL) {
+//     //     perror("Failed to open file");
+//     //     return 1;
+//     // }
 
-    // fprintf(fpt, "KeyGen Time (s),KeyGen Memory (KB),Encaps Time (s),Encaps Memory (KB),Decaps Time (s),Decaps Memory (KB)\n");
+//     // fprintf(fpt, "KeyGen Time (s),KeyGen Memory (KB),Encaps Time (s),Encaps Memory (KB),Decaps Time (s),Decaps Memory (KB)\n");
 
-    // for (uint32_t i = 1; i <= NUM_OF_CODE_TESTS; ++i) {
-    //     status_t res = SUCCESS;
-    //     MSG("r: %d Code test: %d \n", (int)R_BITS, i);
+//     // for (uint32_t i = 1; i <= NUM_OF_CODE_TESTS; ++i) {
+//     //     status_t res = SUCCESS;
+//     //     MSG("r: %d Code test: %d \n", (int)R_BITS, i);
 
-    //     // Key generation
-    //     GET_TIME(start);
-    //     MEASURE("  keygen", res = static_cast<status_t>(crypto_kem_keypair(pk.raw, sk.raw)););
-    //     GET_TIME(end);
-    //     #ifdef _WIN32
-    //         double time_taken = GET_TIME_DIFF(end, start, frequency);
-    //     #else
-    //         double time_taken = GET_TIME_DIFF(end, start, 0);
-    //     #endif
+//     //     // Key generation
+//     //     GET_TIME(start);
+//     //     MEASURE("  keygen", res = static_cast<status_t>(crypto_kem_keypair(pk.raw, sk.raw)););
+//     //     GET_TIME(end);
+//     //     #ifdef _WIN32
+//     //         double time_taken = GET_TIME_DIFF(end, start, frequency);
+//     //     #else
+//     //         double time_taken = GET_TIME_DIFF(end, start, 0);
+//     //     #endif
 
-    //     fprintf(fpt, "%f,", time_taken);
-    //     print_memory_usage(fpt);
+//     //     fprintf(fpt, "%f,", time_taken);
+//     //     print_memory_usage(fpt);
 
-    //     printf("Clients private key ");
-    //     for(size_t i = 0; i < 32; i++) {
-    //         printf("%02x", sk.raw[i]);
-    //     }
-    //     printf("\n");
+//     //     printf("Clients private key ");
+//     //     for(size_t i = 0; i < 32; i++) {
+//     //         printf("%02x", sk.raw[i]);
+//     //     }
+//     //     printf("\n");
 
-    //     if (res != SUCCESS) {
-    //         MSG("Keypair failed with error: %d\n", res);
-    //         continue;
-    //     }
+//     //     if (res != SUCCESS) {
+//     //         MSG("Keypair failed with error: %d\n", res);
+//     //         continue;
+//     //     }
 
-    //     for (uint32_t j = 1; j <= NUM_OF_ENCRYPTION_TESTS; ++j) {
-    //         uint32_t dec_rc = 0;
+//     //     for (uint32_t j = 1; j <= NUM_OF_ENCRYPTION_TESTS; ++j) {
+//     //         uint32_t dec_rc = 0;
 
-    //         // Encapsulate
-    //         GET_TIME(start);
-    //         MEASURE("  encaps", res = static_cast<status_t>(crypto_kem_enc(ct.raw, k_enc.raw, pk.raw)););
-    //         GET_TIME(end);
+//     //         // Encapsulate
+//     //         GET_TIME(start);
+//     //         MEASURE("  encaps", res = static_cast<status_t>(crypto_kem_enc(ct.raw, k_enc.raw, pk.raw)););
+//     //         GET_TIME(end);
 
             
-    //         #ifdef _WIN32
-    //             time_taken = GET_TIME_DIFF(end, start, frequency);
-    //         #else
-    //             time_taken = GET_TIME_DIFF(end, start, 0);
-    //         #endif
+//     //         #ifdef _WIN32
+//     //             time_taken = GET_TIME_DIFF(end, start, frequency);
+//     //         #else
+//     //             time_taken = GET_TIME_DIFF(end, start, 0);
+//     //         #endif
 
-    //         fprintf(fpt, "%f,", time_taken);
-    //         print_memory_usage(fpt);
+//     //         fprintf(fpt, "%f,", time_taken);
+//     //         print_memory_usage(fpt);
 
-    //         if (res != SUCCESS) {
-    //             MSG("encapsulate failed with error: %d\n", res);
-    //             continue;
-    //         }
+//     //         if (res != SUCCESS) {
+//     //             MSG("encapsulate failed with error: %d\n", res);
+//     //             continue;
+//     //         }
 
-    //         // Decapsulate
-    //         GET_TIME(start);
-    //         MEASURE("  decaps", dec_rc = crypto_kem_dec(k_dec.raw, ct.raw, sk.raw););
-    //         GET_TIME(end);
+//     //         // Decapsulate
+//     //         GET_TIME(start);
+//     //         MEASURE("  decaps", dec_rc = crypto_kem_dec(k_dec.raw, ct.raw, sk.raw););
+//     //         GET_TIME(end);
 
-    //         #ifdef _WIN32
-    //             time_taken = GET_TIME_DIFF(end, start, frequency);
-    //         #else
-    //             time_taken = GET_TIME_DIFF(end, start, 0);
-    //         #endif
+//     //         #ifdef _WIN32
+//     //             time_taken = GET_TIME_DIFF(end, start, frequency);
+//     //         #else
+//     //             time_taken = GET_TIME_DIFF(end, start, 0);
+//     //         #endif
 
-    //         fprintf(fpt, "%f,", time_taken);
-    //         print_memory_usage(fpt);
-    //         fprintf(fpt, "\n");
+//     //         fprintf(fpt, "%f,", time_taken);
+//     //         print_memory_usage(fpt);
+//     //         fprintf(fpt, "\n");
 
-    //         if (dec_rc != 0) {
-    //             MSG("Decoding failed after %d code tests and %d enc/dec tests!\n", i, j);
-    //         } else {
-    //             if (safe_cmp(k_enc.raw, k_dec.raw, sizeof(k_dec) / sizeof(uint64_t))) {
-    //                 MSG("Success! decapsulated key is the same as encapsulated key!\n");
-    //             } else {
-    //                 MSG("Failure! decapsulated key is NOT the same as encapsulated key!\n");
-    //             }
-    //         }
-    //     }
-    // }
+//     //         if (dec_rc != 0) {
+//     //             MSG("Decoding failed after %d code tests and %d enc/dec tests!\n", i, j);
+//     //         } else {
+//     //             if (safe_cmp(k_enc.raw, k_dec.raw, sizeof(k_dec) / sizeof(uint64_t))) {
+//     //                 MSG("Success! decapsulated key is the same as encapsulated key!\n");
+//     //             } else {
+//     //                 MSG("Failure! decapsulated key is NOT the same as encapsulated key!\n");
+//     //             }
+//     //         }
+//     //     }
+//     // }
 
-    // fclose(fpt);
-    return 0;
-}
+//     // fclose(fpt);
+//     return 0;
+// }
 
 // // Global variables to store memory usage data
 // typedef struct {
@@ -691,43 +691,43 @@ int load_shared_secret(uint8_t* ss, size_t ss_size) {
     return load_binary_data("bike_shared_secret.bin", ss, ss_size);
 }
 
-// int main() {
-//     // Initialize data structures
-//     sk_t sk = { 0 };
-//     pk_t pk = { 0 };
+int main() {
+    // Initialize data structures
+    sk_t sk = { 0 };
+    pk_t pk = { 0 };
     
-//     // Measure memory before
-//     long mem_before = get_current_memory_usage();
+    // Measure memory before
+    long mem_before = get_current_memory_usage();
     
-//     // Measure time
-//     struct timespec start, end;
-//     clock_gettime(CLOCK_MONOTONIC, &start);
+    // Measure time
+    struct timespec start, end;
+    clock_gettime(CLOCK_MONOTONIC, &start);
     
-//     // Generate key pair
-//     int result = crypto_kem_keypair(pk.raw, sk.raw);
+    // Generate key pair
+    int result = crypto_kem_keypair(pk.raw, sk.raw);
     
-//     // Measure time end
-//     clock_gettime(CLOCK_MONOTONIC, &end);
-//     double time_taken = (end.tv_sec - start.tv_sec) + (end.tv_nsec - start.tv_nsec) / 1e9;
+    // Measure time end
+    clock_gettime(CLOCK_MONOTONIC, &end);
+    double time_taken = (end.tv_sec - start.tv_sec) + (end.tv_nsec - start.tv_nsec) / 1e9;
     
-//     // Measure memory after
-//     long mem_after = get_current_memory_usage();
-//     long mem_used = mem_after - mem_before;
+    // Measure memory after
+    long mem_after = get_current_memory_usage();
+    long mem_used = mem_after - mem_before;
     
-//     // Print results in CSV format to stdout (for script to capture)
-//     printf("%f,%ld,%ld,%ld\n", time_taken, mem_before, mem_after, mem_used);
+    // Print results in CSV format to stdout (for script to capture)
+    printf("%f,%ld,%ld,%ld\n", time_taken, mem_before, mem_after, mem_used);
     
-//     // Save keys for next step
-//     if (result == 0) {
-//         save_public_key(pk.raw, sizeof(pk_t));
-//         save_private_key(sk.raw, sizeof(sk_t));
-//     } else {
-//         fprintf(stderr, "Error generating keys: %d\n", result);
-//         return 1;
-//     }
+    // Save keys for next step
+    if (result == 0) {
+        save_public_key(pk.raw, sizeof(pk_t));
+        save_private_key(sk.raw, sizeof(sk_t));
+    } else {
+        fprintf(stderr, "Error generating keys: %d\n", result);
+        return 1;
+    }
     
-//     return 0;
-// }
+    return 0;
+}
 
 // int main() {
 //     // Initialize data structures

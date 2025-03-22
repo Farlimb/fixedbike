@@ -38,7 +38,6 @@
 #include "types.h"
 #include <string.h>
 
-
 #define WORD_BITS 64
 #define WORDS ((R_BITS + WORD_BITS - 1) / WORD_BITS)
 #define MOD_WORD (R_BITS / WORD_BITS)
@@ -222,3 +221,72 @@ void ntl_split_polynomial(uint8_t e0[R_SIZE],
     }
 }
 
+// #include <NTL/GF2X.h>
+
+// using namespace NTL;
+
+// typedef unsigned char uint8_t;
+
+// void ntl_add_openssl(OUT uint8_t res_bin[R_SIZE],
+//         IN const uint8_t a_bin[R_SIZE],
+//         IN const uint8_t b_bin[R_SIZE])
+// {
+//     GF2X a, b, res;
+
+//     GF2XFromBytes(a, a_bin, R_SIZE);
+//     GF2XFromBytes(b, b_bin, R_SIZE);
+
+//     add(res, a, b);
+
+//     BytesFromGF2X(res_bin, res, R_SIZE);
+// }
+
+// void ntl_mod_inv_openssl(OUT uint8_t res_bin[R_SIZE],
+//         IN const uint8_t a_bin[R_SIZE])
+// {
+//     GF2X _m, a, res;
+
+//     GF2XFromBytes(a, a_bin, R_SIZE);
+
+//     //Create the modulus
+//     GF2XModulus m;
+//     SetCoeff(_m, 0, 1);
+//     SetCoeff(_m, R_BITS, 1);
+//     build(m, _m);
+
+//     InvMod(res, a, m);
+//     BytesFromGF2X(res_bin, res, R_SIZE);
+// }
+
+// void ntl_mod_mul_openssl(OUT uint8_t res_bin[R_SIZE],
+//         IN const uint8_t a_bin[R_SIZE],
+//         IN const uint8_t b_bin[R_SIZE])
+// {
+//     GF2X _m, a, b, res;
+
+//     GF2XFromBytes(a, a_bin, R_SIZE);
+//     GF2XFromBytes(b, b_bin, R_SIZE);
+
+//     //Create the modulus
+//     GF2XModulus m;
+//     SetCoeff(_m, 0, 1);
+//     SetCoeff(_m, R_BITS, 1);
+//     build(m, _m);
+
+//     MulMod(res, a, b, m);
+
+//     BytesFromGF2X(res_bin, res, R_SIZE);
+// }
+
+// void ntl_split_polynomial_openssl(OUT uint8_t e0[R_SIZE],
+//         OUT uint8_t e1[R_SIZE],
+//         IN const uint8_t e[2*R_SIZE])
+// {
+//     GF2X e_pol, e0_pol, e1_pol;
+//     GF2XFromBytes(e_pol, e, N_SIZE);
+//     trunc(e0_pol, e_pol, R_BITS);
+//     RightShift(e1_pol, e_pol, R_BITS);
+
+//     BytesFromGF2X(e0, e0_pol, R_SIZE);
+//     BytesFromGF2X(e1, e1_pol, R_SIZE);
+// }

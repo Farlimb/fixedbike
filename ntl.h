@@ -57,5 +57,19 @@ void ntl_mod_mul(OUT uint8_t res_bin[R_SIZE],
 void ntl_split_polynomial(OUT uint8_t e0[R_SIZE],
         OUT uint8_t e1[R_SIZE],
         IN const uint8_t e[2*R_SIZE]);
+        
+void ntl_add_openssl(OUT uint8_t res_bin[R_SIZE],
+        IN const uint8_t a_bin[R_SIZE],
+        IN const uint8_t b_bin[R_SIZE]);
 
+void ntl_mod_inv_openssl(OUT uint8_t res_bin[R_SIZE],
+        IN const uint8_t a_bin[R_SIZE]);
+
+void ntl_mod_mul_openssl(OUT uint8_t res_bin[R_SIZE],
+        IN const uint8_t a_bin[R_SIZE],
+        IN const uint8_t b_bin[R_SIZE]);
+
+void ntl_split_polynomial_openssl(OUT uint8_t e0[R_SIZE],
+        OUT uint8_t e1[R_SIZE],
+        IN const uint8_t e[2*R_SIZE]);
 #endif

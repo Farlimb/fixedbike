@@ -38,7 +38,7 @@
 # clean:
 # 	rm -f PQCkemKAT_*
 # 	rm -f bike*
-
+//above is old makefile
 VERBOSE=0
 
 CC=g++
@@ -47,10 +47,13 @@ CFLAGS=-m64 -O0 -g -march=native -funroll-loops -ffast-math
 SRC=*.c ntl.cpp FromNIST/rng.c FromNIST/aes.c
 INCLUDE=-I. -std=c++11 -lcrypto -lssl -lm -lgmp -lpthread -lntl
 
-all: bike-nist-kat bike-client bike-server bike-demo-test
+all: bike-nist-kat bike-client bike-server bike-demo-test implementation-check
 
 bike-demo-test: $(SRC) *.h tests/test.c
 	$(CC) $(CFLAGS) tests/test.c $(SRC) $(INCLUDE) -DVERBOSE=$(VERBOSE) -DNIST_RAND=1 -o $@
+
+implementation-check: $(SRC) *.h tests/implementationcheck.c
+	$(CC) $(CFLAGS) tests/implementationcheck.c $(SRC) $(INCLUDE) -DVERBOSE=$(VERBOSE) -DNIST_RAND=1 -o $@
 
 bike-nist-kat: $(SRC) *.h FromNIST/*.h FromNIST/PQCgenKAT_kem.c
 	$(CC) $(CFLAGS) FromNIST/PQCgenKAT_kem.c $(SRC) $(INCLUDE) -DVERBOSE=$(VERBOSE) -DNIST_RAND=1 -o $@

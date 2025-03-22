@@ -107,6 +107,11 @@
             "cwd": "/home/mrdofuz/Documents/Diplomovka/fixedbike",
             "binaryPath": "/home/mrdofuz/Documents/Diplomovka/fixedbike/bike-demo-test",
             "binaryArgs": []
+        },
+        {
+            "cwd": "/home/mrdofuz/Documents/Diplomovka/fixedbike",
+            "binaryPath": "/home/mrdofuz/Documents/Diplomovka/fixedbike/implementation-check",
+            "binaryArgs": []
         }
     ],
     "files.associations": {

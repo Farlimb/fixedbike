@@ -37,45 +37,45 @@
 
 #include "hash_wrapper.h"
 #include "utilities.h"
-#include "openssl/sha.h"
 #include "string.h"
 #include "stdio.h"
 #include "sha3.h"
 
-#include <openssl/evp.h>
+// #include "openssl/sha.h"
+// #include <openssl/evp.h>
 
 
 /*
 Wrapper for SHA3-384 from openssl
 */
-void sha3_384_openssl(unsigned char* output, const unsigned char* input, uint64_t size){
-    EVP_MD_CTX* ctx = EVP_MD_CTX_new();
-    unsigned int s;
-    int check;
-    status_t res = SUCCESS;
+// void sha3_384_openssl(unsigned char* output, const unsigned char* input, uint64_t size){
+//     EVP_MD_CTX* ctx = EVP_MD_CTX_new();
+//     unsigned int s;
+//     int check;
+//     status_t res = SUCCESS;
 
-    // determine type
-    const EVP_MD* md = EVP_sha3_384();
-    if(md == NULL) res = E_SHA384_FAIL; CHECK_STATUS(res);
+//     // determine type
+//     const EVP_MD* md = EVP_sha3_384();
+//     if(md == NULL) res = E_SHA384_FAIL; CHECK_STATUS(res);
 
-    // DigistInit
-    check = EVP_DigestInit_ex(ctx, md, NULL);
-    if(check == 0) res = E_SHA384_FAIL; CHECK_STATUS(res);
+//     // DigistInit
+//     check = EVP_DigestInit_ex(ctx, md, NULL);
+//     if(check == 0) res = E_SHA384_FAIL; CHECK_STATUS(res);
 
-    // digist update
-    check = EVP_DigestUpdate(ctx, input, size);
-    if(check == 0) res = E_SHA384_FAIL; CHECK_STATUS(res);
+//     // digist update
+//     check = EVP_DigestUpdate(ctx, input, size);
+//     if(check == 0) res = E_SHA384_FAIL; CHECK_STATUS(res);
 
-    // digist final
-    check = EVP_DigestFinal(ctx, output, &s);
-    if(check == 0) res = E_SHA384_FAIL; CHECK_STATUS(res);
+//     // digist final
+//     check = EVP_DigestFinal(ctx, output, &s);
+//     if(check == 0) res = E_SHA384_FAIL; CHECK_STATUS(res);
 
-    // clean up
-    EVP_MD_CTX_free(ctx);
+//     // clean up
+//     EVP_MD_CTX_free(ctx);
 
-    EXIT:
-    DMSG("  Exit SHA3-384.\n");
-}
+//     EXIT:
+//     DMSG("  Exit SHA3-384.\n");
+// }
 
 void sha3_384(unsigned char* output, const unsigned char* input, uint64_t size){
     sha3(input, size, output, SHA384_HASH_SIZE);
