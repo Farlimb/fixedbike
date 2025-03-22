@@ -113,7 +113,7 @@ void handleErrors(void)
 //    key - 256-bit AES key
 //    ctr - a 128-bit plaintext value
 //    buffer - a 128-bit ciphertext value
-// void AES256_ECB(unsigned char *key, unsigned char *ctr, unsigned char *buffer)
+// void AES256_ECB_AES(unsigned char *key, unsigned char *ctr, unsigned char *buffer)
 // {
 //     EVP_CIPHER_CTX *ctx;
     

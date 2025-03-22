@@ -115,7 +115,11 @@
         "resource.h": "c",
         "string.h": "c",
         "windows.h": "c",
-        "stdio.h": "c"
+        "stdio.h": "c",
+        "typeinfo": "c",
+        "stat.h": "c",
+        "math.h": "c",
+        "time.h": "c"
     },
     "makefile.makePath": "make"
 }

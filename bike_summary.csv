@@ -1,0 +1,4 @@
+Operation,Average Time (s),Average Memory (KB)
+Key Generation,0.156827,436.64
+Encapsulation,0.00522582,455.68
+Decapsulation,0.299664,774.48
