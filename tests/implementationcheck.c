@@ -17,6 +17,15 @@
 //For testing you need to uncomment the commented code in ntl.cpp, hash_wrapper.c, rng.c
 ////////////////////
 
+// Helper function to print byte arrays
+void print_bytes(const char* label, const uint8_t* data, size_t len) {
+    printf("%s: ", label);
+    for (size_t i = 0; i < len && i < 30; i++) { // Print first 16 bytes max
+        printf("%02x ", data[i]);
+    }
+    if (len > 16) printf("...");
+    printf("\n");
+}
 
 // Function to compare split_polynomial implementations
 void compare_split_polynomial(const uint8_t *e) {
@@ -24,10 +33,16 @@ void compare_split_polynomial(const uint8_t *e) {
     uint8_t e1_custom[R_SIZE] = {0};
     uint8_t e0_openssl[R_SIZE] = {0};
     uint8_t e1_openssl[R_SIZE] = {0};
-    
+    print_bytes("Vstup e", e, R_SIZE);
     // Run both implementations
     ntl_split_polynomial(e0_custom, e1_custom, e);
     ntl_split_polynomial_openssl(e0_openssl, e1_openssl, e);
+    
+    // Print outputs
+    print_bytes("Vlastna implementacia e0", e0_custom, R_SIZE);
+    print_bytes("NTL implementacia e0    ", e0_openssl, R_SIZE);
+    print_bytes("Vlastna implementacia e1", e1_custom, R_SIZE);
+    print_bytes("NTL implementacia e1    ", e1_openssl, R_SIZE);
     
     // Compare results
     int match_e0 = (memcmp(e0_custom, e0_openssl, R_SIZE) == 0);
@@ -64,8 +79,12 @@ void compare_add(const uint8_t *a, const uint8_t *b) {
     ntl_add(res_custom, a, b);
     ntl_add_openssl(res_openssl, a, b);
     
+    // Print outputs
+    print_bytes("Vlastna implementacia add", res_custom, R_SIZE);
+    print_bytes("NTL implementacia add    ", res_openssl, R_SIZE);
+    
     int match = (memcmp(res_custom, res_openssl, R_SIZE) == 0);
-    printf("ntl_add porovnanie: %s\n", match ? "ZHODA" : "MISMATCH");
+    printf("ntl_add porovnanie: %s\n", match ? "ZHODA" : "ROZDIELNE");
     
     if (!match) {
         printf("  Differences (first 10 bytes):\n");
@@ -81,9 +100,14 @@ void compare_add(const uint8_t *a, const uint8_t *b) {
 void compare_mod_mul(const uint8_t *a, const uint8_t *b) {
     uint8_t res_custom[R_SIZE] = {0};
     uint8_t res_openssl[R_SIZE] = {0};
-    
+    print_bytes("Vstup a", a, R_SIZE);
+    print_bytes("Vstup b", b, R_SIZE);
     ntl_mod_mul(res_custom, a, b);
     ntl_mod_mul_openssl(res_openssl, a, b);
+    
+    // Print outputs
+    print_bytes("Vlastna implementacia mod_mul", res_custom, R_SIZE);
+    print_bytes("NTL implementacia mod_mul    ", res_openssl, R_SIZE);
     
     int match = (memcmp(res_custom, res_openssl, R_SIZE) == 0);
     printf("ntl_mod_mul porovnanie: %s\n", match ? "ZHODA" : "ROZDIELNE");
@@ -103,15 +127,15 @@ void compare_mod_inv(const uint8_t *a) {
     uint8_t res_custom[R_SIZE] = {0};
     uint8_t res_openssl[R_SIZE] = {0};
     
-    // Print first few bytes of input for debugging
-    // printf("Mod Inv Input (first 10 bytes): ");
-    // for (int i = 0; i < 1500 && i < R_SIZE; i++) {
-    //     printf("%02x ", a[i]);
-    // }
-    printf("\n");
+    // Print input
+    print_bytes("Mod Inv vstup", a, R_SIZE);
     
     ntl_mod_inv(res_custom, a);
     ntl_mod_inv_openssl(res_openssl, a);
+    
+    // Print outputs
+    print_bytes("Vlastna implementacia mod_inv", res_custom, R_SIZE);
+    print_bytes("NTL implementacia mod_inv    ", res_openssl, R_SIZE);
     
     int match = (memcmp(res_custom, res_openssl, R_SIZE) == 0);
     printf("ntl_mod_inv porovnanie: %s\n", match ? "ZHODA" : "ROZDIELNE");
@@ -124,6 +148,15 @@ void compare_mod_inv(const uint8_t *a) {
             }
         }
     }
+    
+    // Verification: Multiply by original and check if result is 1
+    uint8_t verify_custom[R_SIZE] = {0};
+    uint8_t verify_openssl[R_SIZE] = {0};
+    uint8_t one[R_SIZE] = {0};
+    one[0] = 1; // Set first byte to 1, rest are 0
+    
+    ntl_mod_mul(verify_custom, a, res_custom);
+    ntl_mod_mul_openssl(verify_openssl, a, res_openssl);
 }
 
 int main() {
@@ -218,6 +251,8 @@ int main() {
     
     // Test add
     printf("\n----- Testovanie Add -----\n");
+    print_bytes("Vstup a (h0)", h0, R_SIZE);
+    print_bytes("Vstup b (h1)", h1, R_SIZE);
     compare_add(h0, h1);
     
     // Test mod_mul
